@@ -18,11 +18,12 @@
             margin: 30px;
             /*width: 80%;
             max-width: 80%;
-            */height: 600px;
+            */
+            height: 600px;
             border: 1px solid blue;
             /*resize: horizontal;*/
             overflow: hidden;
-            text-align: center;
+            /*text-align: center;*/
             padding: 15px;
         }
 
@@ -30,6 +31,14 @@
             border: 1px solid red;
             width: 100%;
             height: 100%;
+        }
+
+        .fromdate {
+            float: left;
+        }
+
+        .todate::before {
+            content: "\00A0-\00A0";
         }
     </style>
     <script>
@@ -48,6 +57,91 @@
 <body>
     <div id="svg-holder">
     </div>
+    <div id="bio">
+        <h1>Work experience</h1>
+        <ul id="work">
+            <li id="job1">
+                <dt>Period</dt>
+                <dd class="fromdate">June 2005</dd>
+                <dd class="todate">February 2007</dd>
+                <dt>Position</dt>
+                <dd>Web Developer</dd>
+                <dt>Responsibilities</dt>
+                <dd>Maintenance and expansion of the existing company web sites</dd>
+                <dt>Employer</dt>
+                <dd>Some company ltd.</dd>
+            </li>
+            <li id="job2" class="hidden">
+                <dt>Period</dt>
+                <dd class="fromdate">November 2007</dd>
+                <dd class="todate">February 2008</dd>
+                <dt>Position</dt>
+                <dd>Web Developer</dd>
+                <dt>Responsibilities</dt>
+                <dd>Development of new projects, bugfixing and securing completed projects</dd>
+                <dt>Employer</dt>
+                <dd>Some company 2 ltd.</dd>
+            </li>
+            <li id="job3">
+                <dt>Period</dt>
+                <dd class="fromdate">February 2008</dd>
+                <dd class="todate">January 2009</dd>
+                <dt>Position</dt>
+                <dd>Backend Web Developer</dd>
+                <dt>Responsibilities</dt>
+                <dd>blah blah</dd>
+                <dt>Employer</dt>
+                <dd>Some company 3 ltd.</dd>
+            </li>
+            <li id="job4">
+                <dt>Period</dt>
+                <dd class="fromdate">Jannuary 2009</dd>
+                <dd class="todate">November 2010</dd>
+                <dt>Position</dt>
+                <dd>Freelance Web Developer</dd>
+                <dt>Employer</dt>
+                <dd>Self-employed</dd>
+            </li>
+        </ul>
+        <h1>Education</h1>
+        <ul>
+            <li id="highschool">
+                <dt>Period</dt>
+                <dd class="fromdate">September 2002</dd>
+                <dd class="todate">May 2007</dd>
+                <dt>Type</dt>
+                <dd>High school</dd>
+                <dt>Institution</dt>
+                <dd>Some high school</dd>
+            </li>
+            <li id="highschool_extracurricular">
+                <dt>Period</dt>
+                <dd class="fromdate">October 2002</dd>
+                <dd class="todate">September 2003</dd>
+                <dt>Type</dt>
+                <dd>Extracurricular activities</dd>
+                <dt>Institution</dt>
+                <dd>Student academy for computer informatics</dd>
+            </li>
+            <li id="bachelors">
+                <dt>Period</dt>
+                <dd class="fromdate">October 2007</dd>
+                <dd class="todate">May 2012</dd>
+                <dt>Type</dt>
+                <dd>University bachelor's degree</dd>
+                <dt>Institution</dt>
+                <dd>Some uni school</dd>
+            </li>
+            <li>second item</li>
+            <li>third item</li>
+        </ul>
+        <h1>Projects</h1>
+        <ul>
+            <li>first item</li>
+            <li>second item</li>
+            <li>third item</li>
+        </ul>
+    </div>
 
     <script>
         "use strict";
@@ -57,7 +151,7 @@
             .attr("id", "timeline")
 
         function multiFormat(date) {
-            return (d3.timeYear(date) < date ? d3.timeFormat("%b"): d3.timeFormat("%Y"))(date);
+            return (d3.timeYear(date) < date ? d3.timeFormat("%b") : d3.timeFormat("%Y"))(date);
         }
 
         function redraw() {
@@ -71,26 +165,31 @@
 
             var axis = d3.axisTop(x).tickFormat(multiFormat);
 
-            var widthPerTick=width/x.ticks().length;
+            var widthPerTick = width / x.ticks().length;
             console.log(widthPerTick);
 
             // Sigmoidal between 1 (no space) and 0 (a lot of space)
-            var squashed=Math.pow(1/(1+Math.pow(Math.E, (widthPerTick-30)/5)), 3);
+            var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 30) / 5)), 3);
             console.log(squashed.toFixed(4));
 
             svg.select("g#timeline")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 .call(axis)
                 .selectAll("text")
-                    //.style("text-anchor", "start")
-                    .attr("font-size", (0.2 + 0.8*Math.pow(1-squashed, 0.3)) + "em")
-                    .attr("dx", Math.sin(squashed*Math.PI/2)*16 + "px")
-                    .attr("dy", Math.sin(squashed*Math.PI/2)*14-4 + "px")
-                    .attr("transform", "rotate(-" + 90*squashed + ")");
+                //.style("text-anchor", "start")
+                .attr("font-size", (0.5 + 0.8 * Math.pow(1 - squashed, 0.3)) + "em")
+                .attr("dx", Math.sin(squashed * Math.PI / 2) * 16 + "px")
+                .attr("dy", Math.sin(squashed * Math.PI / 2) * 14 - 4 + "px")
+                .attr("transform", "rotate(-" + 90 * squashed + ")");
         }
 
         redraw();
-        window.addEventListener("resize", redraw);
+
+        var doit;
+        window.addEventListener("resize", function () {
+            clearTimeout(doit);
+            doit = setTimeout(redraw, 50);
+        });
     </script>
 </body>
 
