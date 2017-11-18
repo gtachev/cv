@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <title></title>
+
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #svg-holder {
+            margin: 30px;
+            /*width: 80%;
+            max-width: 80%;
+            */height: 600px;
+            border: 1px solid blue;
+            /*resize: horizontal;*/
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        svg {
+            border: 1px solid red;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        "use strict";
+        var data = {
+            periods: [
+
+            ],
+            projects: [
+
+            ],
+        }
+    </script>
+</head>
+
+<body>
+    <div id="svg-holder">
+    </div>
+
+    <script>
+        "use strict";
+        var holder = document.getElementById("svg-holder");
+        var svg = d3.select(holder).append("svg");
+        svg.append("g")
+            .attr("id", "timeline")
+
+        function multiFormat(date) {
+            return (d3.timeYear(date) < date ? d3.timeFormat("%b"): d3.timeFormat("%Y"))(date);
+        }
+
+        function redraw() {
+            var margin = { top: 35, right: 20, bottom: 25, left: 20 },
+                width = svg.node().getBoundingClientRect().width - margin.left - margin.right,
+                height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
+
+            var x = d3.scaleTime()
+                .domain([new Date(2005, 0, 1), new Date(2017, 12, 1)])
+                .range([0, width]);
+
+            var axis = d3.axisTop(x).tickFormat(multiFormat);
+
+            var widthPerTick=width/x.ticks().length;
+            console.log(widthPerTick);
+
+            // Sigmoidal between 1 (no space) and 0 (a lot of space)
+            var squashed=Math.pow(1/(1+Math.pow(Math.E, (widthPerTick-30)/5)), 3);
+            console.log(squashed.toFixed(4));
+
+            svg.select("g#timeline")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .call(axis)
+                .selectAll("text")
+                    //.style("text-anchor", "start")
+                    .attr("font-size", (0.2 + 0.8*Math.pow(1-squashed, 0.3)) + "em")
+                    .attr("dx", Math.sin(squashed*Math.PI/2)*16 + "px")
+                    .attr("dy", Math.sin(squashed*Math.PI/2)*14-4 + "px")
+                    .attr("transform", "rotate(-" + 90*squashed + ")");
+        }
+
+        redraw();
+        window.addEventListener("resize", redraw);
+    </script>
+</body>
+
+</html>
