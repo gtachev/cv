@@ -84,7 +84,7 @@
             </li>
             <li id="job4">
                 <dt>Period</dt>
-                <dd class="fromdate">Jannuary 2009</dd>
+                <dd class="fromdate">January 2009</dd>
                 <dd class="todate">November 2010</dd>
                 <dt>Position</dt>
                 <dd class="type">Freelance Web Developer</dd>
@@ -141,6 +141,22 @@
                     </ul>
                 </dd>
             </li>
+            <li id="some_project2" data-where="job1">
+                <dt>Period</dt>
+                <dd class="fromdate">February 2008</dd>
+                <dd class="todate">December 2008</dd>
+                <dt>Name</dt>
+                <dd class="title">some name 2</dd>
+                <dt>Description</dt>
+                <dd class="description">blah blah 2</dd>
+                <dt>Used skills</dt>
+                <dd>
+                    <ul class="skills">
+                        <li>C++</li>
+                        <li data-from="June 2008">PHP</li>
+                    </ul>
+                </dd>
+            </li>
         </ul>
     </div>
 
@@ -162,6 +178,22 @@
             return null;
         };
 
+        var sortAndPosition = function (elements) {
+            console.log(elements);
+            elements.sort((a, b) => a.from > b.from);
+
+            var lastAtPos = [];
+            elements.forEach(function (el) {
+                var pos = 0;
+                while (lastAtPos[pos] >= el.to) {
+                    pos++;
+                }
+                lastAtPos[pos] = el.to;
+                el.pos = pos;
+                console.log(el);
+            });
+        };
+
         var getItemData = function (el) {
             return {
                 id: el.getAttribute("id"),
@@ -175,36 +207,46 @@
         }
 
         var places = [];
-        var projects = [];
-
+        var placesMap = new Map();
+        var projects = new Map();
+        var skills = new Map();
 
         document.querySelectorAll("#work>li, #education>li").forEach(function (el) {
-            places.push(getItemData(el));
+            var place = getItemData(el)
+            places.push(place);
+            placesMap[place.id] = place;
         });
 
         document.querySelectorAll("#projects>li").forEach(function (el) {
-            var item = getItemData(el)
-            item.skills = [];
+            var project = getItemData(el)
+            project.skills = [];
             el.querySelectorAll(".skills>li").forEach(function (sel) {
+                var skillId = sel.textContent;
                 var skill = {
-                    id: sel.textContent,
+                    project_id: project.id,
                     from: sel.hasAttribute("data-from") ?
                         fromDate(sel.getAttribute("data-from")) :
-                        item.from,
+                        project.from,
                     to: sel.hasAttribute("data-to") ?
                         toDate(sel.getAttribute("data-to")) :
-                        item.to,
+                        project.to,
                     el: sel,
                 }
-                item.skills.push(skill);
+                project.skills.push(skill);
+                if (!skills[skillId]) {
+                    skills[skillId] = [];
+                }
+                skills[skillId].push(skill);
             });
-            projects.push(item);
+            projects[project.id] = project;
         });
 
+        sortAndPosition(places);
+        skills.forEach(skill => sortAndPosition(skill));
 
         console.log(places);
         console.log(projects);
-
+        console.log(skills);
 
         function multiFormat(date) {
             return (d3.timeYear(date) < date ? d3.timeFormat("%b") : d3.timeFormat("%Y"))(date);

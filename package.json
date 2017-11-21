@@ -1,7 +1,8 @@
 {
   "name": "d3-multitimeline",
   "version": "0.0.1",
-  "description": "",
+  "description":
+    "An experiment with D3.js for plotting multiple skill timelines",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +11,6 @@
   "devDependencies": {
     "eslint": "^4.11.0",
     "eslint-plugin-html": "^4.0.0"
-  }
+  },
+  "license": "GPL3"
 }
