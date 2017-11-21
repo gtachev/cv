@@ -134,7 +134,7 @@
             </li>
         </ul>
         <h1>Projects and Skills</h1>
-        <ul>
+        <ul id="projects">
             <li id="some_project" data-where="highschool">
                 <dt>Period</dt>
                 <dd class="fromdate">October 2007</dd>
@@ -158,53 +158,69 @@
     <script>
         "use strict";
 
-        var parseDate = d3.utcParse("%B %Y")
-
+        var parseDate = d3.utcParse("%B %Y");
         var places = [];
-        d3.selectAll("#work li, #education li").each(function () {
-            var el = d3.select(this);
-            places.push({
-                id: this.id,
-                type: this.parentNode.id,
+        var projects = [];
+
+        function getItemData(el) {
+            return {
+                id: el.attr("id"),
                 title: el.select(".title").text(),
                 from: parseDate(el.select(".fromdate").text()),
                 to: d3.utcMonth.offset(parseDate(el.select(".todate").text()), 1),
-                el: this,
-            });
+                el: el,
+            }
+        }
+
+        d3.selectAll("#work>li, #education>li").each(function () {
+            places.push(getItemData(d3.select(this)));
         });
 
-        console.log(places);
+        d3.selectAll("#projects>li").each(function () {
+            var el = d3.select(this);
+            var item = getItemData(el)
+            projects.push(item);
+        });
 
-        var holder = document.getElementById("svg-holder");
-        var svg = d3.select(holder).append("svg");
-        svg.append("g")
-            .attr("id", "timeline")
+
+        console.log(places);
+        console.log(projects);
+
 
         function multiFormat(date) {
             return (d3.timeYear(date) < date ? d3.timeFormat("%b") : d3.timeFormat("%Y"))(date);
         }
 
+
+        var margin = { top: 35, right: 20, bottom: 25, left: 20 };
+
+        var holder = document.getElementById("svg-holder");
+        var svg = d3.select(holder).append("svg");
+
+
+        var xScale = d3
+            .scaleTime()
+            .domain([new Date(2005, 0, 1), new Date(2017, 12, 1)]);
+
+        var xAxis = d3.axisTop(xScale).tickFormat(multiFormat);
+
+        svg.append("g")
+            .attr("id", "timeline")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
         function redraw() {
-            var margin = { top: 35, right: 20, bottom: 25, left: 20 },
-                width = svg.node().getBoundingClientRect().width - margin.left - margin.right,
+            var width = svg.node().getBoundingClientRect().width - margin.left - margin.right,
                 height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
-            var x = d3.scaleTime()
-                .domain([new Date(2005, 0, 1), new Date(2017, 12, 1)])
-                .range([0, width]);
+            xScale.range([0, width]);
 
-            var axis = d3.axisTop(x).tickFormat(multiFormat);
-
-            var widthPerTick = width / x.ticks().length;
-            //console.log(widthPerTick);
-
+            var widthPerTick = width / xScale.ticks().length;
             // Sigmoidal between 1 (no space) and 0 (a lot of space)
             var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 30) / 5)), 3);
-            //console.log(squashed.toFixed(4));
 
             svg.select("g#timeline")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-                .call(axis)
+                .transition()
+                .call(xAxis)
                 .selectAll("text")
                 //.style("text-anchor", "start")
                 .attr("font-size", (0.5 + 0.8 * Math.pow(1 - squashed, 0.3)) + "em")
@@ -214,11 +230,12 @@
         }
 
         redraw();
+        //window.addEventListener("resize", redraw);
 
         var doit;
         window.addEventListener("resize", function () {
             clearTimeout(doit);
-            doit = setTimeout(redraw, 50);
+            doit = setTimeout(redraw, 150);
         });
     </script>
 </body>
