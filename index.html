@@ -41,17 +41,6 @@
             content: "\00A0-\00A0";
         }
     </style>
-    <script>
-        "use strict";
-        var data = {
-            periods: [
-
-            ],
-            projects: [
-
-            ],
-        }
-    </script>
 </head>
 
 <body>
@@ -159,13 +148,13 @@
         "use strict";
 
         var parseDate = d3.utcParse("%B %Y");
-        var fromDate = function(dateStr) {
+        var fromDate = function (dateStr) {
             return d3.utcDay.offset(parseDate(dateStr), 1);
         };
-        var toDate = function(dateStr) {
+        var toDate = function (dateStr) {
             return d3.utcDay.offset(d3.utcMonth.offset(parseDate(dateStr), 1), -1);
         };
-        var getText = function(el, selector) {
+        var getText = function (el, selector) {
             var subel = el.querySelector(selector);
             if (subel) {
                 return subel.textContent;
@@ -239,8 +228,8 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         function redraw() {
-            var width = svg.node().getBoundingClientRect().width - margin.left - margin.right,
-                height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
+            var width = svg.node().getBoundingClientRect().width - margin.left - margin.right;
+            // var height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
             xScale.range([0, width]);
 
