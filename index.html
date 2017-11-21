@@ -24,7 +24,7 @@
             /*resize: horizontal;*/
             overflow: hidden;
             /*text-align: center;*/
-            padding: 15px;
+            padding: 5px;
         }
 
         svg {
@@ -179,7 +179,6 @@
         };
 
         var sortAndPosition = function (elements) {
-            console.log(elements);
             elements.sort((a, b) => a.from > b.from);
 
             var lastAtPos = [];
@@ -190,58 +189,66 @@
                 }
                 lastAtPos[pos] = el.to;
                 el.pos = pos;
-                console.log(el);
             });
         };
 
-        var getItemData = function (el) {
-            return {
-                id: el.getAttribute("id"),
-                title: getText(el, ".title"),
-                type: getText(el, ".type"),
-                description: getText(el, ".description"),
-                from: fromDate(getText(el, ".fromdate")),
-                to: toDate(getText(el, ".todate")),
-                el: el,
-            }
-        }
-
-        var places = [];
-        var placesMap = new Map();
-        var projects = new Map();
+        var directory = new Map();
         var skills = new Map();
 
-        document.querySelectorAll("#work>li, #education>li").forEach(function (el) {
-            var place = getItemData(el)
-            places.push(place);
-            placesMap[place.id] = place;
-        });
-
-        document.querySelectorAll("#projects>li").forEach(function (el) {
-            var project = getItemData(el)
-            project.skills = [];
-            el.querySelectorAll(".skills>li").forEach(function (sel) {
+        var handleSkills = function (item) {
+            item.skills = [];
+            item.el.querySelectorAll(".skills>li").forEach(function (sel) {
                 var skillId = sel.textContent;
                 var skill = {
-                    project_id: project.id,
+                    used_in: item,
                     from: sel.hasAttribute("data-from") ?
                         fromDate(sel.getAttribute("data-from")) :
-                        project.from,
+                        item.from,
                     to: sel.hasAttribute("data-to") ?
                         toDate(sel.getAttribute("data-to")) :
-                        project.to,
+                        item.to,
                     el: sel,
                 }
-                project.skills.push(skill);
+                item.skills.push(skill);
                 if (!skills[skillId]) {
                     skills[skillId] = [];
                 }
                 skills[skillId].push(skill);
             });
-            projects[project.id] = project;
-        });
+        };
 
-        sortAndPosition(places);
+        var getItemsData = function (selector) {
+            var results = [];
+
+            document.querySelectorAll(selector).forEach(function (el) {
+                var item = {
+                    id: el.getAttribute("id"),
+                    title: getText(el, ".title"),
+                    where: el.getAttribute("data-where"),
+                    type: getText(el, ".type"),
+                    description: getText(el, ".description"),
+                    from: fromDate(getText(el, ".fromdate")),
+                    to: toDate(getText(el, ".todate")),
+                    el: el,
+                };
+
+                handleSkills(item);
+                results.push(item);
+                if (directory.has(item.id)) {
+                    console.error("Duplicate item id " + item.id);
+                }
+                else {
+                    directory[item.id] = item;
+                }
+            });
+
+            sortAndPosition(results);
+            return results;
+        }
+
+        var places = getItemsData("#work>li, #education>li");
+        var projects = getItemsData("#projects>li");
+
         skills.forEach(skill => sortAndPosition(skill));
 
         console.log(places);
