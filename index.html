@@ -65,9 +65,9 @@
                 <dd class="fromdate">June 2005</dd>
                 <dd class="todate">February 2007</dd>
                 <dt>Position</dt>
-                <dd>Web Developer</dd>
+                <dd class="type">Web Developer</dd>
                 <dt>Responsibilities</dt>
-                <dd>Maintenance and expansion of the existing company web sites</dd>
+                <dd class="description">Maintenance and expansion of the existing company web sites</dd>
                 <dt>Employer</dt>
                 <dd class="title">Some company ltd.</dd>
             </li>
@@ -76,9 +76,9 @@
                 <dd class="fromdate">November 2007</dd>
                 <dd class="todate">February 2008</dd>
                 <dt>Position</dt>
-                <dd>Web Developer</dd>
+                <dd class="type">Web Developer</dd>
                 <dt>Responsibilities</dt>
-                <dd>Development of new projects, bugfixing and securing completed projects</dd>
+                <dd class="description">Development of new projects, bugfixing and securing completed projects</dd>
                 <dt>Employer</dt>
                 <dd class="title">Some company 2 ltd.</dd>
             </li>
@@ -87,9 +87,9 @@
                 <dd class="fromdate">February 2008</dd>
                 <dd class="todate">January 2009</dd>
                 <dt>Position</dt>
-                <dd>Backend Web Developer</dd>
+                <dd class="type">Backend Web Developer</dd>
                 <dt>Responsibilities</dt>
-                <dd>blah blah</dd>
+                <dd class="description">blah blah</dd>
                 <dt>Employer</dt>
                 <dd class="title">Some company 3 ltd.</dd>
             </li>
@@ -98,7 +98,7 @@
                 <dd class="fromdate">Jannuary 2009</dd>
                 <dd class="todate">November 2010</dd>
                 <dt>Position</dt>
-                <dd>Freelance Web Developer</dd>
+                <dd class="type">Freelance Web Developer</dd>
                 <dt>Employer</dt>
                 <dd class="title">Self-employed</dd>
             </li>
@@ -110,7 +110,7 @@
                 <dd class="fromdate">September 2002</dd>
                 <dd class="todate">May 2007</dd>
                 <dt>Type</dt>
-                <dd>High school</dd>
+                <dd class="type">High school</dd>
                 <dt>Institution</dt>
                 <dd class="title">Some high school</dd>
             </li>
@@ -119,7 +119,7 @@
                 <dd class="fromdate">October 2002</dd>
                 <dd class="todate">September 2003</dd>
                 <dt>Type</dt>
-                <dd>Extracurricular activities</dd>
+                <dd class="type">Extracurricular activities</dd>
                 <dt>Institution</dt>
                 <dd class="title">Student academy for computer informatics</dd>
             </li>
@@ -128,7 +128,7 @@
                 <dd class="fromdate">October 2007</dd>
                 <dd class="todate">May 2012</dd>
                 <dt>Type</dt>
-                <dd>University bachelor's degree</dd>
+                <dd class="type">University bachelor's degree</dd>
                 <dt>Institution</dt>
                 <dd class="title">Some uni school</dd>
             </li>
@@ -142,13 +142,13 @@
                 <dt>Name</dt>
                 <dd class="title">some name</dd>
                 <dt>Description</dt>
-                <dd>blah blah</dd>
+                <dd class="description">blah blah</dd>
                 <dt>Used skills</dt>
                 <dd>
                     <ul class="skills">
                         <li>Pacal/Delphi</li>
                         <li>C++</li>
-                        <li data-fromdate="Jan 2008">PHP</li>
+                        <li data-from="January 2008">PHP</li>
                     </ul>
                 </dd>
             </li>
@@ -159,26 +159,56 @@
         "use strict";
 
         var parseDate = d3.utcParse("%B %Y");
-        var places = [];
-        var projects = [];
+        var fromDate = function(dateStr) {
+            return d3.utcDay.offset(parseDate(dateStr), 1);
+        };
+        var toDate = function(dateStr) {
+            return d3.utcDay.offset(d3.utcMonth.offset(parseDate(dateStr), 1), -1);
+        };
+        var getText = function(el, selector) {
+            var subel = el.querySelector(selector);
+            if (subel) {
+                return subel.textContent;
+            }
+            return null;
+        };
 
-        function getItemData(el) {
+        var getItemData = function (el) {
             return {
-                id: el.attr("id"),
-                title: el.select(".title").text(),
-                from: parseDate(el.select(".fromdate").text()),
-                to: d3.utcMonth.offset(parseDate(el.select(".todate").text()), 1),
+                id: el.getAttribute("id"),
+                title: getText(el, ".title"),
+                type: getText(el, ".type"),
+                description: getText(el, ".description"),
+                from: fromDate(getText(el, ".fromdate")),
+                to: toDate(getText(el, ".todate")),
                 el: el,
             }
         }
 
-        d3.selectAll("#work>li, #education>li").each(function () {
-            places.push(getItemData(d3.select(this)));
+        var places = [];
+        var projects = [];
+
+
+        document.querySelectorAll("#work>li, #education>li").forEach(function (el) {
+            places.push(getItemData(el));
         });
 
-        d3.selectAll("#projects>li").each(function () {
-            var el = d3.select(this);
+        document.querySelectorAll("#projects>li").forEach(function (el) {
             var item = getItemData(el)
+            item.skills = [];
+            el.querySelectorAll(".skills>li").forEach(function (sel) {
+                var skill = {
+                    id: sel.textContent,
+                    from: sel.hasAttribute("data-from") ?
+                        fromDate(sel.getAttribute("data-from")) :
+                        item.from,
+                    to: sel.hasAttribute("data-to") ?
+                        toDate(sel.getAttribute("data-to")) :
+                        item.to,
+                    el: sel,
+                }
+                item.skills.push(skill);
+            });
             projects.push(item);
         });
 
