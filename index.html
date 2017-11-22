@@ -15,7 +15,7 @@
         }
 
         #svg-holder {
-            margin: 30px;
+            margin: 10px;
             /*width: 80%;
             max-width: 80%;
             */
@@ -321,6 +321,8 @@
             // var height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
             xScale.range([0, width]);
+            xAxis.ticks(width / xScale.ticks().length > 70 ? width / 70 : xScale.ticks().length);
+
 
             var widthPerTick = width / xScale.ticks().length;
             // Sigmoidal between 1 (no space) and 0 (a lot of space)
