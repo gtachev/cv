@@ -1,20 +1,24 @@
 {
-  "extends": "eslint:recommended",
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
     },
-    "sourceType": "module"
-  },
-  "rules": {
-    "no-console": 0,
-    "no-undef": 0
-  },
-  "plugins": ["html"]
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-console": 0,
+        "no-undef": 0
+    },
+    "plugins": ["html", "import"]
 }

@@ -1,16 +1,35 @@
 {
-  "name": "d3-multitimeline",
-  "version": "0.0.1",
-  "description":
-    "An experiment with D3.js for plotting multiple skill timelines",
-  "main": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "na--",
-  "devDependencies": {
-    "eslint": "^4.11.0",
-    "eslint-plugin-html": "^4.0.0"
-  },
-  "license": "GPL3"
+    "name": "d3-multitimeline",
+    "version": "0.1.0",
+    "description":
+        "An experiment with D3.js for visualizing a person's previous experience and skills via timelines",
+    "keywords": ["d3", "cv", "skills", "timelines", "swimlanes", "stacked"],
+    "main": "scr/main.js",
+    "scripts": {
+        "build": "rm -rf build && mkdir build && rollup -c",
+        "watch": "rollup  -c -w"
+    },
+    "author": {
+        "name": "na--",
+        "url": "https://github.com/na--"
+    },
+    "repository": "https://github.com/na--/cv-multitimeline.git",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.6.1",
+        "eslint": "^4.11.0",
+        "eslint-plugin-html": "^4.0.0",
+        "eslint-plugin-import": "^2.8.0",
+        "rollup": "^0.51.8",
+        "rollup-plugin-babel": "^3.0.2",
+        "rollup-plugin-node-resolve": "^3.0.0"
+    },
+    "license": "GPL-3.0",
+    "dependencies": {
+        "d3-axis": "^1.0.8",
+        "d3-selection": "^1.2.0",
+        "d3-time": "^1.0.8",
+        "d3-time-format": "^2.1.1"
+    }
 }
