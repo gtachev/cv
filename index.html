@@ -43,14 +43,17 @@
 
         svg rect.education {
             fill: rgb(142, 185, 72);
+            stroke: rgb(48, 83, 48);
+            stroke-width: 1;
         }
 
         svg rect.work {
             fill: rgb(105, 170, 206);
+            stroke: rgb(18, 40, 51);
+            stroke-width: 1;
         }
 
         svg text.place-label {
-            font-size: 11px;
             font-family: sans-serif;
         }
     </style>
@@ -86,7 +89,7 @@
             </li>
             <li id="job3">
                 <dt>Period</dt>
-                <dd class="fromdate">February 2008</dd>
+                <dd class="fromdate">March 2008</dd>
                 <dd class="todate">January 2009</dd>
                 <dt>Position</dt>
                 <dd class="type">Backend Web Developer</dd>
@@ -97,7 +100,7 @@
             </li>
             <li id="job4">
                 <dt>Period</dt>
-                <dd class="fromdate">January 2009</dd>
+                <dd class="fromdate">February 2009</dd>
                 <dd class="todate">November 2010</dd>
                 <dt>Position</dt>
                 <dd class="type">Freelance Web Developer</dd>
@@ -197,7 +200,7 @@
             var lastAtPos = [];
             elements.forEach(function (el) {
                 var pos = 0;
-                while (lastAtPos[pos] >= el.to) {
+                while (lastAtPos[pos] > el.from) {
                     pos++;
                 }
                 lastAtPos[pos] = el.to;
@@ -299,20 +302,18 @@
             .append("rect")
             .attr("class", d => d.class)
             .attr("x", 0)
-            .attr("rx", 6)
-            .attr("yx", 6)
-            .attr("y", d => d.pos * 16)
+            .attr("rx", "4px")
+            .attr("yx", "4px")
+            .attr("y", d => d.pos * 23)
             .attr("width", 0)
-            .attr("height", 14);
+            .attr("height", 20);
         placesSvg.enter()
             .append("text")
             .classed("place-label", true)
             .text(d => d.title)
-
             .attr("x", 0)
-            .attr("y", d => d.pos * 16 + 11)
-            //.attr("textLength", 0)
-            //.attr("lengthAdjust", "spacingAndGlyphs")
+            .attr("font-size", 15)
+            .attr("y", d => d.pos * 23 + 15)
             .attr("alignment-baseline", "middle")
             .attr("text-anchor", "middle");
 
