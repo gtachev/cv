@@ -8,6 +8,7 @@ export default {
         format: "iife",
         name: "cv"
     },
+    sourcemap: true,
     plugins: [
         resolve(),
         babel({

@@ -35,7 +35,6 @@ export function sortAndPosition(elements) {
 }
 
 export function getItemsData(rootel, selector, callback) {
-    console.log(rootel);
     var results = [];
 
     rootel.querySelectorAll(selector).forEach(el => {
@@ -53,15 +52,13 @@ export function getItemsData(rootel, selector, callback) {
         };
 
         el.querySelectorAll(".skills>li").forEach(sel => {
-            skills.push({
+            item.skills.push({
                 name: sel.textContent,
                 used_in: item,
                 from: sel.hasAttribute("data-from")
                     ? fromDate(sel.getAttribute("data-from"))
                     : item.from,
-                to: sel.hasAttribute("data-to")
-                    ? toDate(sel.getAttribute("data-to"))
-                    : item.to,
+                to: sel.hasAttribute("data-to") ? toDate(sel.getAttribute("data-to")) : item.to,
                 el: sel
             });
         });
