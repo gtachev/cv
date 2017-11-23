@@ -10,7 +10,7 @@
         "build": "rm -rf build && mkdir build && rollup -c"
     },
     "author": {
-        "name": "na--",
+        "name": "Nedyalko Andreev",
         "url": "https://github.com/na--"
     },
     "repository": "https://github.com/na--/d3-cv-multitimeline.git",
@@ -24,9 +24,10 @@
         "inline-source": "^5.2.6",
         "rollup": "^0.51.8",
         "rollup-plugin-babel": "^3.0.2",
+        "rollup-plugin-license": "^0.5.0",
         "rollup-plugin-node-resolve": "^3.0.0"
     },
-    "license": "GPL-3.0",
+    "license": "BSD-3-Clause",
     "dependencies": {
         "d3-axis": "^1.0.8",
         "d3-scale": "^1.0.7",
