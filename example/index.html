@@ -3,73 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="./build/bundle.js"></script>
+    <script src="../build/bundle.js"></script>
 
     <title></title>
-
-    <style type="text/css">
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #svg-holder {
-            margin: 10px;
-            /*width: 80%;
-            max-width: 80%;
-            */
-            height: 600px;
-            border: 1px solid blue;
-            /*resize: horizontal;*/
-            overflow: hidden;
-            /*text-align: center;*/
-            padding: 5px;
-        }
-
-        svg {
-            border: 1px solid red;
-            width: 100%;
-            height: 100%;
-        }
-
-        .fromdate {
-            float: left;
-        }
-
-        .todate::before {
-            content: "\00A0-\00A0";
-        }
-
-        svg rect.education {
-            fill: rgb(142, 185, 72);
-            stroke: rgb(48, 83, 48);
-            stroke-width: 1;
-        }
-
-        svg rect.work {
-            fill: rgb(105, 170, 206);
-            stroke: rgb(18, 40, 51);
-            stroke-width: 1;
-        }
-
-        svg #skills rect {
-            fill-opacity: 0.7;
-            fill: rgb(223, 209, 88);
-            stroke: rgb(92, 87, 47);
-            stroke-width: 0.5;
-            stroke-opacity: 0.5;
-        }
-
-        svg #skills rect:hover {
-            stroke-width: 1;
-            cursor: pointer;
-        }
-
-        svg text.place-label {
-            font-family: sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./cv.css" media="screen" />
 </head>
 
 <body>
@@ -210,7 +147,7 @@
         </ul>
     </div>
 
-    <script>
+    <script type="text/javascript">
         "use strict";
 
         var directory = new Map();
@@ -224,7 +161,7 @@
                 directory[item.id] = item;
             }
 
-            item.skills.forEach(skill => {
+            item.skills.forEach(function (skill) {
                 skills.push(skill);
                 skillNames.add(skill.name);
             });
@@ -234,7 +171,7 @@
 
         var places = cv.data.getItemsData(document, "#work>li, #education>li", itemCallback);
         var projects = cv.data.getItemsData(document, "#projects>li", itemCallback);
-        skills.sort((a, b) => a.to - a.from < b.to - b.from);
+        skills.sort(function (a, b) { return (a.to - a.from) < (b.to - b.from); });
 
         console.log(places);
         console.log(projects);
@@ -250,7 +187,7 @@
         var doit;
         window.addEventListener("resize", function () {
             clearTimeout(doit);
-            doit = setTimeout(() => chart.redraw(), 150);
+            doit = setTimeout(function () { chart.redraw(); }, 150);
         });
     </script>
 </body>

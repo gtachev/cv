@@ -48,7 +48,7 @@ export function getItemsData(rootel, selector, callback) {
             from: fromDate(getText(el, ".fromdate")),
             to: toDate(getText(el, ".todate")),
             skills: [],
-            el: el
+            el: el,
         };
 
         el.querySelectorAll(".skills>li").forEach(sel => {
@@ -59,7 +59,7 @@ export function getItemsData(rootel, selector, callback) {
                     ? fromDate(sel.getAttribute("data-from"))
                     : item.from,
                 to: sel.hasAttribute("data-to") ? toDate(sel.getAttribute("data-to")) : item.to,
-                el: sel
+                el: sel,
             });
         });
         if (callback) {
