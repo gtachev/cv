@@ -1,15 +1,9 @@
 {
-    "name": "d3-multitimeline",
-    "version": "0.1.0",
-    "description": "An experiment with D3.js for visualizing a person's previous experience and skills via timelines",
-    "keywords": [
-        "d3",
-        "cv",
-        "skills",
-        "timelines",
-        "swimlanes",
-        "stacked"
-    ],
+    "name": "d3-cv-multitimeline",
+    "version": "0.2.0",
+    "description":
+        "An experiment with D3.js for visualizing a person's previous experience and skills with multiple timelines",
+    "keywords": ["d3", "cv", "skills", "multiple", "timelines", "swimlanes", "stacked"],
     "main": "scr/main.js",
     "scripts": {
         "watch": "watch-run -i -p '.*,*,src/**,example/**' 'yarn run build'",
@@ -19,7 +13,7 @@
         "name": "na--",
         "url": "https://github.com/na--"
     },
-    "repository": "https://github.com/na--/cv-multitimeline.git",
+    "repository": "https://github.com/na--/d3-cv-multitimeline.git",
     "devDependencies": {
         "babel-core": "^6.26.0",
         "babel-plugin-external-helpers": "^6.22.0",

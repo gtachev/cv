@@ -34,11 +34,5 @@ export default {
         name: "cv",
     },
     sourcemap: true,
-    plugins: [
-        resolve(),
-        babel({
-            exclude: "node_modules/**", // only transpile our source code
-        }),
-        bundleExampleHtml,
-    ],
+    plugins: [resolve(), babel(), bundleExampleHtml],
 };
