@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="../build/bundle.js"></script>
-    <link rel="stylesheet" type="text/css" href="./cv.css" media="screen" />
+    <script src="./bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../example/cv.css" media="screen" />
 </head>
 
 <body>
@@ -69,45 +69,28 @@
         </ul>
         <h1>Education</h1>
         <ul id="education">
-            <li id="highschool">
+            {{#each education}}
+            <li id="{{id}}">
                 <dt>Period</dt>
-                <dd class="fromdate">September 2002</dd>
-                <dd class="todate">May 2007</dd>
-                <dt>Type</dt>
-                <dd class="type">High school</dd>
-                <dt>Institution</dt>
-                <dd class="title">Some high school</dd>
+                <dd class="fromdate">{{from}}</dd>
+                <dd class="todate">{{to}}</dd>
+                <dt>Label</dt>
+                <dd class="label">{{label}}</dd>
+                <dt>Name</dt>
+                <dd class="name">{{name}} (
+                    <a href="{{url}}">url</a>)</dd>
+                <dt>Description</dt>
+                <dd class="label">{{description}}</dd>
                 <dt>Used skills</dt>
                 <dd>
                     <ul class="skills">
-                        <li>C++</li>
+                        {{#each skills}}
+                        <li data-from="{{from}}" data-to="{{to}}" data-strength="{{strength}}" data-description="{{description}}">{{name}}</li>
+                        {{/each}}
                     </ul>
                 </dd>
             </li>
-            <li id="highschool_extracurricular">
-                <dt>Period</dt>
-                <dd class="fromdate">October 2002</dd>
-                <dd class="todate">September 2003</dd>
-                <dt>Type</dt>
-                <dd class="type">Extracurricular activities</dd>
-                <dt>Institution</dt>
-                <dd class="title">Student academy for computer informatics</dd>
-                <dt>Used skills</dt>
-                <dd>
-                    <ul class="skills">
-                        <li>C++</li>
-                    </ul>
-                </dd>
-            </li>
-            <li id="bachelors">
-                <dt>Period</dt>
-                <dd class="fromdate">October 2007</dd>
-                <dd class="todate">May 2012</dd>
-                <dt>Type</dt>
-                <dd class="type">University bachelor's degree</dd>
-                <dt>Institution</dt>
-                <dd class="title">Some uni school</dd>
-            </li>
+            {{/each}}
         </ul>
         <h1>Projects and Skills</h1>
         <ul id="projects">

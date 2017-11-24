@@ -1,0 +1,195 @@
+{
+    "personal": {
+        "name": "Nedyalko Andreev",
+        "phone": "(redacted)",
+        "email": "see git commits",
+        "location": "Sofia, Bulgaria",
+        "timezone": "UTC+2",
+        "github": "https://github.com/na--",
+        "gitlab": "https://gitlab.com/na--",
+        "linkedin": "isn't this better? :)",
+        "hobbies": "a list of personal hobbies and interests"
+    },
+    "languages": {
+        "English": "Full professional proficiency",
+        "Bulgarian": "Full professional proficiency",
+        "Spanish": "No proficiency"
+    },
+    "education": [
+        {
+            "id": "ml_course",
+            "from": "October 2017",
+            "to": "January 2018",
+            "label": "Machine Learning Course",
+            "name": "Machine Learning with Python Lectures",
+            "url": "http://fmi.machine-learning.bg/",
+            "description": "An introductory course about machine learning with Python. It is an elective course at the Faculty of Mathematics and Informatics at Sofia University \"St. Kliment Ohridski\". The teachers are <a href=\"https://github.com/skanev\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\">Lachezar Bozhkov</a>.",
+            "skills": [
+                {
+                    "name": "Python",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Machine Learning"
+                }
+            ]
+        },
+        {
+            "id": "rust_course",
+            "from": "October 2017",
+            "to": "January 2018",
+            "label": "Rust Course",
+            "name": "Rust Programming Language Lectures",
+            "url": "https://fmi.rust-lang.bg/",
+            "description": "A comprehensive course about the Rust programming language. It is an elective course at the Faculty of Mathematics and Informatics at Sofia University \"St. Kliment Ohridski\". The main teacher is <a href=\"https://github.com/AndrewRadev\">Andrew Radev</a>.",
+            "skills": [
+                {
+                    "name": "Rust"
+                }
+            ]
+        },
+        {
+            "id": "uni_msc_unfinished",
+            "from": "October 2012",
+            "to": "January 2014",
+            "label": "Master's (unfinished)",
+            "name": "Unfinished Master's Degree in \"Distributed Systems and Mobile Technologies\" at Sofia University",
+            "url": "https://www.fmi.uni-sofia.bg/en",
+            "description": "TODO",
+            "skills": [
+                {
+                    "name": "Networking",
+                    "description": "8 networking-related courses (4 Cisco academy + 2 net security + development + signalling)"
+                },
+                {
+                    "name": "DevOps",
+                    "description": "\"Cloud management\", \"Setting up private clouds\" and a lot of network & security courses"
+                },
+                {
+                    "name": "Java",
+                    "to": "January 2013",
+                    "description": "\"Network programming with Java\" course",
+                    "strength": 0.5
+                },
+                {
+                    "name": "C/C++",
+                    "from": "February 2013",
+                    "to": "June 2013",
+                    "description": "\"Parallel Programming with MPI\" course",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Go",
+                    "from": "September 2013"
+                }
+            ]
+        },
+        {
+            "id": "uni_bsc",
+            "from": "October 2007",
+            "to": "June 2012",
+            "label": "Undergraduate",
+            "name": "Bachelor's Degree in Software Engineering at Sofia University",
+            "url": "https://www.fmi.uni-sofia.bg/en",
+            "description": "TODO",
+            "skills": [
+                {
+                    "name": "Mathematics",
+                    "to": "June 2009",
+                    "description": "Algebra, calculus, discrete mathematics, cryptography"
+                },
+                {
+                    "name": "C/C++",
+                    "to": "June 2008"
+                },
+                {
+                    "name": "Java",
+                    "from": "February 2008",
+                    "to": "June 2008"
+                }
+            ],
+            "properties": [
+                "list-visible"
+            ]
+        },
+        {
+            "id": "hs_extracurricular",
+            "from": "October 2002",
+            "to": "September 2003",
+            "label": "Extracurricular",
+            "name": "School of Computer Science",
+            "url": "https://translate.google.bg/translate?sl=bg&tl=en&js=y&prev=_t&hl=bg&ie=UTF-8&u=https%3A%2F%2Farchive.fo%2FUn5PT&act=url",
+            "description": "",
+            "skills": [
+                {
+                    "name": "Mathematics",
+                    "to": "January 2003",
+                    "strength": 1,
+                    "description": "A discrete mathematics course taught by an university professor."
+                },
+                {
+                    "name": "Pascal/Delphi",
+                    "to": "January 2003",
+                    "strength": 0.6
+                },
+                {
+                    "name": "C/C++",
+                    "from": "February 2003",
+                    "to": "May 2003",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Assembler",
+                    "from": "June 2003",
+                    "strength": 0.3
+                }
+            ]
+        },
+        {
+            "id": "highschool",
+            "from": "September 2002",
+            "to": "May 2007",
+            "label": "Secondary School",
+            "name": "Sofia High School of Mathematics",
+            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science.",
+            "url": "http://smg.bg/",
+            "skills": [
+                {
+                    "name": "Mathematics",
+                    "strength": 0.6
+                },
+                {
+                    "name": "C/C++",
+                    "from": "September 2004",
+                    "strength": 0.2,
+                    "description": "The normal school computer science education"
+                },
+                {
+                    "name": "Algorithms/Data Structures",
+                    "from": "February 2003",
+                    "to": "June 2005",
+                    "description": "Preparation for and participation in informatics competitions"
+                },
+                {
+                    "name": "Pascal/Delphi",
+                    "from": "February 2003",
+                    "to": "June 2004",
+                    "strength": 0.8,
+                    "description": "Preparation for and participation in informatics competitions"
+                },
+                {
+                    "name": "C/C++",
+                    "from": "September 2003",
+                    "to": "June 2005",
+                    "strength": 0.7,
+                    "description": "Preparation for and participation in informatics competitions"
+                }
+            ],
+            "properties": [
+                "list-visible"
+            ]
+        }
+    ],
+    "work": [],
+    "projects": []
+}

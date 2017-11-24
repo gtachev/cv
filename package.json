@@ -1,9 +1,16 @@
 {
     "name": "d3-cv-multitimeline",
     "version": "0.2.0",
-    "description":
-        "An experiment with D3.js for visualizing a person's previous experience and skills with multiple timelines",
-    "keywords": ["d3", "cv", "skills", "multiple", "timelines", "swimlanes", "stacked"],
+    "description": "An experiment with D3.js for visualizing a person's previous experience and skills with multiple timelines",
+    "keywords": [
+        "d3",
+        "cv",
+        "skills",
+        "multiple",
+        "timelines",
+        "swimlanes",
+        "stacked"
+    ],
     "main": "scr/main.js",
     "scripts": {
         "watch": "watch-run -i -p '.*,*,src/**,example/**' 'yarn run build'",
@@ -21,6 +28,7 @@
         "eslint": "^4.11.0",
         "eslint-plugin-html": "^4.0.0",
         "eslint-plugin-import": "^2.8.0",
+        "handlebars": "^4.0.11",
         "inline-source": "^5.2.6",
         "rollup": "^0.51.8",
         "rollup-plugin-babel": "^3.0.2",

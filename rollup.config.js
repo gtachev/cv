@@ -3,29 +3,33 @@ import babel from "rollup-plugin-babel";
 import { sync as inlineSync } from "inline-source";
 import { minify } from "html-minifier";
 import license from "rollup-plugin-license";
-const fs = require("fs");
+import handlebars from "handlebars";
 
-var bundleExampleHtml = {
-    name: "html-bundler",
-    onwrite: function() {
-        var html = inlineSync("./example/index.html", {
-            attribute: false,
-            compress: false,
-        });
+function parseAndBundleExample() {
+    const fs = require("fs");
+    const cvTemplate = handlebars.compile(fs.readFileSync("./example/cv.hbs").toString());
+    const cvData = JSON.parse(fs.readFileSync("./example/cv-data.json"));
 
-        fs.writeFileSync("./build/index-bundled-uncompressed.html", html);
+    const cvHtml = cvTemplate(cvData);
+    fs.writeFileSync("./build/cv.html", cvHtml);
 
-        fs.writeFileSync(
-            "./build/index-bundled-compressed.html",
-            minify(html, {
-                minifyJS: true,
-                minifyCSS: true,
-                collapseWhitespace: true,
-                conservativeCollapse: true,
-            })
-        );
-    },
-};
+    var cvBundledHtml = inlineSync("./build/cv.html", {
+        attribute: false,
+        compress: false,
+    });
+
+    fs.writeFileSync("./build/cv-bundled.html", cvBundledHtml);
+
+    fs.writeFileSync(
+        "./build/cv-bundled-minified.html",
+        minify(cvBundledHtml, {
+            minifyJS: true,
+            minifyCSS: true,
+            collapseWhitespace: true,
+            conservativeCollapse: true,
+        })
+    );
+}
 
 const licenseOptions = {
     banner: `\
@@ -47,5 +51,13 @@ export default {
         name: "cv",
     },
     sourcemap: true,
-    plugins: [resolve(), license(licenseOptions), babel(), bundleExampleHtml],
+    plugins: [
+        resolve(),
+        license(licenseOptions),
+        babel(),
+        {
+            name: "html-bundler",
+            onwrite: parseAndBundleExample,
+        },
+    ],
 };
