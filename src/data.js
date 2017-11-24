@@ -40,14 +40,14 @@ export function getItemsData(rootel, selector, callback) {
     rootel.querySelectorAll(selector).forEach(el => {
         var item = {
             id: el.getAttribute("id"),
-            title: getText(el, ".title"),
-            where: el.getAttribute("data-where"),
-            class: el.parentElement.getAttribute("id"),
-            type: getText(el, ".type"),
-            description: getText(el, ".description"),
             from: fromDate(getText(el, ".fromdate")),
             to: toDate(getText(el, ".todate")),
+            label: getText(el, ".label"),
+            name: getText(el, ".name"),
+            description: getText(el, ".description"),
             skills: [],
+            where: el.getAttribute("data-where"),
+            type: el.parentElement.getAttribute("id"),
             el: el,
         };
 

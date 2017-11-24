@@ -9,124 +9,45 @@
     <link rel="stylesheet" type="text/css" href="../example/cv.css" media="screen" />
 </head>
 
+{{#*inline "item"}}
+<li id="{{id}}">
+    <dt>Period</dt>
+    <dd class="fromdate">{{from}}</dd>
+    <dd class="todate">{{to}}</dd>
+    <dt>Label</dt>
+    <dd class="label">{{label}}</dd>
+    <dt>Name</dt>
+    <dd class="name">{{name}} (
+        <a href="{{url}}">url</a>)</dd>
+    <dt>Description</dt>
+    <dd class="description">{{description}}</dd>
+    <dt>Used skills</dt>
+    <dd>
+        <ul class="skills">
+            {{#each skills}}
+            <li {{#if from}}data-from="{{from}}" {{/if}} {{#if to}}data-to="{{to}}" {{/if}} {{#if strength}}data-strength="{{strength}}"
+                {{/if}} {{#if description}}data-description="{{description}}" {{/if}}>{{name}}</li>
+            {{/each}}
+        </ul>
+    </dd>
+</li>
+{{/inline}}
+
 <body>
     <div id="svg-holder">
     </div>
     <div id="bio">
         <h1>Work experience</h1>
         <ul id="work">
-            <li id="job1">
-                <dt>Period</dt>
-                <dd class="fromdate">June 2005</dd>
-                <dd class="todate">February 2007</dd>
-                <dt>Position</dt>
-                <dd class="type">Web Developer</dd>
-                <dt>Responsibilities</dt>
-                <dd class="description">Maintenance and expansion of the existing company web sites</dd>
-                <dt>Employer</dt>
-                <dd class="title">Some company ltd.</dd>
-            </li>
-            <li id="job2" class="hidden">
-                <dt>Period</dt>
-                <dd class="fromdate">November 2007</dd>
-                <dd class="todate">January 2008</dd>
-                <dt>Position</dt>
-                <dd class="type">Web Developer</dd>
-                <dt>Responsibilities</dt>
-                <dd class="description">Development of new projects, bugfixing and securing completed projects</dd>
-                <dt>Employer</dt>
-                <dd class="title">Some company 2 ltd.</dd>
-                <dt>Used skills</dt>
-                <dd>
-                    <ul class="skills">
-                        <li>PHP</li>
-                        <li>HTML/CSS</li>
-                        <li>SQL</li>
-                        <li>JS</li>
-                    </ul>
-                </dd>
-            </li>
-            <li id="job3">
-                <dt>Period</dt>
-                <dd class="fromdate">February 2008</dd>
-                <dd class="todate">January 2009</dd>
-                <dt>Position</dt>
-                <dd class="type">Backend Web Developer</dd>
-                <dt>Responsibilities</dt>
-                <dd class="description">blah blah</dd>
-                <dt>Employer</dt>
-                <dd class="title">Some company 3 ltd.</dd>
-            </li>
-            <li id="job4">
-                <dt>Period</dt>
-                <dd class="fromdate">February 2009</dd>
-                <dd class="todate">November 2010</dd>
-                <dt>Position</dt>
-                <dd class="type">Freelance Web Developer</dd>
-                <dt>Employer</dt>
-                <dd class="title">Self-employed</dd>
-            </li>
+            {{#each work}} {{> item}} {{/each}}
         </ul>
         <h1>Education</h1>
         <ul id="education">
-            {{#each education}}
-            <li id="{{id}}">
-                <dt>Period</dt>
-                <dd class="fromdate">{{from}}</dd>
-                <dd class="todate">{{to}}</dd>
-                <dt>Label</dt>
-                <dd class="label">{{label}}</dd>
-                <dt>Name</dt>
-                <dd class="name">{{name}} (
-                    <a href="{{url}}">url</a>)</dd>
-                <dt>Description</dt>
-                <dd class="label">{{description}}</dd>
-                <dt>Used skills</dt>
-                <dd>
-                    <ul class="skills">
-                        {{#each skills}}
-                        <li data-from="{{from}}" data-to="{{to}}" data-strength="{{strength}}" data-description="{{description}}">{{name}}</li>
-                        {{/each}}
-                    </ul>
-                </dd>
-            </li>
-            {{/each}}
+            {{#each education}} {{> item}} {{/each}}
         </ul>
-        <h1>Projects and Skills</h1>
+        <h1>Projects</h1>
         <ul id="projects">
-            <li id="some_project" data-where="highschool">
-                <dt>Period</dt>
-                <dd class="fromdate">October 2007</dd>
-                <dd class="todate">May 2008</dd>
-                <dt>Name</dt>
-                <dd class="title">some name</dd>
-                <dt>Description</dt>
-                <dd class="description">blah blah</dd>
-                <dt>Used skills</dt>
-                <dd>
-                    <ul class="skills">
-                        <li>Pacal/Delphi</li>
-                        <li>C++</li>
-                        <li data-from="January 2008">PHP</li>
-                    </ul>
-                </dd>
-            </li>
-            <li id="some_project2" data-where="job1">
-                <dt>Period</dt>
-                <dd class="fromdate">February 2008</dd>
-                <dd class="todate">December 2008</dd>
-                <dt>Name</dt>
-                <dd class="title">some name 2</dd>
-                <dt>Description</dt>
-                <dd class="description">blah blah 2</dd>
-                <dt>Used skills</dt>
-                <dd>
-                    <ul class="skills">
-                        <li>C++</li>
-                        <li data-from="June 2008">PHP</li>
-                    </ul>
-                </dd>
-            </li>
+            {{#each projects}} {{> item}} {{/each}}
         </ul>
     </div>
 

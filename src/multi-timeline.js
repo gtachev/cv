@@ -23,7 +23,7 @@ export class MutiTimeline {
 
         this.svg = d3Select(holder).append("svg");
         this.dims = {
-            margin: { top: 35, right: 20, bottom: 25, left: 75 }
+            margin: { top: 35, right: 20, bottom: 25, left: 75 },
         };
     }
 
@@ -47,7 +47,7 @@ export class MutiTimeline {
         this.placesSvg
             .enter()
             .append("rect")
-            .attr("class", d => d.class)
+            .attr("class", d => d.type)
             .attr("x", 0)
             .attr("rx", 4)
             .attr("yx", 4)
@@ -59,7 +59,7 @@ export class MutiTimeline {
             .enter()
             .append("text")
             .classed("place-label", true)
-            .text(d => d.title)
+            .text(d => d.label)
             .attr("x", 0)
             .attr("font-size", 15)
             .attr("y", d => d.pos * 23 + 15)
