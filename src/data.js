@@ -21,7 +21,7 @@ export function getText(el, selector) {
 }
 
 export function sortAndPosition(elements) {
-    elements.sort((a, b) => a.from > b.from);
+    elements.sort((a, b) => a.from - b.from);
 
     var lastAtPos = [];
     elements.forEach(function(el) {

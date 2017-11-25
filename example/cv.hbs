@@ -75,7 +75,7 @@
 
         var places = cv.data.getItemsData(document, "#work>li, #education>li", itemCallback);
         var projects = cv.data.getItemsData(document, "#projects>li", itemCallback);
-        skills.sort(function (a, b) { return (a.to - a.from) < (b.to - b.from); });
+        skills.sort(function (a, b) { return (b.to - b.from) - (a.to - a.from); });
 
         console.log(places);
         console.log(projects);
