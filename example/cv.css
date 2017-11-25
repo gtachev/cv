@@ -1,3 +1,7 @@
+* {
+    -webkit-print-color-adjust: exact !important;
+}
+
 html,
 body {
     margin: 0;
