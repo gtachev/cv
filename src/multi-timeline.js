@@ -3,7 +3,10 @@ import { timeFormat } from "d3-time-format";
 import { timeYear } from "d3-time";
 import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
-import "d3-transition";
+import { transition as d3Transition } from "d3-transition";
+import "d3-selection-multi";
+
+d3Transition(); // TODO: fix this; needed so rollup does not throw out d3-selection-multi for transition...
 
 function multiFormat(date) {
     return (timeYear(date) < date ? timeFormat("%b") : timeFormat("%Y"))(date);
@@ -137,27 +140,25 @@ export class MutiTimeline {
             .attr("x", d => this.xScale(d.from))
             .attr("width", d => this.xScale(d.to) - this.xScale(d.from));
 
-        var xScale = this.xScale;
-
         this.placesHolderSvg
             .selectAll("text")
             .transition()
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
-            .each(function(d, e, t) {
+            .attrs((d, e, t) => {
                 let newFontSize = Math.min(
                     15,
                     t[e].getAttribute("font-size") *
-                        (xScale(d.to) - xScale(d.from) - 5) /
+                        (this.xScale(d.to) - this.xScale(d.from) - 5) /
                         t[e].getBoundingClientRect().width
                 );
 
                 if (newFontSize < 10 / window.devicePixelRatio) {
-                    d3Select(this).attr("visibility", "hidden");
-                } else {
-                    d3Select(this)
-                        .attr("visibility", "visible")
-                        .attr("font-size", newFontSize);
+                    return { visibility: "hidden" };
                 }
+                return {
+                    visibility: "visible",
+                    "font-size": newFontSize,
+                };
             });
     }
 }
