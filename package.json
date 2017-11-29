@@ -22,12 +22,12 @@
         "eslint-plugin-html": "^4.0.0",
         "eslint-plugin-import": "^2.8.0",
         "handlebars": "^4.0.11",
+        "html-minifier": "^3.5.6",
         "inline-source": "^5.2.6",
         "rollup": "^0.51.8",
         "rollup-plugin-babel": "^3.0.2",
         "rollup-plugin-license": "^0.5.0",
         "rollup-plugin-node-resolve": "^3.0.0",
-        "html-minifier": "^3.5.6",
         "watch-run": "^1.2.5"
     },
     "license": "BSD-3-Clause",

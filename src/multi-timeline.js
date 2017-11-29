@@ -64,8 +64,8 @@ export class MutiTimeline {
             .attr("font-size", 15)
             .attr("y", d => d.pos * 23 + 15)
             .attr("alignment-baseline", "middle")
-            .attr("text-anchor", "middle")
-            .attr("visibility", "hidden");
+            .attr("text-anchor", "middle");
+        //.attr("visibility", "hidden");
 
         this.ySkillScale = d3ScaleBand()
             .domain(Array.from(this.skillNames.values()))
@@ -137,16 +137,27 @@ export class MutiTimeline {
             .attr("x", d => this.xScale(d.from))
             .attr("width", d => this.xScale(d.to) - this.xScale(d.from));
 
+        var xScale = this.xScale;
+
         this.placesHolderSvg
             .selectAll("text")
             .transition()
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
-            .attr(
-                "visibility",
-                (d, e, t) =>
-                    this.xScale(d.to) - this.xScale(d.from) > t[e].getBoundingClientRect().width
-                        ? "visible"
-                        : "hidden"
-            );
+            .each(function(d, e, t) {
+                let newFontSize = Math.min(
+                    15,
+                    t[e].getAttribute("font-size") *
+                        (xScale(d.to) - xScale(d.from) - 5) /
+                        t[e].getBoundingClientRect().width
+                );
+
+                if (newFontSize < 10 / window.devicePixelRatio) {
+                    d3Select(this).attr("visibility", "hidden");
+                } else {
+                    d3Select(this)
+                        .attr("visibility", "visible")
+                        .attr("font-size", newFontSize);
+                }
+            });
     }
 }
