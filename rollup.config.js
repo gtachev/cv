@@ -13,6 +13,7 @@ function parseAndBundleExample() {
     const cvHtml = cvTemplate(cvData);
     fs.writeFileSync("./build/cv.html", cvHtml);
 
+    fs.createReadStream("./example/cv.css").pipe(fs.createWriteStream("./build/cv.css"));
     var cvBundledHtml = inlineSync("./build/cv.html", {
         attribute: false,
         compress: false,
