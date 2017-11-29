@@ -5,11 +5,11 @@ import { utcDay, utcMonth } from "d3-time";
 export var parseDate = utcParse("%B %Y");
 
 export function fromDate(dateStr) {
-    return utcDay.offset(parseDate(dateStr), 3);
+    return parseDate(dateStr);
 }
 
 export function toDate(dateStr) {
-    return utcDay.offset(utcMonth.offset(parseDate(dateStr), 1), -3);
+    return utcDay.offset(utcMonth.offset(parseDate(dateStr), 1), -1);
 }
 
 export function getText(el, selector) {
@@ -59,6 +59,10 @@ export function getItemsData(rootel, selector, callback) {
                     ? fromDate(sel.getAttribute("data-from"))
                     : item.from,
                 to: sel.hasAttribute("data-to") ? toDate(sel.getAttribute("data-to")) : item.to,
+                strength: sel.hasAttribute("data-strength")
+                    ? sel.getAttribute("data-strength")
+                    : 1.0,
+                description: sel.getAttribute("data-description"),
                 el: sel,
             });
         });

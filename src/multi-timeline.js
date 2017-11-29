@@ -49,8 +49,8 @@ export class MutiTimeline {
             .append("rect")
             .attr("class", d => d.type)
             .attr("x", 0)
-            .attr("rx", 4)
-            .attr("yx", 4)
+            .attr("rx", 5)
+            .attr("yx", 5)
             .attr("y", d => d.pos * 23)
             .attr("width", 0)
             .attr("height", 20);
@@ -96,8 +96,9 @@ export class MutiTimeline {
             .append("rect")
             .attr("x", 0)
             .attr("y", d => this.ySkillScale(d.name) + 0.1 * bandwidth)
-            .attr("rx", 4)
-            .attr("yx", 4)
+            .attr("fill-opacity", d => 0.8 * d.strength)
+            .attr("rx", 2)
+            .attr("yx", 2)
             .attr("width", 0)
             .attr("height", 0.8 * bandwidth);
 
@@ -105,8 +106,6 @@ export class MutiTimeline {
     }
 
     redraw() {
-        console.log(this);
-
         var width =
             this.svg.node().getBoundingClientRect().width -
             this.dims.margin.left -

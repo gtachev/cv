@@ -60,15 +60,15 @@ svg rect.projects {
 }
 
 svg #skills rect {
-    fill-opacity: 0.7;
-    fill: rgb(223, 209, 88);
-    stroke: rgb(92, 87, 47);
-    stroke-width: 0.5;
+    fill: rgb(255, 206, 108);
+    stroke: rgb(187, 128, 10);
+    stroke-width: 0.3;
     stroke-opacity: 0.5;
 }
 
 svg #skills rect:hover {
     stroke-width: 1;
+    stroke-opacity: 0.8;
     cursor: pointer;
 }
 
