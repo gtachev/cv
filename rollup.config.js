@@ -7,20 +7,24 @@ import handlebars from "handlebars";
 
 function parseAndBundleExample() {
     const fs = require("fs");
+
+    // Copy example CSS
+    fs.createReadStream("./example/cv.css").pipe(fs.createWriteStream("./build/cv.css"));
+
+    // Fill the example template with the example data and write it to the build folder
     const cvTemplate = handlebars.compile(fs.readFileSync("./example/cv.hbs").toString());
     const cvData = JSON.parse(fs.readFileSync("./example/cv-data.json"));
-
     const cvHtml = cvTemplate(cvData);
     fs.writeFileSync("./build/cv.html", cvHtml);
 
-    fs.createReadStream("./example/cv.css").pipe(fs.createWriteStream("./build/cv.css"));
+    // Inline all of the external resources in the built html and save it with another name
     var cvBundledHtml = inlineSync("./build/cv.html", {
         attribute: false,
         compress: false,
     });
-
     fs.writeFileSync("./build/cv-bundled.html", cvBundledHtml);
 
+    // Minify the bundled html and save it with another name again
     fs.writeFileSync(
         "./build/cv-bundled-minified.html",
         minify(cvBundledHtml, {
