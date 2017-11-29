@@ -36,7 +36,7 @@
 <body>
     <div id="svg-holder">
     </div>
-    <div id="bio">
+    <div id="bio" contenteditable="true" spellcheck="true">
         <h1>Work experience</h1>
         <ul id="work">
             {{#each work}} {{> item}} {{/each}}
@@ -73,12 +73,12 @@
 
         console.log(cv);
 
-        var places = cv.data.getItemsData(document, "#work>li, #education>li", itemCallback);
-        var projects = cv.data.getItemsData(document, "#projects>li", itemCallback);
+        var places = cv.data.getItemsData(document, "#work>li, #education>li, #projects>li", itemCallback);
+        //var projects = cv.data.getItemsData(document, "", itemCallback);
         skills.sort(function (a, b) { return (b.to - b.from) - (a.to - a.from); });
 
         console.log(places);
-        console.log(projects);
+        //console.log(projects);
         console.log(skillNames);
         console.log(skills);
 

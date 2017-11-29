@@ -39,11 +39,21 @@ svg rect.education {
     fill: rgb(142, 185, 72);
     stroke: rgb(48, 83, 48);
     stroke-width: 1;
+    stroke-width: 0.5;
+    stroke-opacity: 0.5;
 }
 
 svg rect.work {
     fill: rgb(105, 170, 206);
     stroke: rgb(18, 40, 51);
+    stroke-width: 1;
+    stroke-width: 0.5;
+    stroke-opacity: 0.5;
+}
+
+svg rect.projects {
+    fill: rgb(142, 166, 177);
+    stroke: rgb(28, 34, 37);
     stroke-width: 1;
     stroke-width: 0.5;
     stroke-opacity: 0.5;

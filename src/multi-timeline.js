@@ -28,7 +28,7 @@ export class MutiTimeline {
     }
 
     draw() {
-        this.xScale = d3ScaleTime().domain([new Date(2002, 0, 1), new Date(2017, 12, 1)]); //TODO: make dynamic
+        this.xScale = d3ScaleTime().domain([new Date(2002, 9, 1), new Date(2017, 12, 1)]); //TODO: make dynamic
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
 

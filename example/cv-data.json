@@ -8,13 +8,29 @@
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
         "linkedin": "isn't this better? :)",
-        "hobbies": "a list of personal hobbies and interests"
+        "hobbies": "a list of personal hobbies and interests",
+        "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently mastering Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
     },
-    "languages": {
-        "English": "Full professional proficiency",
-        "Bulgarian": "Full professional proficiency",
-        "Spanish": "No proficiency"
-    },
+    "languages": [
+        {
+            "name": "English",
+            "ilr_level": "Full professional proficiency"
+        },
+        {
+            "name": "Bulgarian",
+            "ilr_level": "Native or bilingual proficiency"
+        },
+        {
+            "name": "Spanish",
+            "ilr_level": "No proficiency",
+            "description": "Self-study via duolingo and two 3-month courses in 2014/2015. I'd completed level A2.1, but havent practiced since."
+        },
+        {
+            "name": "German",
+            "ilr_level": "No proficiency",
+            "description": "Learned for four years as a secondary foreign language in high school. Unforrtunately I've forgotten most of the little I knew due to lack of practice."
+        }
+    ],
     "education": [
         {
             "id": "ml-course",
@@ -22,8 +38,9 @@
             "to": "January 2018",
             "label": "Machine Learning Course",
             "name": "Machine Learning with Python Lectures",
+            "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "http://fmi.machine-learning.bg/",
-            "description": "An introductory course about machine learning with Python. It is an elective course at the Faculty of Mathematics and Informatics at Sofia University \"St. Kliment Ohridski\". The teachers are <a href=\"https://github.com/skanev\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\">Lachezar Bozhkov</a>.",
+            "description": "An introductory course about machine learning with Python. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The teachers are <a href=\"https://github.com/skanev\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\">Lachezar Bozhkov</a>.",
             "skills": [
                 {
                     "name": "Python",
@@ -40,8 +57,9 @@
             "to": "January 2018",
             "label": "Rust Course",
             "name": "Rust Programming Language Lectures",
+            "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://fmi.rust-lang.bg/",
-            "description": "A comprehensive course about the Rust programming language. It is an elective course at the Faculty of Mathematics and Informatics at Sofia University \"St. Kliment Ohridski\". The main teacher is <a href=\"https://github.com/AndrewRadev\">Andrew Radev</a>.",
+            "description": "A comprehensive course about the Rust programming language. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The main teacher is <a href=\"https://github.com/AndrewRadev\">Andrew Radev</a>.",
             "skills": [
                 {
                     "name": "Rust"
@@ -53,13 +71,14 @@
             "from": "October 2012",
             "to": "January 2014",
             "label": "Master's (unfinished)",
-            "name": "Unfinished Master's Degree in \"Distributed Systems and Mobile Technologies\" at Sofia University",
-            "url": "https://www.fmi.uni-sofia.bg/en",
-            "description": "TODO",
+            "name": "Master's Program in \"Distributed Systems and Mobile Technologies\" (Unfinished)",
+            "where": "Sofia University \"St. Kliment Ohridski\", FMI",
+            "url": "https://www.fmi.uni-sofia.bg/en/distributed-systems-and-mobile-technologies",
+            "description": "One of the more diversified master's programs at Sofia University's Faculty of Mathematics and Informatics. It focuses on teaching students to design, build and interconnect complex distributed systems. It also has a very wide range of elective courses on networking, security and system architecture and administration. I successfully completed all of the needed courses, but I've not yet prepared and defended a thesis.",
             "skills": [
                 {
                     "name": "Networking",
-                    "description": "8 networking-related courses (4 Cisco academy + 2 net security + development + signalling)"
+                    "description": "I took 8 networking-related courses (4 Cisco academy + 2 net security + development + signalling)"
                 },
                 {
                     "name": "DevOps",
@@ -69,7 +88,7 @@
                     "name": "Java",
                     "to": "January 2013",
                     "description": "\"Network programming with Java\" course",
-                    "strength": 0.5
+                    "strength": 0.4
                 },
                 {
                     "name": "C/C++",
@@ -88,24 +107,111 @@
             "id": "uni-bsc",
             "from": "October 2007",
             "to": "June 2012",
-            "label": "Undergraduate",
-            "name": "Bachelor's Degree in Software Engineering at Sofia University",
-            "url": "https://www.fmi.uni-sofia.bg/en",
-            "description": "TODO",
+            "label": "Bachelor's Degree",
+            "name": "Bachelor's Degree in Software Engineering",
+            "where": "Sofia University \"St. Kliment Ohridski\", FMI",
+            "url": "https://www.fmi.uni-sofia.bg/en/software-engineering",
+            "description": "One of the most sought after and difficult to enter undergraduate programs at Sofia University's Faculty of Mathematics. It offers a balanced course selection that includes many mathematics and computer science subjects as well as courses for project management and \"soft\" skills. The diversity of the core course program is only exceeded by the abundance of quality elective courses, of which I tried to take full advantage.",
             "skills": [
                 {
                     "name": "Mathematics",
-                    "to": "June 2009",
-                    "description": "Algebra, calculus, discrete mathematics, cryptography"
+                    "to": "January 2012",
+                    "description": "I took 10 different math-related courses including algebra, calculus, discrete mathematics, statistics and cryptography"
                 },
                 {
                     "name": "C/C++",
-                    "to": "June 2008"
+                    "from": "October 2007",
+                    "to": "June 2008",
+                    "strength": 0.5
                 },
                 {
                     "name": "Java",
                     "from": "February 2008",
-                    "to": "June 2008"
+                    "to": "June 2008",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Networking",
+                    "from": "October 2008",
+                    "to": "June 2009",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Security",
+                    "from": "October 2008",
+                    "to": "June 2009",
+                    "description": "\"Cryptography\" and \"Fundamentals of Network Security\" courses"
+                },
+                {
+                    "name": "Assembler",
+                    "from": "January 2009",
+                    "to": "June 2009",
+                    "strength": 0.6
+                },
+                {
+                    "name": "Algorithms/DS",
+                    "from": "January 2009",
+                    "to": "January 2010",
+                    "strength": 1,
+                    "description": "\"Competetive programming\", \"Design and analysis of algorithms\" and \"Data structures and algorithms\" coruses"
+                },
+                {
+                    "name": "Java",
+                    "from": "January 2009",
+                    "to": "June 2009",
+                    "strength": 1,
+                    "description": "\"Concurrent programming\" course"
+                },
+                {
+                    "name": "Finance",
+                    "from": "October 2009",
+                    "to": "January 2010",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Management",
+                    "from": "October 2009",
+                    "to": "January 2010",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Linux",
+                    "from": "October 2009",
+                    "to": "January 2010",
+                    "strength": 1,
+                    "description": "\"Linux system administration\" course by <a href=\"https://github.com/hackman\">Marian Marinov</a>"
+                },
+                {
+                    "name": "Linux",
+                    "from": "January 2010",
+                    "to": "June 2010",
+                    "strength": 0.5,
+                    "description": "General \"Operating systems\" course"
+                },
+                {
+                    "name": "Python",
+                    "from": "January 2010",
+                    "to": "June 2010",
+                    "strength": 1,
+                    "description": "Python course by <a href=\"https://github.com/nb\">Nikolay Bachiyski</a> and <a href=\"https://github.com/skanev\">Stefan Kanev</a>"
+                },
+                {
+                    "name": "Networking",
+                    "from": "January 2010",
+                    "to": "June 2010",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Management",
+                    "from": "October 2010",
+                    "to": "June 2012",
+                    "strength": 0.8
+                },
+                {
+                    "name": "SQL",
+                    "from": "January 2011",
+                    "to": "June 2011",
+                    "strength": 0.5
                 }
             ],
             "properties": [
@@ -130,18 +236,18 @@
                 {
                     "name": "Pascal/Delphi",
                     "to": "January 2003",
-                    "strength": 0.6
+                    "strength": 0.9
                 },
                 {
                     "name": "C/C++",
                     "from": "February 2003",
                     "to": "May 2003",
-                    "strength": 0.8
+                    "strength": 0.9
                 },
                 {
                     "name": "Assembler",
                     "from": "June 2003",
-                    "strength": 0.3
+                    "strength": 0.4
                 }
             ]
         },
@@ -149,14 +255,15 @@
             "id": "highschool",
             "from": "September 2002",
             "to": "May 2007",
-            "label": "Secondary School",
-            "name": "Sofia High School of Mathematics",
-            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science.",
+            "label": "High School",
+            "name": "Secondary education",
+            "where": "Sofia High School of Mathematics",
+            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and competed in national proramming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
                     "name": "Mathematics",
-                    "strength": 0.6
+                    "strength": 0.8
                 },
                 {
                     "name": "C/C++",
@@ -165,7 +272,7 @@
                     "description": "The normal school computer science education"
                 },
                 {
-                    "name": "Algorithms/Data Structures",
+                    "name": "Algorithms/DS",
                     "from": "February 2003",
                     "to": "June 2005",
                     "description": "Preparation for and participation in informatics competitions"
@@ -192,53 +299,499 @@
     ],
     "work": [
         {
-            "id": "consulting-2015-2016",
+            "id": "consulting-2015-2017",
             "from": "July 2015",
-            "to": "July 2016",
-            "label": "Consultant"
+            "to": "February 2017",
+            "label": "Consultant",
+            "name": "Consulting and Teaching",
+            "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps and infrastructure security."
         },
         {
             "id": "avus-rnd-lead",
             "from": "April 2014",
             "to": "June 2015",
-            "label": "R&D Lead"
+            "label": "R&D Lead",
+            "name": "Research and Development Lead",
+            "where": "Avus Capital Ltd. (trading212.com)",
+            "url": "https://www.trading212.com",
+            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company and securing and overhauling other key development infrastucure components and CI/CD processes.",
+            "skills": [
+                {
+                    "name": "DevOps"
+                },
+                {
+                    "name": "Docker",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Git"
+                },
+                {
+                    "name": "Linux"
+                },
+                {
+                    "name": "Bash"
+                },
+                {
+                    "name": "Security"
+                },
+                {
+                    "name": "Hiring",
+                    "strength": 0.9
+                },
+                {
+                    "name": "Java",
+                    "strength": 0.5
+                },
+                {
+                    "name": "SQL",
+                    "strength": 0.5
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.8,
+                    "description": "A few small node.js projects"
+                },
+                {
+                    "name": "Management",
+                    "strength": 0.5
+                }
+            ]
         },
         {
             "id": "avus-pm",
             "from": "January 2013",
             "to": "March 2014",
-            "label": "Project Manager"
+            "label": "Project Manager",
+            "name": "iTrend Project Manager",
+            "where": "Avus Capital Ltd. (trading212.com)",
+            "url": "https://www.trading212.com",
+            "description": "I lead a team of 6 people to build and launch <span data-link-to=\"itrend\">iTrend</span> - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new <span data-link-to=\"azimuth-netcredit\">NetCredit</span> team (the two companies had the same owners and shared an office)."
         },
         {
             "id": "azimuth-netcredit",
             "from": "November 2010",
             "to": "September 2013",
-            "label": "Senior Web Developer"
+            "label": "Senior Web Developer",
+            "name": "Senior Web Developer",
+            "where": "NetCredit Ltd.",
+            "url": "https://www.netcredit.bg/",
+            "description": "I was the initial and later lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money."
         },
         {
             "id": "freelance-2009-2010",
             "from": "February 2009",
             "to": "October 2010",
-            "label": "Freelance Web Developer"
+            "label": "Freelancer",
+            "name": "Freelance Web Developer",
+            "description": "Development and maintenance of different web projects, mostly in the sphere of e-commerce and insurance.",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.8
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Finance",
+                    "strength": 0.2
+                },
+                {
+                    "name": "Security",
+                    "strength": 0.5
+                }
+            ]
         },
         {
-            "id": "mirchev",
+            "id": "mirchev-ideas",
             "from": "February 2008",
             "to": "January 2009",
-            "label": "Web Developer"
+            "label": "Web Developer",
+            "name": "Web Developer",
+            "where": "Mirchev Ideas Ltd.",
+            "url": "http://www.mirchevideas.com/",
+            "description": "Development and maintenance of different web projects, mostly e-commerce sites and ad management portals.",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.8
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.8
+                },
+                {
+                    "name": "Finance",
+                    "strength": 0.3
+                }
+            ]
         },
         {
             "id": "detail-it",
             "from": "November 2007",
             "to": "January 2008",
-            "label": "Web Developer"
+            "label": "Web Developer",
+            "name": "Web Developer",
+            "where": "Detail-it Ltd.",
+            "description": "Developed a network of websites for sharing links to interesting internet resources, similar to digg.com at the time. All sites shared a common engine, functionality and database, but each one had its own design and content. The project was never finished because the company went bankrupt.",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.8
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.8
+                }
+            ]
         },
         {
             "id": "headoff",
             "from": "June 2005",
             "to": "February 2007",
-            "label": "Web Developer"
+            "label": "Web Developer",
+            "name": "Web Developer",
+            "where": "i-Wet Ltd.",
+            "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
+            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two wholly new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessfull attempt to create a common country-wide network of wireless access points.",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.8
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.8
+                }
+            ]
+        },
+        {
+            "id": "_personal",
+            "name": "Personal Projects",
+            "url": "https://github.com/na--",
+            "skills": [
+                {
+                    "name": "Linux",
+                    "from": "February 2008",
+                    "to": "December 2017",
+                    "strength": 0.2,
+                    "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
+                }
+            ]
         }
     ],
-    "projects": []
+    "projects": [
+        {
+            "id": "d3-cv-timeline",
+            "from": "November 2017",
+            "to": "November 2017",
+            "where": "_personal",
+            "label": "CV Multi-Timeline",
+            "name": "CV Multi-Timeline with D3",
+            "description": "The somewhat fancy and somewhat over-complicated CV skill timeline you are probably viewing right now :)",
+            "url": "https://github.com/na--/d3-cv-multitimeline",
+            "skills": [
+                {
+                    "name": "JavaScript"
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.4
+                }
+            ]
+        },
+        {
+            "id": "ebook-tools",
+            "from": "May 2017",
+            "to": "November 2017",
+            "where": "_personal",
+            "label": "eBook Tools",
+            "name": "eBook Tools",
+            "description": "This is a somewhat sophisticated collection of shell scripts for automated and semi-automated organization and management of large ebook collections.",
+            "url": "https://github.com/na--/ebook-tools",
+            "skills": [
+                {
+                    "name": "Bash"
+                },
+                {
+                    "name": "Docker",
+                    "from": "October 2017",
+                    "strength": 0.5
+                }
+            ]
+        },
+        {
+            "id": "git-annex-archive",
+            "from": "July 2016",
+            "to": "April 2017",
+            "label": "git-annex archive",
+            "name": "Multi-TB/location/cloud git-annex archive",
+            "description": "A semi-automated <a href=\"https://git-annex.branchable.com/\">git-annex</a> archive setup for dozens of terabytes of information that spans 3 physical locations and 2.5 clouds.",
+            "skills": [
+                {
+                    "name": "Git"
+                },
+                {
+                    "name": "Bash",
+                    "strength": 0.5
+                },
+                {
+                    "name": "DevOps",
+                    "strength": 0.2
+                }
+            ]
+        },
+        {
+            "id": "chaos-group-go-course",
+            "from": "February 2017",
+            "to": "February 2017",
+            "where": "consulting-2015-2017",
+            "label": "Go Course",
+            "name": "Golang Crash Course",
+            "role": "Teacher",
+            "description": "An intensive Go language couse for some of the developers at <a href=\"https://www.chaosgroup.com/\">Chaos Group</a>.",
+            "url": "https://github.com/fmi/go-lectures/tree/chaos",
+            "skills": [
+                {
+                    "name": "Go"
+                },
+                {
+                    "name": "Teaching"
+                }
+            ]
+        },
+        {
+            "id": "trader-consulting-2016",
+            "from": "February 2016",
+            "to": "June 2016",
+            "where": "consulting-2015-2017",
+            "label": "DevOps consultant",
+            "name": "DevOps & Infrastructure Security Consulting",
+            "description": "I helped while the company restructured their infrastructure team. My responsibilities were:\n- improving and securing some internal CI/CD processes\n- transitioning automation jobs from Jenkins to GitLab CI with Docker containers\n- preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production)\n- integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure\n- helping with the dissemination of DevOps knowledge and the hiring of new people\n\nI also taught a short Golang crash course due to interested empoloyees.",
+            "skills": [
+                {
+                    "name": "DevOps"
+                },
+                {
+                    "name": "Docker"
+                },
+                {
+                    "name": "Git"
+                },
+                {
+                    "name": "Linux"
+                },
+                {
+                    "name": "Bash"
+                },
+                {
+                    "name": "Security"
+                },
+                {
+                    "name": "Hiring"
+                },
+                {
+                    "name": "Java",
+                    "strength": 0.3
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.3
+                },
+                {
+                    "name": "Go",
+                    "from": "April 2016",
+                    "to": "April 2016"
+                },
+                {
+                    "name": "Teaching",
+                    "from": "April 2016",
+                    "to": "April 2016"
+                }
+            ]
+        },
+        {
+            "id": "nedomi",
+            "from": "July 2015",
+            "to": "November 2015",
+            "where": "consulting-2015-2017",
+            "label": "nedomi",
+            "name": "nedomi",
+            "role": "Developer",
+            "description": "nedomi is an open-source highly performant HTTP reverse proxy that efficiently caches big files. It was written for a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
+            "url": "https://github.com/ironsmile/nedomi",
+            "skills": [
+                {
+                    "name": "Go"
+                },
+                {
+                    "name": "Git"
+                },
+                {
+                    "name": "Algorithms/DS",
+                    "strength": 0.3
+                }
+            ]
+        },
+        {
+            "id": "golang-courses-2014-2017",
+            "from": "September 2014",
+            "to": "January 2017",
+            "label": "Golang Courses",
+            "name": "Golang University Courses",
+            "role": "Teacher",
+            "description": "I was one of the teachers in the last three additions of an elective Golang crouse at Sofia University's Faculty of Mathematics and Informatics.",
+            "url": "http://fmi.golang.bg/",
+            "skills": [
+                {
+                    "name": "Go"
+                },
+                {
+                    "name": "Teaching"
+                }
+            ]
+        },
+        {
+            "id": "itrend",
+            "from": "January 2013",
+            "to": "March 2014",
+            "where": "avus-pm",
+            "label": "iTrend",
+            "name": "iTrend",
+            "role": "Project Manager",
+            "url": "https://web.archive.org/web/20150319135002/http://www.itrend.com/en/",
+            "description": "iTrend was an innovative alternative to Avus Capital's main service trading212.com. It offered a simpler and more visual trading experience and was targeted at novice users. I lead a team of 6 people to build and launch it.",
+            "skills": [
+                {
+                    "name": "Management"
+                },
+                {
+                    "name": "Finance"
+                },
+                {
+                    "name": "Hiring"
+                },
+                {
+                    "name": "PHP",
+                    "strength": 0.3
+                }
+            ]
+        },
+        {
+            "id": "netcredit",
+            "from": "November 2010",
+            "to": "September 2013",
+            "label": "NetCredit",
+            "name": "NetCredit",
+            "role": "Lead Developer",
+            "where": "azimuth-netcredit",
+            "url": "https://www.netcredit.bg/",
+            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until January 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an an advisor and mentor until September that year.",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript"
+                },
+                {
+                    "name": "Linux",
+                    "strength": 0.3
+                },
+                {
+                    "name": "Management",
+                    "from": "April 2011"
+                },
+                {
+                    "name": "Finance"
+                },
+                {
+                    "name": "Hiring",
+                    "from": "January 2012",
+                    "strength": 0.8
+                }
+            ]
+        },
+        {
+            "id": "headoff-xen",
+            "from": "May 2006",
+            "to": "February 2007",
+            "label": "Xen on-demand servers",
+            "name": "Xen on-demand virtual servers",
+            "where": "headoff",
+            "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20080218025030%2Fhttp%3A%2F%2Fwww.headoff.biz%2Findex.php%3Fpage%3Dxenvps&sandbox=1",
+            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resouces, automatically install your preferred linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed in an hour.",
+            "skills": [
+                {
+                    "name": "DevOps",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Bash",
+                    "strength": 0.3
+                },
+                {
+                    "name": "Security",
+                    "strength": 0.6
+                }
+            ]
+        },
+        {
+            "id": "torrents",
+            "from": "January 2004",
+            "to": "May 2005",
+            "label": "BitTorrent Tracker",
+            "name": "BitTorrent Tracker",
+            "description": "Learned PHP while developing a small torrent website and tracker for... let's go with \"linux ISOs\"...",
+            "skills": [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "SQL"
+                },
+                {
+                    "name": "JavaScript",
+                    "strength": 0.5
+                },
+                {
+                    "name": "HTML/CSS",
+                    "strength": 0.5
+                },
+                {
+                    "name": "Security",
+                    "strength": 0.6
+                }
+            ]
+        }
+    ]
 }
