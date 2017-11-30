@@ -26,7 +26,8 @@ export class MutiTimeline {
 
         this.svg = d3Select(holder).append("svg");
         this.dims = {
-            margin: { top: 35, right: 20, bottom: 25, left: 75 },
+            margin: { top: 35, right: 20, bottom: 25, left: 85 },
+            place: { height: 20, gap: 3, textMaxSize: 15, textAdjMinSize: 10, radius: 5 },
         };
     }
 
@@ -52,11 +53,10 @@ export class MutiTimeline {
             .append("rect")
             .attr("class", d => d.type)
             .attr("x", 0)
-            .attr("rx", 5)
-            .attr("yx", 5)
-            .attr("y", d => d.pos * 23)
+            .attr("rx", this.dims.place.radius)
+            .attr("y", d => d.pos * (this.dims.place.height + this.dims.place.gap))
             .attr("width", 0)
-            .attr("height", 20);
+            .attr("height", this.dims.place.height);
 
         this.placesSvg
             .enter()
@@ -64,11 +64,16 @@ export class MutiTimeline {
             .classed("place-label", true)
             .text(d => d.label)
             .attr("x", 0)
-            .attr("font-size", 15)
-            .attr("y", d => d.pos * 23 + 15)
-            .attr("alignment-baseline", "middle")
-            .attr("text-anchor", "middle");
-        //.attr("visibility", "hidden");
+            .attr("font-size", this.dims.place.textMaxSize)
+            .attr(
+                "y",
+                d =>
+                    d.pos * (this.dims.place.height + this.dims.place.gap) +
+                    this.dims.place.height / 2
+            )
+            .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
+            .attr("text-anchor", "middle")
+            .attr("visibility", "hidden");
 
         this.ySkillScale = d3ScaleBand()
             .domain(Array.from(this.skillNames.values()))
@@ -80,13 +85,13 @@ export class MutiTimeline {
         this.svg
             .append("g")
             .attr("id", "skillnames")
-            .attr("transform", svgTranslate(this.dims.margin.left, 100))
+            .attr("transform", svgTranslate(this.dims.margin.left - 20, 150))
             .call(this.ySkillAxis);
 
         this.skillsHolderSvg = this.svg
             .append("g")
             .attr("id", "skills")
-            .attr("transform", svgTranslate(this.dims.margin.left, 100));
+            .attr("transform", svgTranslate(this.dims.margin.left, 150));
 
         this.skillsSvg = this.skillsHolderSvg
             .selectAll("rect")
@@ -146,14 +151,16 @@ export class MutiTimeline {
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
             .attrs((d, e, t) => {
                 let newFontSize = Math.min(
-                    15,
+                    this.dims.place.textMaxSize,
                     t[e].getAttribute("font-size") *
                         (this.xScale(d.to) - this.xScale(d.from) - 5) /
                         t[e].getBoundingClientRect().width
                 );
 
-                if (newFontSize < 10 / window.devicePixelRatio) {
-                    return { visibility: "hidden" };
+                if (newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio) {
+                    return {
+                        visibility: "hidden",
+                    };
                 }
                 return {
                     visibility: "visible",

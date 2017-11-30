@@ -258,7 +258,7 @@
             "label": "High School",
             "name": "Secondary education",
             "where": "Sofia High School of Mathematics",
-            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and competed in national proramming competitions.",
+            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and competed in national programming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
@@ -314,7 +314,7 @@
             "name": "Research and Development Lead",
             "where": "Avus Capital Ltd. (trading212.com)",
             "url": "https://www.trading212.com",
-            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company and securing and overhauling other key development infrastucure components and CI/CD processes.",
+            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company and securing and overhauling other key development infrastructure components and CI/CD processes.",
             "skills": [
                 {
                     "name": "DevOps"
@@ -371,7 +371,7 @@
         {
             "id": "azimuth-netcredit",
             "from": "November 2010",
-            "to": "September 2013",
+            "to": "December 2012",
             "label": "Senior Web Developer",
             "name": "Senior Web Developer",
             "where": "NetCredit Ltd.",
@@ -473,7 +473,7 @@
             "name": "Web Developer",
             "where": "i-Wet Ltd.",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
-            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two wholly new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessfull attempt to create a common country-wide network of wireless access points.",
+            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two wholly new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
             "skills": [
                 {
                     "name": "PHP"
@@ -500,7 +500,7 @@
                     "name": "Linux",
                     "from": "February 2008",
                     "to": "December 2017",
-                    "strength": 0.2,
+                    "strength": 0.3,
                     "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
                 }
             ]
@@ -575,7 +575,7 @@
             "label": "Go Course",
             "name": "Golang Crash Course",
             "role": "Teacher",
-            "description": "An intensive Go language couse for some of the developers at <a href=\"https://www.chaosgroup.com/\">Chaos Group</a>.",
+            "description": "An intensive Go language course for some of the developers at <a href=\"https://www.chaosgroup.com/\">Chaos Group</a>.",
             "url": "https://github.com/fmi/go-lectures/tree/chaos",
             "skills": [
                 {
@@ -593,7 +593,7 @@
             "where": "consulting-2015-2017",
             "label": "DevOps consultant",
             "name": "DevOps & Infrastructure Security Consulting",
-            "description": "I helped while the company restructured their infrastructure team. My responsibilities were:\n- improving and securing some internal CI/CD processes\n- transitioning automation jobs from Jenkins to GitLab CI with Docker containers\n- preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production)\n- integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure\n- helping with the dissemination of DevOps knowledge and the hiring of new people\n\nI also taught a short Golang crash course due to interested empoloyees.",
+            "description": "I helped while the company restructured their infrastructure team. My responsibilities were:\n- improving and securing some internal CI/CD processes\n- transitioning automation jobs from Jenkins to GitLab CI with Docker containers\n- preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production)\n- integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure\n- helping with the dissemination of DevOps knowledge and the hiring of new people\n\nI also taught a short Golang crash course due to interested employees.",
             "skills": [
                 {
                     "name": "DevOps"
@@ -706,7 +706,7 @@
         {
             "id": "netcredit",
             "from": "November 2010",
-            "to": "September 2013",
+            "to": "August 2013",
             "label": "NetCredit",
             "name": "NetCredit",
             "role": "Lead Developer",
@@ -749,7 +749,7 @@
             "name": "Xen on-demand virtual servers",
             "where": "headoff",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20080218025030%2Fhttp%3A%2F%2Fwww.headoff.biz%2Findex.php%3Fpage%3Dxenvps&sandbox=1",
-            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resouces, automatically install your preferred linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed in an hour.",
+            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resources, automatically install your preferred Linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed in an hour.",
             "skills": [
                 {
                     "name": "DevOps",
