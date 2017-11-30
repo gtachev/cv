@@ -9,7 +9,7 @@ function parseAndBundleExample() {
     const fs = require("fs");
 
     // Copy example CSS
-    fs.createReadStream("./example/cv.css").pipe(fs.createWriteStream("./build/cv.css"));
+    fs.writeFileSync("./build/cv.css", fs.readFileSync("./example/cv.css"));
 
     // Fill the example template with the example data and write it to the build folder
     const cvTemplate = handlebars.compile(fs.readFileSync("./example/cv.hbs").toString());
