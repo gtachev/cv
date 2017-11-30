@@ -152,7 +152,7 @@ export class MutiTimeline {
             .attrs((d, e, t) => {
                 let newFontSize = Math.min(
                     this.dims.place.textMaxSize,
-                    t[e].getAttribute("font-size") *
+                    parseFloat(t[e].getAttribute("font-size")) *
                         (this.xScale(d.to) - this.xScale(d.from) - 5) /
                         t[e].getBoundingClientRect().width
                 );
@@ -164,7 +164,7 @@ export class MutiTimeline {
                 }
                 return {
                     visibility: "visible",
-                    "font-size": newFontSize,
+                    "font-size": newFontSize + "px",
                 };
             });
     }

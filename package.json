@@ -6,7 +6,7 @@
     "keywords": ["d3", "cv", "skills", "multiple", "timelines", "swimlanes", "stacked"],
     "main": "scr/main.js",
     "scripts": {
-        "watch": "watch-run -i -p '.*,*,src/**,example/**' 'yarn run build'",
+        "watch": "watch-run -i -p '*.*,src/**,example/**' 'yarn run build'",
         "build": "rm -rf build && mkdir build && rollup -c"
     },
     "author": {
