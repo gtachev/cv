@@ -48,8 +48,13 @@ export class MutiTimeline {
 
         this.placesSvg = this.placesHolderSvg.selectAll("rect").data(this.places, d => d.id);
 
-        this.placesSvg
+        var placesSvgEnter = this.placesSvg
             .enter()
+            .append("g")
+            .attr("class", "place")
+            .attr("id", d => d.id);
+
+        placesSvgEnter
             .append("rect")
             .attr("class", d => d.type)
             .attr("x", 0)
@@ -58,8 +63,9 @@ export class MutiTimeline {
             .attr("width", 0)
             .attr("height", this.dims.place.height);
 
-        this.placesSvg
-            .enter()
+        placesSvgEnter.append("title").text(d => d.description);
+
+        placesSvgEnter
             .append("text")
             .classed("place-label", true)
             .text(d => d.label)

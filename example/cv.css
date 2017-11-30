@@ -35,41 +35,36 @@ svg {
     content: "\00A0-\00A0";
 }
 
+svg rect {
+    stroke-width: 0.5;
+    stroke-opacity: 0.5;
+}
+
+svg g.place:hover rect,
+svg rect:hover {
+    stroke-width: 1;
+    stroke-opacity: 0.8;
+    cursor: pointer;
+}
+
 svg rect.education {
     fill: rgb(142, 185, 72);
     stroke: rgb(48, 83, 48);
-    stroke-width: 1;
-    stroke-width: 0.5;
-    stroke-opacity: 0.5;
 }
 
 svg rect.work {
     fill: rgb(105, 170, 206);
     stroke: rgb(18, 40, 51);
-    stroke-width: 1;
-    stroke-width: 0.5;
-    stroke-opacity: 0.5;
 }
 
 svg rect.projects {
     fill: rgb(142, 166, 177);
     stroke: rgb(28, 34, 37);
-    stroke-width: 1;
-    stroke-width: 0.5;
-    stroke-opacity: 0.5;
 }
 
 svg #skills rect {
     fill: rgb(255, 206, 108);
     stroke: rgb(187, 128, 10);
-    stroke-width: 0.3;
-    stroke-opacity: 0.5;
-}
-
-svg #skills rect:hover {
-    stroke-width: 1;
-    stroke-opacity: 0.8;
-    cursor: pointer;
 }
 
 svg text.place-label {
