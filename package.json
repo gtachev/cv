@@ -33,13 +33,11 @@
     "license": "BSD-3-Clause",
     "dependencies": {
         "d3-axis": "^1.0.8",
-        "d3-drag": "^1.2.1",
         "d3-scale": "^1.0.7",
         "d3-selection": "^1.2.0",
         "d3-selection-multi": "^1.0.1",
         "d3-time": "^1.0.8",
         "d3-time-format": "^2.1.1",
-        "d3-transition": "^1.1.1",
         "d3-zoom": "^1.7.1"
     }
 }
