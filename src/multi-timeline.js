@@ -3,6 +3,7 @@ import { timeFormat } from "d3-time-format";
 import { timeYear, timeMonth } from "d3-time";
 import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
+import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
 import "d3-selection-multi";
 
@@ -30,7 +31,6 @@ export class MutiTimeline {
         };
 
         this.svg = d3Select(holder).append("svg");
-        this.redrawCounter = 0;
 
         this.clipPath = this.svg
             .append("defs")
@@ -132,13 +132,14 @@ export class MutiTimeline {
 
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])
+            //TODO: disable mouse wheel zoom? add buttons for reset and zoom?
             .translateExtent([[-100, 0], [100, 0]])
             .on("zoom", () => {
-                console.log(d3CurrentEvent);
+                //console.log(d3CurrentEvent);
                 this.xScale = d3CurrentEvent.transform.rescaleX(this.xScaleAll);
                 this.xAxis.scale(this.xScale);
-
-                this.redraw();
+                //TODO: do not redraw everything when not zooming, just pan
+                this.redrawDelayed();
             });
         this.svg.call(this.zoom);
 
@@ -146,7 +147,7 @@ export class MutiTimeline {
     }
 
     redraw() {
-        console.log("redraw " + this.redrawCounter++);
+        //console.log("redraw");
 
         var width =
             this.svg.node().getBoundingClientRect().width -
@@ -202,5 +203,15 @@ export class MutiTimeline {
                     "font-size": newFontSize + "px",
                 };
             });
+    }
+
+    redrawDelayed() {
+        if (!this.requested) {
+            this.requested = true;
+            d3Timeout(() => {
+                this.requested = false;
+                this.redraw();
+            });
+        }
     }
 }
