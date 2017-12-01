@@ -1,13 +1,24 @@
 image: node:latest
 
-pages:
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
   cache:
     paths:
     - node_modules/
-
   script:
   - yarn install
   - yarn run build
+  artifacts:
+    paths:
+    - build
+
+pages:
+  stage: deploy
+  script:
   - mv build public
   - 'echo -e "User-agent: *\nDisallow: /" > public/robots.txt'
   artifacts:
