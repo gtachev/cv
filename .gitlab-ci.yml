@@ -9,7 +9,7 @@ pages:
   - yarn install
   - yarn run build
   - mv build public
-  - echo -e 'User-agent: *\nDisallow: /' > public/robots.txt
+  - 'echo -e "User-agent: *\nDisallow: /" > public/robots.txt'
   artifacts:
     paths:
     - public
