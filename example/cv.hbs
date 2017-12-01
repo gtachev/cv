@@ -88,11 +88,8 @@
         console.log(chart);
 
         chart.draw();
-        var doit;
-        window.addEventListener("resize", function () {
-            clearTimeout(doit);
-            doit = setTimeout(function () { chart.redraw(); }, 150);
-        });
+
+        window.addEventListener("resize", chart.redrawDelayed.bind(chart));
     </script>
 </body>
 
