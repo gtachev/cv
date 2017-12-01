@@ -31,6 +31,13 @@ export class MutiTimeline {
 
         this.svg = d3Select(holder).append("svg");
         this.redrawCounter = 0;
+
+        this.clipPath = this.svg
+            .append("defs")
+            .append("clipPath")
+            .attr("id", "clip")
+            .append("rect");
+        this.clipPath.attr("width", 400).attr("height", 1400);
     }
 
     draw() {
@@ -47,6 +54,7 @@ export class MutiTimeline {
         this.placesHolderSvg = this.svg
             .append("g")
             .attr("id", "places")
+            .style("clip-path", "url(#clip)")
             .attr("transform", svgTranslate(this.dims.margin.left, 40));
 
         this.placesSvg = this.placesHolderSvg.selectAll("rect").data(this.places, d => d.id);
@@ -100,6 +108,7 @@ export class MutiTimeline {
         this.skillsHolderSvg = this.svg
             .append("g")
             .attr("id", "skills")
+            .style("clip-path", "url(#clip)")
             .attr("transform", svgTranslate(this.dims.margin.left, 150));
 
         this.skillsSvg = this.skillsHolderSvg
@@ -144,6 +153,8 @@ export class MutiTimeline {
             this.dims.margin.left -
             this.dims.margin.right;
         // var height = svg.node().getBoundingClientRect().height - this.dims.margin.top - this.dims.margin.bottom;
+
+        this.clipPath.attr("width", width);
 
         //TODO: fix this - part of chart is hidden after zooming and resizing
         this.zoom.translateExtent([[-100, 0], [width + 100, 0]]);
