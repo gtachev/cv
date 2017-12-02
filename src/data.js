@@ -1,6 +1,10 @@
 import { utcParse } from "d3-time-format";
 import { utcDay, utcMonth } from "d3-time";
 
+if (typeof NodeList.prototype.forEach !== "function") {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 // TODO: use something like moment?
 export var parseDate = utcParse("%B %Y");
 
