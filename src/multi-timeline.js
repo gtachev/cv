@@ -181,7 +181,7 @@ export class MutiTimeline {
         this.updatePlaces();
 
         this.ySkillScale = d3ScaleBand()
-            .domain(Array.from(this.skillNames))
+            .domain(this.skillNames)
             .range([0, this.skillNames.length * 15]);
 
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
