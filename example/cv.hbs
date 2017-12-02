@@ -53,41 +53,17 @@
 
     <script type="text/javascript">
         "use strict";
-
-        var directory = new Map();
-        var skills = [];
-        var skillNames = new Map();
-
-        var itemCallback = function (item) {
-            if (directory.has(item.id)) {
-                console.error("Duplicate item id " + item.id);
-            } else {
-                directory.set(item.id, item);
-            }
-
-            item.skills.forEach(function (skill) {
-                skills.push(skill);
-                skillNames.set(skill.name, true);
-            });
-        }
-
-        console.log(cv);
-
-        var places = cv.data.getItemsData(document, "#work>li, #education>li, #projects>li", itemCallback);
-        //var projects = cv.data.getItemsData(document, "", itemCallback);
-        skills.sort(function (a, b) { return (b.to - b.from) - (a.to - a.from); });
-
-        console.log(places);
-        //console.log(projects);
-        console.log(skillNames.keys());
-        console.log(skills);
-
-
         var holder = document.getElementById("svg-holder");
-        var chart = new cv.MutiTimeline(holder, places, skills, Array.from(skillNames.keys()));
-        console.log(chart);
+        var places = [
+            { id: "education", name: "Education", enabled: true, items: cv.data.getItemsData(document, "#education>li") },
+            { id: "work", name: "Work", enabled: true, items: cv.data.getItemsData(document, "#work>li") },
+            { id: "projects", name: "Projects", enabled: false, items: cv.data.getItemsData(document, "#projects>li") },
+        ];
+        var chart = new cv.MutiTimeline(holder, places);
+        //console.log(places);
+        //console.log(chart);
 
-        chart.draw();
+        //chart.draw();
 
         window.addEventListener("resize", chart.redrawDelayed.bind(chart));
     </script>

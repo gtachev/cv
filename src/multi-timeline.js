@@ -13,34 +13,153 @@ function multiFormat(date) {
         : timeFormat("%Y"))(date);
 }
 
-function svgTranslate(left, top) {
-    return "translate(" + left + "," + top + ")";
+// Helper function for SVG translate expressions
+function svgT(left, top, from) {
+    var o = {
+        left: left,
+        top: top,
+    };
+    if (from) {
+        o.left += from.left;
+        o.top += from.top;
+    }
+    o.toString = function() {
+        return "translate(" + this.left + "," + this.top + ")";
+    };
+    return o;
 }
 
 export class MutiTimeline {
-    constructor(holder, places, skills, skillNames) {
+    constructor(holder, places, initialSkills) {
         this.holder = holder;
-        //TODO: use separate setters?
-        this.places = places;
-        this.skills = skills;
-        this.skillNames = skillNames;
+        this.placeTypes = places;
+        this.skillsToShow = initialSkills;
 
         this.dims = {
             margin: { top: 35, right: 20, bottom: 25, left: 85 },
             place: { height: 20, gap: 3, textMaxSize: 15, textAdjMinSize: 10, radius: 5 },
         };
 
-        this.svg = d3Select(holder).append("svg");
+        this.initPlaceAndSkillData();
 
+        this.initPlaceTypeCheckboxes();
+        this.initChart();
+    }
+
+    initPlaceAndSkillData() {
+        this.places = [];
+        this.placesMap = new Map();
+        this.placeTypesMap = new Map();
+        this.skills = [];
+        this.skillNames = new Set();
+
+        this.placeTypes.forEach(pt => {
+            this.placeTypesMap.set(pt.id, pt);
+            pt.items.forEach(p => {
+                p.type = pt.id;
+                this.places.push(p);
+                this.placesMap.set(p.id, p);
+                p.skills.forEach(s => {
+                    this.skillNames.add(s.name);
+                    this.skills.push(s);
+                    //TODO: calculate total skill strength
+                });
+            });
+        });
+        this.places.sort((a, b) => a.from - b.from);
+        this.skills.sort((a, b) => {
+            return b.to - b.from - (a.to - a.from);
+        });
+
+        console.log(this);
+    }
+
+    initPlaceTypeCheckboxes() {
+        this.placeCheckboxes = d3Select(this.holder)
+            .append("div")
+            .attr("class", "place_checkboxes")
+            .selectAll(".place_checkbox_holder")
+            .data(this.placeTypes, d => d.id);
+
+        var checkboxEnter = this.placeCheckboxes
+            .enter()
+            .append("div")
+            .attr("class", "place_checkbox_holder");
+        checkboxEnter
+            .append("input")
+            .attr("type", "checkbox")
+            .attr("id", d => "place_" + d.id)
+            .property("checked", d => d.enabled)
+            .on("change", d => {
+                d.enabled = d3CurrentEvent.target.checked;
+                this.updatePlaces();
+                this.redraw(); //TODO: use something like this.updatePlacesX();
+            });
+        checkboxEnter
+            .append("label")
+            .attr("for", d => "place_" + d.id)
+            .append("span")
+            .text(d => d.name);
+    }
+
+    updatePlaces() {
+        // Calculate the position for all visible places
+        var visiblePlaces = this.places.filter(p => this.placeTypesMap.get(p.type).enabled);
+        var lastAtPos = [];
+        visiblePlaces.forEach(p => {
+            var pos = 0;
+            while (lastAtPos[pos] > p.from) {
+                pos++;
+            }
+            lastAtPos[pos] = p.to;
+            p.pos = pos;
+        });
+
+        var chartPlaces = this.placesHolderSvg.selectAll("g.place").data(visiblePlaces, d => d.id);
+        chartPlaces.exit().remove(); //TODO: fade transition
+
+        var chartPlacesEnter = chartPlaces
+            .enter()
+            .append("g")
+            .attr("class", d => "place " + d.type)
+            .attr("id", d => d.id);
+
+        chartPlacesEnter
+            .append("rect")
+            .attr("x", 0)
+            .attr("rx", this.dims.place.radius)
+            .attr("width", 0)
+            .attr("height", this.dims.place.height);
+
+        chartPlacesEnter.append("title").text(d => d.description);
+
+        chartPlacesEnter
+            .append("text")
+            .classed("place-label", true)
+            .text(d => d.label)
+            .attr("x", 0)
+            .attr("font-size", this.dims.place.textMaxSize)
+            .attr("y", this.dims.place.height / 2)
+            .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
+            .attr("text-anchor", "middle")
+            .attr("visibility", "hidden");
+
+        chartPlaces
+            .merge(chartPlacesEnter)
+            .attr("transform", d =>
+                svgT(0, d.pos * (this.dims.place.height + this.dims.place.gap))
+            );
+    }
+
+    initChart() {
+        this.svg = d3Select(this.holder).append("svg");
         this.clipPath = this.svg
             .append("defs")
             .append("clipPath")
             .attr("id", "clip")
             .append("rect");
-        this.clipPath.attr("width", 400).attr("height", 1400);
-    }
+        this.clipPath.attr("width", 400).attr("height", 1400); //TODO: move?
 
-    draw() {
         this.xScaleAll = d3ScaleTime().domain([new Date(2002, 9, 1), new Date(2017, 12, 1)]); //TODO: make dynamic
         this.xScale = this.xScaleAll;
 
@@ -49,52 +168,19 @@ export class MutiTimeline {
         this.xAxisSvg = this.svg
             .append("g")
             .attr("id", "timeline")
-            .attr("transform", svgTranslate(this.dims.margin.left, this.dims.margin.top));
+            .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top));
 
         this.placesHolderSvg = this.svg
             .append("g")
             .attr("id", "places")
             .style("clip-path", "url(#clip)")
-            .attr("transform", svgTranslate(this.dims.margin.left, 40));
+            .attr("transform", new svgT(this.dims.margin.left, 40));
 
-        this.placesSvg = this.placesHolderSvg.selectAll("rect").data(this.places, d => d.id);
-
-        var placesSvgEnter = this.placesSvg
-            .enter()
-            .append("g")
-            .attr("class", "place")
-            .attr("id", d => d.id);
-
-        placesSvgEnter
-            .append("rect")
-            .attr("class", d => d.type)
-            .attr("x", 0)
-            .attr("rx", this.dims.place.radius)
-            .attr("y", d => d.pos * (this.dims.place.height + this.dims.place.gap))
-            .attr("width", 0)
-            .attr("height", this.dims.place.height);
-
-        placesSvgEnter.append("title").text(d => d.description);
-
-        placesSvgEnter
-            .append("text")
-            .classed("place-label", true)
-            .text(d => d.label)
-            .attr("x", 0)
-            .attr("font-size", this.dims.place.textMaxSize)
-            .attr(
-                "y",
-                d =>
-                    d.pos * (this.dims.place.height + this.dims.place.gap) +
-                    this.dims.place.height / 2
-            )
-            .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
-            .attr("text-anchor", "middle")
-            .attr("visibility", "hidden");
+        this.updatePlaces();
 
         this.ySkillScale = d3ScaleBand()
-            .domain(this.skillNames)
-            .range([0, this.skillNames.length * 15]);
+            .domain(Array.from(this.skillNames.values()))
+            .range([0, this.skillNames.size * 15]);
 
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
         //.tickFormat(d => d.replace("/", '\n'));
@@ -102,14 +188,14 @@ export class MutiTimeline {
         this.svg
             .append("g")
             .attr("id", "skillnames")
-            .attr("transform", svgTranslate(this.dims.margin.left - 20, 150))
+            .attr("transform", svgT(this.dims.margin.left - 20, 150))
             .call(this.ySkillAxis);
 
         this.skillsHolderSvg = this.svg
             .append("g")
             .attr("id", "skills")
             .style("clip-path", "url(#clip)")
-            .attr("transform", svgTranslate(this.dims.margin.left, 150));
+            .attr("transform", svgT(this.dims.margin.left, 150));
 
         this.skillsSvg = this.skillsHolderSvg
             .selectAll("rect")
@@ -127,8 +213,6 @@ export class MutiTimeline {
             .attr("yx", 2)
             .attr("width", 0)
             .attr("height", 0.8 * bandwidth);
-
-        this.allRects = this.svg.selectAll("#places rect, #skills rect");
 
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])
@@ -148,11 +232,9 @@ export class MutiTimeline {
 
     redraw() {
         //console.log("redraw");
+        this.width = this.svg.node().getBoundingClientRect().width;
 
-        var width =
-            this.svg.node().getBoundingClientRect().width -
-            this.dims.margin.left -
-            this.dims.margin.right;
+        var width = this.width - this.dims.margin.left - this.dims.margin.right;
         // var height = svg.node().getBoundingClientRect().height - this.dims.margin.top - this.dims.margin.bottom;
 
         this.clipPath.attr("width", width);
@@ -178,7 +260,8 @@ export class MutiTimeline {
             .attr("dy", Math.sin(squashed * Math.PI / 2) * 14 - 4 + "px")
             .attr("transform", "rotate(-" + 90 * squashed + ")");
 
-        this.allRects
+        this.svg
+            .selectAll("#places rect, #skills rect")
             .attr("x", d => this.xScale(d.from))
             .attr("width", d => this.xScale(d.to) - this.xScale(d.from));
 

@@ -28,6 +28,13 @@ svg {
     pointer-events: all;
 }
 
+.place_checkboxes {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 10px;
+}
+
 .fromdate {
     float: left;
 }
@@ -48,17 +55,17 @@ svg rect:hover {
     cursor: pointer;
 }
 
-svg rect.education {
+svg g.place.education rect {
     fill: rgb(142, 185, 72);
     stroke: rgb(48, 83, 48);
 }
 
-svg rect.work {
+svg g.place.work rect {
     fill: rgb(105, 170, 206);
     stroke: rgb(18, 40, 51);
 }
 
-svg rect.projects {
+svg g.place.projects rect {
     fill: rgb(142, 166, 177);
     stroke: rgb(28, 34, 37);
 }

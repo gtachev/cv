@@ -24,20 +24,6 @@ export function getText(el, selector) {
     return null;
 }
 
-export function sortAndPosition(elements) {
-    elements.sort((a, b) => a.from - b.from);
-
-    var lastAtPos = [];
-    elements.forEach(function(el) {
-        var pos = 0;
-        while (lastAtPos[pos] > el.from) {
-            pos++;
-        }
-        lastAtPos[pos] = el.to;
-        el.pos = pos;
-    });
-}
-
 export function getItemsData(rootel, selector, callback) {
     var results = [];
 
@@ -51,7 +37,6 @@ export function getItemsData(rootel, selector, callback) {
             description: getText(el, ".description"),
             skills: [],
             where: el.getAttribute("data-where"),
-            type: el.parentElement.getAttribute("id"),
             el: el,
         };
 
@@ -76,6 +61,5 @@ export function getItemsData(rootel, selector, callback) {
         results.push(item);
     });
 
-    sortAndPosition(results);
     return results;
 }
