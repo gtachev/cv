@@ -56,18 +56,18 @@
 
         var directory = new Map();
         var skills = [];
-        var skillNames = new Set();
+        var skillNames = new Map();
 
         var itemCallback = function (item) {
             if (directory.has(item.id)) {
                 console.error("Duplicate item id " + item.id);
             } else {
-                directory[item.id] = item;
+                directory.set(item.id, item);
             }
 
             item.skills.forEach(function (skill) {
                 skills.push(skill);
-                skillNames.add(skill.name);
+                skillNames.set(skill.name, true);
             });
         }
 
@@ -79,12 +79,12 @@
 
         console.log(places);
         //console.log(projects);
-        console.log(skillNames);
+        console.log(skillNames.keys());
         console.log(skills);
 
 
         var holder = document.getElementById("svg-holder");
-        var chart = new cv.MutiTimeline(holder, places, skills, skillNames);
+        var chart = new cv.MutiTimeline(holder, places, skills, Array.from(skillNames.keys()));
         console.log(chart);
 
         chart.draw();

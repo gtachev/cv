@@ -93,8 +93,8 @@ export class MutiTimeline {
             .attr("visibility", "hidden");
 
         this.ySkillScale = d3ScaleBand()
-            .domain(Array.from(this.skillNames.values()))
-            .range([0, this.skillNames.size * 15]);
+            .domain(this.skillNames)
+            .range([0, this.skillNames.length * 15]);
 
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
         //.tickFormat(d => d.replace("/", '\n'));
