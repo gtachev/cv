@@ -51,7 +51,7 @@ export class MutiTimeline {
         this.placesMap = new Map();
         this.placeTypesMap = new Map();
         this.skills = [];
-        this.skillNames = new Set();
+        this.skillsMap = {};
 
         this.placeTypes.forEach(pt => {
             this.placeTypesMap.set(pt.id, pt);
@@ -60,7 +60,7 @@ export class MutiTimeline {
                 this.places.push(p);
                 this.placesMap.set(p.id, p);
                 p.skills.forEach(s => {
-                    this.skillNames.add(s.name);
+                    this.skillsMap[s.name] = true;
                     this.skills.push(s);
                     //TODO: calculate total skill strength
                 });
@@ -70,6 +70,8 @@ export class MutiTimeline {
         this.skills.sort((a, b) => {
             return b.to - b.from - (a.to - a.from);
         });
+
+        this.skillNames = Object.getOwnPropertyNames(this.skillsMap);
 
         console.log(this);
     }
@@ -179,8 +181,8 @@ export class MutiTimeline {
         this.updatePlaces();
 
         this.ySkillScale = d3ScaleBand()
-            .domain(Array.from(this.skillNames.values()))
-            .range([0, this.skillNames.size * 15]);
+            .domain(Array.from(this.skillNames))
+            .range([0, this.skillNames.length * 15]);
 
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
         //.tickFormat(d => d.replace("/", '\n'));
