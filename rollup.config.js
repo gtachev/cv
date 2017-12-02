@@ -59,7 +59,20 @@ export default {
     plugins: [
         resolve(),
         license(licenseOptions),
-        babel(),
+        babel({
+            presets: [
+                [
+                    "env",
+                    {
+                        targets: {
+                            browsers: ["last 2 versions", "ie >= 11"],
+                        },
+                        modules: false,
+                    },
+                ],
+            ],
+            plugins: ["external-helpers"],
+        }),
         {
             name: "html-bundler",
             onwrite: parseAndBundleExample,
