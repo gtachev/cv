@@ -38,15 +38,18 @@ export class MutiTimeline {
         this.dims = {
             margin: { top: 35, right: 20, bottom: 25, left: 85 },
             place: { height: 20, gap: 3, textMaxSize: 15, textAdjMinSize: 10, radius: 5 },
+            skill: { rowHeight: 15, rectHeightRatio: 0.8, radius: 2 },
         };
 
         this.options = {
+            defaultNumberOfSkillLines: 12,
             yearlySkillSortCoef: 0.5,
+            skillMaxOpacity: 0.8,
         };
 
         this.initPlaceAndSkillData();
 
-        this.initPlaceTypeCheckboxes();
+        this.chartAddPlaceTypeCheckboxes();
         this.initChart();
     }
 
@@ -84,10 +87,15 @@ export class MutiTimeline {
             return this.skillStrengths[b] - this.skillStrengths[a];
         });
 
+        if (!this.skillsToShow) {
+            this.skillsToShow = this.skillNames.slice(0, this.options.defaultNumberOfSkillLines);
+        }
+        this.skillsToShowSet = new Set(this.skillsToShow);
+
         console.log(this);
     }
 
-    initPlaceTypeCheckboxes() {
+    chartAddPlaceTypeCheckboxes() {
         this.placeCheckboxes = d3Select(this.holder)
             .append("div")
             .attr("class", "place_checkboxes")
@@ -105,7 +113,7 @@ export class MutiTimeline {
             .property("checked", d => d.enabled)
             .on("change", d => {
                 d.enabled = d3CurrentEvent.target.checked;
-                this.updatePlaces();
+                this.chartUpdatePlaces();
                 this.redraw(); //TODO: use something like this.updatePlacesX();
             });
         checkboxEnter
@@ -115,7 +123,30 @@ export class MutiTimeline {
             .text(d => d.name);
     }
 
-    updatePlaces() {
+    chartUpdateExtraSkills() {
+        var extraSkills = this.skillNames.filter(s => !this.skillsToShowSet.has(s));
+
+        var chartExtraSkills = this.extraSkillsDiv
+            .selectAll("div.extra_skill")
+            .data(extraSkills, d => d);
+
+        chartExtraSkills
+            .enter()
+            .append("div")
+            .attr("class", "extra_skill")
+            .text(d => d)
+            .on("click", d => {
+                this.skillsToShow.push(d);
+                this.skillsToShowSet.add(d);
+                //TODO: animate/fade out
+                this.chartUpdateExtraSkills();
+                this.chartUpdateSkills();
+                this.redraw(); //TODO: don't use this
+            });
+        chartExtraSkills.exit().remove();
+    }
+
+    chartUpdatePlaces() {
         // Calculate the position for all visible places
         var visiblePlaces = this.places.filter(p => this.placeTypesMap.get(p.type).enabled);
         var lastAtPos = [];
@@ -164,6 +195,41 @@ export class MutiTimeline {
             );
     }
 
+    chartUpdateSkills() {
+        var shownSkills = this.skills.filter(s => this.skillsToShowSet.has(s.name));
+
+        this.ySkillScale
+            .domain(this.skillsToShow)
+            .range([0, this.skillsToShow.length * this.dims.skill.rowHeight]);
+
+        this.skillnameHolder.call(this.ySkillAxis);
+
+        var bandwidth = this.ySkillScale.bandwidth();
+
+        var chartSkills = this.skillsHolderSvg
+            .selectAll("rect")
+            .data(shownSkills, d => [d.used_in.id, d.name, d.from].join("/"));
+
+        var chartSkillsEnter = chartSkills
+            .enter()
+            .append("rect")
+            .attr("x", 0)
+
+            .attr("fill-opacity", d => this.options.skillMaxOpacity * d.strength)
+            .attr("rx", this.dims.skill.radius)
+            .attr("width", 0)
+            .attr("height", this.dims.skill.rectHeightRatio * bandwidth);
+
+        chartSkillsEnter
+            .merge(chartSkills)
+            .attr(
+                "y",
+                d =>
+                    this.ySkillScale(d.name) + (1 - this.dims.skill.rectHeightRatio) / 2 * bandwidth
+            );
+        chartSkills.exit().remove(); //TODO: fade transition
+    }
+
     initChart() {
         this.svg = d3Select(this.holder).append("svg");
         this.clipPath = this.svg
@@ -172,6 +238,12 @@ export class MutiTimeline {
             .attr("id", "clip")
             .append("rect");
         this.clipPath.attr("width", 400).attr("height", 1400); //TODO: move?
+
+        this.extraSkillsDiv = d3Select(this.holder)
+            .append("div")
+            .attr("class", "extra_skills");
+
+        this.chartUpdateExtraSkills();
 
         this.xScaleAll = d3ScaleTime().domain([new Date(2002, 9, 1), new Date(2017, 12, 1)]); //TODO: make dynamic
         this.xScale = this.xScaleAll;
@@ -189,20 +261,16 @@ export class MutiTimeline {
             .style("clip-path", "url(#clip)")
             .attr("transform", new svgT(this.dims.margin.left, 40));
 
-        this.updatePlaces();
+        this.chartUpdatePlaces();
 
-        this.ySkillScale = d3ScaleBand()
-            .domain(this.skillNames)
-            .range([0, this.skillNames.length * 15]);
-
+        this.ySkillScale = d3ScaleBand();
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
         //.tickFormat(d => d.replace("/", '\n'));
 
-        this.svg
+        this.skillnameHolder = this.svg
             .append("g")
             .attr("id", "skillnames")
-            .attr("transform", svgT(this.dims.margin.left - 20, 150))
-            .call(this.ySkillAxis);
+            .attr("transform", svgT(this.dims.margin.left - 20, 150));
 
         this.skillsHolderSvg = this.svg
             .append("g")
@@ -210,22 +278,7 @@ export class MutiTimeline {
             .style("clip-path", "url(#clip)")
             .attr("transform", svgT(this.dims.margin.left, 150));
 
-        this.skillsSvg = this.skillsHolderSvg
-            .selectAll("rect")
-            .data(this.skills, d => d.used_in.id + "/" + d.name);
-
-        var bandwidth = this.ySkillScale.bandwidth();
-
-        this.skillsSvg
-            .enter()
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", d => this.ySkillScale(d.name) + 0.1 * bandwidth)
-            .attr("fill-opacity", d => 0.8 * d.strength)
-            .attr("rx", 2)
-            .attr("yx", 2)
-            .attr("width", 0)
-            .attr("height", 0.8 * bandwidth);
+        this.chartUpdateSkills();
 
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])
@@ -282,9 +335,10 @@ export class MutiTimeline {
             .selectAll("text")
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
             .attrs((d, e, t) => {
+                let currentFontSize = parseFloat(t[e].getAttribute("font-size"));
                 let newFontSize = Math.min(
                     this.dims.place.textMaxSize,
-                    parseFloat(t[e].getAttribute("font-size")) *
+                    currentFontSize *
                         (this.xScale(d.to) - this.xScale(d.from) - 5) /
                         t[e].getBoundingClientRect().width
                 );
@@ -293,6 +347,9 @@ export class MutiTimeline {
                     return {
                         visibility: "hidden",
                     };
+                }
+                if (Math.abs(currentFontSize - newFontSize) < 0.1) {
+                    return { visibility: "visible" };
                 }
                 return {
                     visibility: "visible",

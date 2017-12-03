@@ -48,6 +48,9 @@
                 },
                 {
                     "name": "Machine Learning"
+                },
+                {
+                    "name": "Data Wrangling"
                 }
             ]
         },
@@ -355,6 +358,10 @@
                 {
                     "name": "Management",
                     "strength": 0.5
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.5
                 }
             ]
         },
@@ -407,6 +414,10 @@
                 {
                     "name": "Security",
                     "strength": 0.5
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.2
                 }
             ]
         },
@@ -488,6 +499,10 @@
                 {
                     "name": "HTML/CSS",
                     "strength": 0.8
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.3
                 }
             ]
         },
@@ -502,6 +517,13 @@
                     "to": "Dec 2017",
                     "strength": 0.3,
                     "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
+                },
+                {
+                    "name": "Rust",
+                    "from": "Feb 2017",
+                    "to": "Apr 2017",
+                    "strength": 0.4,
+                    "description": "First attempts at learning Rust with some small toy projects."
                 }
             ]
         }
@@ -523,6 +545,10 @@
                 {
                     "name": "HTML/CSS",
                     "strength": 0.4
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.5
                 }
             ]
         },
@@ -543,6 +569,10 @@
                     "name": "Docker",
                     "from": "Oct 2017",
                     "strength": 0.5
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.3
                 }
             ]
         },
@@ -564,6 +594,10 @@
                 {
                     "name": "DevOps",
                     "strength": 0.2
+                },
+                {
+                    "name": "Data Wrangling",
+                    "strength": 0.3
                 }
             ]
         },
@@ -738,6 +772,10 @@
                     "name": "Hiring",
                     "from": "Jan 2012",
                     "strength": 0.8
+                },
+                {
+                    "name": "Data Wrangling",
+                    "description": "I created a highly customizable BI system in the backend administrative interface. It could be used for searching, aggregating, exporting and plotting arbitrary data directly in the application, without the need to use external tools."
                 }
             ]
         },
