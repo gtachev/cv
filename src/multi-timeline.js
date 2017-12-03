@@ -126,14 +126,12 @@ export class MutiTimeline {
     chartUpdateExtraSkills() {
         var extraSkills = this.skillNames.filter(s => !this.skillsToShowSet.has(s));
 
-        var chartExtraSkills = this.extraSkillsDiv
-            .selectAll("div.extra_skill")
-            .data(extraSkills, d => d);
+        var chartExtraSkills = this.extraSkillsDiv.selectAll("div.skill").data(extraSkills, d => d);
 
         chartExtraSkills
             .enter()
             .append("div")
-            .attr("class", "extra_skill")
+            .attr("class", "skill")
             .text(d => d)
             .on("click", d => {
                 this.skillsToShow.push(d);
@@ -255,7 +253,7 @@ export class MutiTimeline {
 
         this.extraSkillsDiv = d3Select(this.holder)
             .append("div")
-            .attr("class", "extra_skills");
+            .attr("class", "extra_skills timeline_skills");
 
         this.chartUpdateExtraSkills();
 

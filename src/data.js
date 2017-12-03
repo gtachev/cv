@@ -19,7 +19,7 @@ export function toDate(dateStr) {
 export function getText(el, selector) {
     var subel = el.querySelector(selector);
     if (subel) {
-        return subel.textContent;
+        return subel.textContent.trim();
     }
     return null;
 }
@@ -32,17 +32,16 @@ export function getItemsData(rootel, selector, callback) {
             id: el.getAttribute("id"),
             from: fromDate(getText(el, ".fromdate")),
             to: toDate(getText(el, ".todate")),
-            label: getText(el, ".label"),
-            name: getText(el, ".name"),
-            description: getText(el, ".description"),
+            label: el.getAttribute("data-label"),
+            name: getText(el, ".place_name"),
+            description: el.querySelector(".timeline_description").innerHTML.trim(),
             skills: [],
-            where: el.getAttribute("data-where"),
             el: el,
         };
 
-        el.querySelectorAll(".skills>li").forEach(sel => {
+        el.querySelectorAll(".timeline_skills>.skill").forEach(sel => {
             item.skills.push({
-                name: sel.textContent,
+                name: getText(sel, ".skill_name"),
                 used_in: item,
                 from: sel.hasAttribute("data-from")
                     ? fromDate(sel.getAttribute("data-from"))
@@ -51,7 +50,7 @@ export function getItemsData(rootel, selector, callback) {
                 strength: sel.hasAttribute("data-strength")
                     ? sel.getAttribute("data-strength")
                     : 1.0,
-                description: sel.getAttribute("data-description"),
+                description: getText(sel, ".tooltip_content"),
                 el: sel,
             });
         });

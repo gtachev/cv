@@ -10,6 +10,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="../example/favicon.ico">
 
 	<link rel="stylesheet" href="../example/cv.css">
+	<!-- TODO: remove old CSS -->
+	<link rel="stylesheet" href="../example/cv_old.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -18,14 +20,18 @@
 
 </head>
 {{#*inline "item"}} {{#if name }}
-<div class="timeline_item" data-type="work" id="{{id}}">
+<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}">
 	<div class="content_box timeline_content_box">
-		<p class="timeline_date">{{from}} - {{to}}</p>
+		<p class="timeline_date">
+			<span class="fromdate">{{from}}</span>
+			-
+			<span class="todate">{{to}}</span>
+		</p>
 		<div class="timeline_title">
-			<h3>{{name}}</h3>
+			<h3 class="place_name">{{name}}</h3>
 			{{#if place}} {{#if place.name}}
 			<h4>
-				<a href="#{{place.id}}"> {{place.name}} {{#if place.where}} at {{place.where}}</a>
+				<a class="place_link" href="#{{place.id}}"> {{place.name}} {{#if place.where}} at {{place.where}}</a>
 			</h4>
 			{{/if}}
 			</a>
@@ -54,7 +60,8 @@
 				{{#each skills}}
 				<div class="skill" data-strength="{{#if strength}}{{strength}}{{else}}1.0{{/if}}" {{#if from}}data-from="{{from}}" {{/if}}
 				 {{#if to}}data-to="{{to}}" {{/if}} {{#if description}}data-tooltip-toggle="true" {{/if}}>
-					{{name}} {{#if description}}
+					<span class="skill_name">{{name}}</span>
+					{{#if description}}
 					<div class="tooltip" data-position="bottom" data-color="dark">
 						<div class="tooltip_content">{{{description}}}</div>
 					</div>
@@ -545,6 +552,8 @@
 				</div>
 				<!-- #timeline_holder -->
 
+				<div id="svg-holder"></div>
+
 			</div>
 			<!-- #2 - Timeline -->
 
@@ -554,6 +563,7 @@
 
 				{{#each work}} {{> item }} {{/each}}
 
+				<!--
 				<div class="timeline_item" data-type="work" id="work-2">
 					<div class="content_box timeline_content_box">
 						<p class="timeline_date">Apr 2014 - Sept 2015</p>
@@ -626,6 +636,7 @@
 
 					</div>
 				</div>
+				-->
 				<!-- .timeline_item -->
 
 			</div>
@@ -691,8 +702,20 @@
 		// no conflicts mode
 		jQuery.noConflict();
 
-		jQuery(document).ready(function () {
 
+		var holder = document.getElementById("svg-holder");
+		var places = [
+			{ id: "education", name: "Education", enabled: true, items: cv.data.getItemsData(document, "#education>div") },
+			{ id: "work", name: "Work", enabled: true, items: cv.data.getItemsData(document, "#work>div") },
+			{ id: "projects", name: "Projects", enabled: false, items: cv.data.getItemsData(document, "#projects>li") },
+		];
+		console.log(places);
+
+		var chart = new cv.MutiTimeline(holder, places);
+		console.log(chart);
+		window.addEventListener("resize", chart.redrawDelayed.bind(chart));
+
+		jQuery(document).ready(function () {
 			// Page navigation
 			jQuery('a[data-link-type="transition"]').on('click', function (e) {
 				e.preventDefault();
@@ -712,6 +735,10 @@
 					jQuery('.single_page_content:not([data-page-name="homepage"]):not(' + link_target + ')').slideUp(300).animate({ opacity: 0 }, { queue: false, duration: 300 });
 					jQuery('.single_page_content' + link_target + '').slideDown(300).animate({ opacity: 1 }, { queue: false, duration: 300 });
 				};
+
+				if (link_target == '#timeline') {
+					chart.redraw(); //TODO: fix, set initial size
+				}
 			});
 
 
