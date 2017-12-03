@@ -7,7 +7,7 @@
     "main": "scr/main.js",
     "scripts": {
         "watch": "watch-run -i -p '*.*,src/**,example/**' 'yarn run build'",
-        "build": "rm -rf build && mkdir build && rollup -c"
+        "build": "rollup -c"
     },
     "author": {
         "name": "Nedyalko Andreev",

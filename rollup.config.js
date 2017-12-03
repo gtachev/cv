@@ -4,6 +4,29 @@ import { sync as inlineSync } from "inline-source";
 import { minify } from "html-minifier";
 import license from "rollup-plugin-license";
 import handlebars from "handlebars";
+//import "handlebar-helpers";
+
+handlebars.registerHelper("replace", function(str, search, replace) {
+    return new handlebars.SafeString(str.replace(new RegExp(search, "g"), replace));
+});
+
+function transformCvData(data) {
+    let directory = new Map();
+    [...data.work, ...data.education].forEach(i => directory.set(i.id, i));
+
+    data.projects.forEach(p => {
+        if (!p.where) {
+            return;
+        }
+        p.place = directory.get(p.where);
+        if (!p.place.projects) {
+            p.place.projects = [];
+        }
+        p.place.projects.push(p);
+    });
+
+    return data;
+}
 
 function parseAndBundleExample() {
     const fs = require("fs");
@@ -13,12 +36,13 @@ function parseAndBundleExample() {
 
     // Fill the example template with the example data and write it to the build folder
     const cvTemplate = handlebars.compile(fs.readFileSync("./example/cv.hbs").toString());
-    const cvData = JSON.parse(fs.readFileSync("./example/cv-data.json"));
+    const cvData = transformCvData(JSON.parse(fs.readFileSync("./example/cv-data.json")));
     const cvHtml = cvTemplate(cvData);
     fs.writeFileSync("./build/cv.html", cvHtml);
 
     // Inline all of the external resources in the built html and save it with another name
     var cvBundledHtml = inlineSync("./build/cv.html", {
+        swallowErrors: true, //TODO: fix fonts, remove jquery
         attribute: false,
         compress: false,
     });

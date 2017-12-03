@@ -1,13 +1,14 @@
 {
     "personal": {
         "name": "Nedyalko Andreev",
-        "phone": "(redacted)",
-        "email": "see git commits",
+        "title": "Full-Stack Developer",
+        "phone": null,
+        "email": "n@andreev.sh",
         "location": "Sofia, Bulgaria",
         "timezone": "UTC+2",
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
-        "linkedin": "isn't this better? :)",
+        "linkedin": null,
         "hobbies": "a list of personal hobbies and interests",
         "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently mastering Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
     },
@@ -37,7 +38,7 @@
             "from": "Oct 2017",
             "to": "Jan 2018",
             "label": "Machine Learning",
-            "name": "Machine Learning with Python Lectures",
+            "name": "Machine Learning with Python Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "http://fmi.machine-learning.bg/",
             "description": "An introductory course about machine learning with Python. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The teachers are <a href=\"https://github.com/skanev\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\">Lachezar Bozhkov</a>.",
@@ -59,7 +60,7 @@
             "from": "Oct 2017",
             "to": "Jan 2018",
             "label": "Rust",
-            "name": "Rust Programming Language Lectures",
+            "name": "Rust Programming Language Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://fmi.rust-lang.bg/",
             "description": "A comprehensive course about the Rust programming language. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The main teacher is <a href=\"https://github.com/AndrewRadev\">Andrew Radev</a>.",
@@ -156,7 +157,7 @@
                     "from": "Jan 2009",
                     "to": "Jan 2010",
                     "strength": 1,
-                    "description": "\"Competetive programming\", \"Design and analysis of algorithms\" and \"Data structures and algorithms\" coruses"
+                    "description": "\"Competetive programming\", \"Design and analysis of algorithms\" and \"Data structures and algorithms\" courses"
                 },
                 {
                     "name": "Java",
@@ -259,20 +260,13 @@
             "from": "Sep 2002",
             "to": "May 2007",
             "label": "High School",
-            "name": "Secondary education",
+            "name": "Secondary Education",
             "where": "Sofia High School of Mathematics",
             "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and competed in national programming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
-                    "name": "Mathematics",
-                    "strength": 0.8
-                },
-                {
-                    "name": "C/C++",
-                    "from": "Sep 2004",
-                    "strength": 0.2,
-                    "description": "The normal school computer science education"
+                    "name": "Mathematics"
                 },
                 {
                     "name": "Algorithms/DS",
@@ -293,6 +287,12 @@
                     "to": "Jun 2005",
                     "strength": 0.7,
                     "description": "Preparation for and participation in informatics competitions"
+                },
+                {
+                    "name": "C/C++",
+                    "from": "Sep 2004",
+                    "strength": 0.2,
+                    "description": "The normal school computer science education"
                 }
             ],
             "properties": [
@@ -482,7 +482,7 @@
             "to": "Feb 2007",
             "label": "Web Developer",
             "name": "Web Developer",
-            "where": "i-Wet Ltd.",
+            "where": "Headoff G.I.",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
             "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two wholly new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
             "skills": [
@@ -508,7 +508,6 @@
         },
         {
             "id": "_personal",
-            "name": "Personal Projects",
             "url": "https://github.com/na--",
             "skills": [
                 {
