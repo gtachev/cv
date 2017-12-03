@@ -202,7 +202,21 @@ export class MutiTimeline {
             .domain(this.skillsToShow)
             .range([0, this.skillsToShow.length * this.dims.skill.rowHeight]);
 
-        this.skillnameHolder.call(this.ySkillAxis);
+        var customAxis = g => {
+            g.call(this.ySkillAxis);
+            g.select(".domain").remove();
+            g.selectAll(".tick text").on("click", s => {
+                console.log(s);
+                this.skillsToShow = this.skillsToShow.filter(d => d != s);
+                this.skillsToShowSet.delete(s);
+                //TODO: animate/fade out
+                this.chartUpdateExtraSkills();
+                this.chartUpdateSkills();
+                this.redraw(); //TODO: don't use this
+            });
+        };
+
+        this.skillnameHolder.call(customAxis);
 
         var bandwidth = this.ySkillScale.bandwidth();
 
