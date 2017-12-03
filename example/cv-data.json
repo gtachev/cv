@@ -34,8 +34,8 @@
     "education": [
         {
             "id": "ml-course",
-            "from": "October 2017",
-            "to": "January 2018",
+            "from": "Oct 2017",
+            "to": "Jan 2018",
             "label": "Machine Learning",
             "name": "Machine Learning with Python Lectures",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
@@ -53,8 +53,8 @@
         },
         {
             "id": "rust-course",
-            "from": "October 2017",
-            "to": "January 2018",
+            "from": "Oct 2017",
+            "to": "Jan 2018",
             "label": "Rust",
             "name": "Rust Programming Language Lectures",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
@@ -68,8 +68,8 @@
         },
         {
             "id": "uni-msc-unfinished",
-            "from": "October 2012",
-            "to": "January 2014",
+            "from": "Oct 2012",
+            "to": "Jan 2014",
             "label": "Master's (unfinished)",
             "name": "Master's Program in \"Distributed Systems and Mobile Technologies\" (Unfinished)",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
@@ -86,27 +86,27 @@
                 },
                 {
                     "name": "Java",
-                    "to": "January 2013",
+                    "to": "Jan 2013",
                     "description": "\"Network programming with Java\" course",
                     "strength": 0.4
                 },
                 {
                     "name": "C/C++",
-                    "from": "February 2013",
-                    "to": "June 2013",
+                    "from": "Feb 2013",
+                    "to": "Jun 2013",
                     "description": "\"Parallel Programming with MPI\" course",
                     "strength": 0.5
                 },
                 {
                     "name": "Go",
-                    "from": "September 2013"
+                    "from": "Sep 2013"
                 }
             ]
         },
         {
             "id": "uni-bsc",
-            "from": "October 2007",
-            "to": "June 2012",
+            "from": "Oct 2007",
+            "to": "Jun 2012",
             "label": "Bachelor's Degree",
             "name": "Bachelor's Degree in Software Engineering",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
@@ -115,102 +115,102 @@
             "skills": [
                 {
                     "name": "Mathematics",
-                    "to": "January 2012",
+                    "to": "Jan 2012",
                     "description": "I took 10 different math-related courses including algebra, calculus, discrete mathematics, statistics and cryptography"
                 },
                 {
                     "name": "C/C++",
-                    "from": "October 2007",
-                    "to": "June 2008",
+                    "from": "Oct 2007",
+                    "to": "Jun 2008",
                     "strength": 0.5
                 },
                 {
                     "name": "Java",
-                    "from": "February 2008",
-                    "to": "June 2008",
+                    "from": "Feb 2008",
+                    "to": "Jun 2008",
                     "strength": 0.5
                 },
                 {
                     "name": "Networking",
-                    "from": "October 2008",
-                    "to": "June 2009",
+                    "from": "Oct 2008",
+                    "to": "Jun 2009",
                     "strength": 0.8
                 },
                 {
                     "name": "Security",
-                    "from": "October 2008",
-                    "to": "June 2009",
+                    "from": "Oct 2008",
+                    "to": "Jun 2009",
                     "description": "\"Cryptography\" and \"Fundamentals of Network Security\" courses"
                 },
                 {
                     "name": "Assembler",
-                    "from": "January 2009",
-                    "to": "June 2009",
+                    "from": "Jan 2009",
+                    "to": "Jun 2009",
                     "strength": 0.6
                 },
                 {
                     "name": "Algorithms/DS",
-                    "from": "January 2009",
-                    "to": "January 2010",
+                    "from": "Jan 2009",
+                    "to": "Jan 2010",
                     "strength": 1,
                     "description": "\"Competetive programming\", \"Design and analysis of algorithms\" and \"Data structures and algorithms\" coruses"
                 },
                 {
                     "name": "Java",
-                    "from": "January 2009",
-                    "to": "June 2009",
+                    "from": "Jan 2009",
+                    "to": "Jun 2009",
                     "strength": 1,
                     "description": "\"Concurrent programming\" course"
                 },
                 {
                     "name": "Finance",
-                    "from": "October 2009",
-                    "to": "January 2010",
+                    "from": "Oct 2009",
+                    "to": "Jan 2010",
                     "strength": 0.5
                 },
                 {
                     "name": "Management",
-                    "from": "October 2009",
-                    "to": "January 2010",
+                    "from": "Oct 2009",
+                    "to": "Jan 2010",
                     "strength": 0.5
                 },
                 {
                     "name": "Linux",
-                    "from": "October 2009",
-                    "to": "January 2010",
+                    "from": "Oct 2009",
+                    "to": "Jan 2010",
                     "strength": 1,
                     "description": "\"Linux system administration\" course by <a href=\"https://github.com/hackman\">Marian Marinov</a>"
                 },
                 {
                     "name": "Linux",
-                    "from": "January 2010",
-                    "to": "June 2010",
+                    "from": "Jan 2010",
+                    "to": "Jun 2010",
                     "strength": 0.5,
                     "description": "General \"Operating systems\" course"
                 },
                 {
                     "name": "Python",
-                    "from": "January 2010",
-                    "to": "June 2010",
+                    "from": "Jan 2010",
+                    "to": "Jun 2010",
                     "strength": 1,
                     "description": "Python course by <a href=\"https://github.com/nb\">Nikolay Bachiyski</a> and <a href=\"https://github.com/skanev\">Stefan Kanev</a>"
                 },
                 {
                     "name": "Networking",
-                    "from": "January 2010",
-                    "to": "June 2010",
+                    "from": "Jan 2010",
+                    "to": "Jun 2010",
                     "strength": 0.5
                 },
                 {
                     "name": "Management",
-                    "from": "October 2010",
-                    "to": "June 2012",
+                    "from": "Oct 2010",
+                    "to": "Jun 2012",
                     "strength": 0.8
                 },
                 {
                     "name": "SQL",
-                    "from": "January 2011",
-                    "to": "June 2011",
+                    "from": "Jan 2011",
+                    "to": "Jun 2011",
                     "strength": 0.5
                 }
             ],
@@ -220,8 +220,8 @@
         },
         {
             "id": "hs-extracurricular",
-            "from": "October 2002",
-            "to": "September 2003",
+            "from": "Oct 2002",
+            "to": "Sep 2003",
             "label": "Extracurricular",
             "name": "School of Computer Science",
             "url": "https://translate.google.bg/translate?sl=bg&tl=en&js=y&prev=_t&hl=bg&ie=UTF-8&u=https%3A%2F%2Farchive.fo%2FUn5PT&act=url",
@@ -229,31 +229,31 @@
             "skills": [
                 {
                     "name": "Mathematics",
-                    "to": "January 2003",
+                    "to": "Jan 2003",
                     "strength": 1,
                     "description": "A discrete mathematics course taught by an university professor."
                 },
                 {
                     "name": "Pascal/Delphi",
-                    "to": "January 2003",
+                    "to": "Jan 2003",
                     "strength": 0.9
                 },
                 {
                     "name": "C/C++",
-                    "from": "February 2003",
+                    "from": "Feb 2003",
                     "to": "May 2003",
                     "strength": 0.9
                 },
                 {
                     "name": "Assembler",
-                    "from": "June 2003",
+                    "from": "Jun 2003",
                     "strength": 0.4
                 }
             ]
         },
         {
             "id": "highschool",
-            "from": "September 2002",
+            "from": "Sep 2002",
             "to": "May 2007",
             "label": "High School",
             "name": "Secondary education",
@@ -267,27 +267,27 @@
                 },
                 {
                     "name": "C/C++",
-                    "from": "September 2004",
+                    "from": "Sep 2004",
                     "strength": 0.2,
                     "description": "The normal school computer science education"
                 },
                 {
                     "name": "Algorithms/DS",
-                    "from": "February 2003",
-                    "to": "June 2005",
+                    "from": "Feb 2003",
+                    "to": "Jun 2005",
                     "description": "Preparation for and participation in informatics competitions"
                 },
                 {
                     "name": "Pascal/Delphi",
-                    "from": "February 2003",
-                    "to": "June 2004",
+                    "from": "Feb 2003",
+                    "to": "Jun 2004",
                     "strength": 0.8,
                     "description": "Preparation for and participation in informatics competitions"
                 },
                 {
                     "name": "C/C++",
-                    "from": "September 2003",
-                    "to": "June 2005",
+                    "from": "Sep 2003",
+                    "to": "Jun 2005",
                     "strength": 0.7,
                     "description": "Preparation for and participation in informatics competitions"
                 }
@@ -300,16 +300,16 @@
     "work": [
         {
             "id": "consulting-2015-2017",
-            "from": "July 2015",
-            "to": "February 2017",
+            "from": "Jul 2015",
+            "to": "Feb 2017",
             "label": "Consultant",
             "name": "Consulting and Teaching",
             "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps and infrastructure security."
         },
         {
             "id": "avus-rnd-lead",
-            "from": "April 2014",
-            "to": "June 2015",
+            "from": "Apr 2014",
+            "to": "Jun 2015",
             "label": "R&D Lead",
             "name": "Research and Development Lead",
             "where": "Avus Capital Ltd. (trading212.com)",
@@ -360,8 +360,8 @@
         },
         {
             "id": "avus-pm",
-            "from": "January 2013",
-            "to": "March 2014",
+            "from": "Jan 2013",
+            "to": "Mar 2014",
             "label": "Project Manager",
             "name": "iTrend Project Manager",
             "where": "Avus Capital Ltd. (trading212.com)",
@@ -370,8 +370,8 @@
         },
         {
             "id": "azimuth-netcredit",
-            "from": "November 2010",
-            "to": "December 2012",
+            "from": "Nov 2010",
+            "to": "Dec 2012",
             "label": "Senior Web Developer",
             "name": "Senior Web Developer",
             "where": "NetCredit Ltd.",
@@ -380,8 +380,8 @@
         },
         {
             "id": "freelance-2009-2010",
-            "from": "February 2009",
-            "to": "October 2010",
+            "from": "Feb 2009",
+            "to": "Oct 2010",
             "label": "Freelancer",
             "name": "Freelance Web Developer",
             "description": "Development and maintenance of different web projects, mostly in the sphere of e-commerce and insurance.",
@@ -412,8 +412,8 @@
         },
         {
             "id": "mirchev-ideas",
-            "from": "February 2008",
-            "to": "January 2009",
+            "from": "Feb 2008",
+            "to": "Jan 2009",
             "label": "Web Developer",
             "name": "Web Developer",
             "where": "Mirchev Ideas Ltd.",
@@ -442,8 +442,8 @@
         },
         {
             "id": "detail-it",
-            "from": "November 2007",
-            "to": "January 2008",
+            "from": "Nov 2007",
+            "to": "Jan 2008",
             "label": "Web Developer",
             "name": "Web Developer",
             "where": "Detail-it Ltd.",
@@ -467,8 +467,8 @@
         },
         {
             "id": "headoff",
-            "from": "June 2005",
-            "to": "February 2007",
+            "from": "Jun 2005",
+            "to": "Feb 2007",
             "label": "Web Developer",
             "name": "Web Developer",
             "where": "i-Wet Ltd.",
@@ -498,8 +498,8 @@
             "skills": [
                 {
                     "name": "Linux",
-                    "from": "February 2008",
-                    "to": "December 2017",
+                    "from": "Feb 2008",
+                    "to": "Dec 2017",
                     "strength": 0.3,
                     "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
                 }
@@ -509,12 +509,12 @@
     "projects": [
         {
             "id": "d3-cv-timeline",
-            "from": "November 2017",
-            "to": "November 2017",
+            "from": "Nov 2017",
+            "to": "Dec 2017",
             "where": "_personal",
-            "label": "CV Multi-Timeline",
+            "label": "CV Timeline",
             "name": "CV Multi-Timeline with D3",
-            "description": "The somewhat fancy and somewhat over-complicated CV skill timeline you are probably viewing right now :)",
+            "description": "The somewhat fancy and very over-complicated CV skill timeline you are probably viewing right now :)",
             "url": "https://github.com/na--/d3-cv-multitimeline",
             "skills": [
                 {
@@ -529,7 +529,7 @@
         {
             "id": "ebook-tools",
             "from": "May 2017",
-            "to": "November 2017",
+            "to": "Nov 2017",
             "where": "_personal",
             "label": "eBook Tools",
             "name": "eBook Tools",
@@ -541,15 +541,15 @@
                 },
                 {
                     "name": "Docker",
-                    "from": "October 2017",
+                    "from": "Oct 2017",
                     "strength": 0.5
                 }
             ]
         },
         {
             "id": "git-annex-archive",
-            "from": "July 2016",
-            "to": "April 2017",
+            "from": "Jul 2016",
+            "to": "Apr 2017",
             "label": "git-annex archive",
             "name": "Multi-TB/location/cloud git-annex archive",
             "description": "A semi-automated <a href=\"https://git-annex.branchable.com/\">git-annex</a> archive setup for dozens of terabytes of information that spans 3 physical locations and 2.5 clouds.",
@@ -569,8 +569,8 @@
         },
         {
             "id": "chaos-group-go-course",
-            "from": "February 2017",
-            "to": "February 2017",
+            "from": "Feb 2017",
+            "to": "Feb 2017",
             "where": "consulting-2015-2017",
             "label": "Go Course",
             "name": "Golang Crash Course",
@@ -588,8 +588,8 @@
         },
         {
             "id": "trader-consulting-2016",
-            "from": "February 2016",
-            "to": "June 2016",
+            "from": "Feb 2016",
+            "to": "Jun 2016",
             "where": "consulting-2015-2017",
             "label": "DevOps consultant",
             "name": "DevOps & Infrastructure Security Consulting",
@@ -626,20 +626,20 @@
                 },
                 {
                     "name": "Go",
-                    "from": "April 2016",
-                    "to": "April 2016"
+                    "from": "Apr 2016",
+                    "to": "Apr 2016"
                 },
                 {
                     "name": "Teaching",
-                    "from": "April 2016",
-                    "to": "April 2016"
+                    "from": "Apr 2016",
+                    "to": "Apr 2016"
                 }
             ]
         },
         {
             "id": "nedomi",
-            "from": "July 2015",
-            "to": "November 2015",
+            "from": "Jul 2015",
+            "to": "Nov 2015",
             "where": "consulting-2015-2017",
             "label": "nedomi",
             "name": "nedomi",
@@ -661,8 +661,8 @@
         },
         {
             "id": "golang-courses-2014-2017",
-            "from": "September 2014",
-            "to": "January 2017",
+            "from": "Sep 2014",
+            "to": "Jan 2017",
             "label": "Golang Courses",
             "name": "Golang University Courses",
             "role": "Teacher",
@@ -679,8 +679,8 @@
         },
         {
             "id": "itrend",
-            "from": "January 2013",
-            "to": "March 2014",
+            "from": "Jan 2013",
+            "to": "Mar 2014",
             "where": "avus-pm",
             "label": "iTrend",
             "name": "iTrend",
@@ -705,14 +705,14 @@
         },
         {
             "id": "netcredit",
-            "from": "November 2010",
-            "to": "August 2013",
+            "from": "Nov 2010",
+            "to": "Aug 2013",
             "label": "NetCredit",
             "name": "NetCredit",
             "role": "Lead Developer",
             "where": "azimuth-netcredit",
             "url": "https://www.netcredit.bg/",
-            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until January 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an an advisor and mentor until September that year.",
+            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an an advisor and mentor until Sep that year.",
             "skills": [
                 {
                     "name": "PHP"
@@ -729,14 +729,14 @@
                 },
                 {
                     "name": "Management",
-                    "from": "April 2011"
+                    "from": "Apr 2011"
                 },
                 {
                     "name": "Finance"
                 },
                 {
                     "name": "Hiring",
-                    "from": "January 2012",
+                    "from": "Jan 2012",
                     "strength": 0.8
                 }
             ]
@@ -744,7 +744,7 @@
         {
             "id": "headoff-xen",
             "from": "May 2006",
-            "to": "February 2007",
+            "to": "Feb 2007",
             "label": "Xen VPSes",
             "name": "Xen on-demand virtual servers",
             "where": "headoff",
@@ -767,7 +767,7 @@
         },
         {
             "id": "torrents",
-            "from": "January 2004",
+            "from": "Jan 2004",
             "to": "May 2005",
             "label": "BitTorrent Tracker",
             "name": "BitTorrent Tracker",

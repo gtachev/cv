@@ -6,7 +6,7 @@ if (typeof NodeList.prototype.forEach !== "function") {
 }
 
 // TODO: use something like moment?
-export var parseDate = utcParse("%B %Y");
+export var parseDate = utcParse("%b %Y");
 
 export function fromDate(dateStr) {
     return parseDate(dateStr);
