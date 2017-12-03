@@ -19,8 +19,8 @@
 	<script type="text/javascript" src="./bundle.js"></script>
 
 </head>
-{{#*inline "item"}} {{#if name }}
-<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}">
+{{#*inline "item"}}
+<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }}style="display: none;" {{/unless}}>
 	<div class="content_box timeline_content_box">
 		<p class="timeline_date">
 			<span class="fromdate">{{from}}</span>
@@ -73,7 +73,7 @@
 	</div>
 </div>
 <!-- .timeline_item -->
-{{/if}} {{/inline}}
+{{/inline}}
 
 <body>
 
@@ -707,7 +707,7 @@
 		var places = [
 			{ id: "education", name: "Education", enabled: true, items: cv.data.getItemsData(document, "#education>div") },
 			{ id: "work", name: "Work", enabled: true, items: cv.data.getItemsData(document, "#work>div") },
-			{ id: "projects", name: "Projects", enabled: false, items: cv.data.getItemsData(document, "#projects>li") },
+			{ id: "projects", name: "Projects", enabled: false, items: cv.data.getItemsData(document, "#projects>div") },
 		];
 		console.log(places);
 
