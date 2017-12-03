@@ -13,7 +13,7 @@ export function fromDate(dateStr) {
 }
 
 export function toDate(dateStr) {
-    return utcDay.offset(utcMonth.offset(parseDate(dateStr), 1), -1);
+    return utcDay.offset(utcMonth.offset(parseDate(dateStr), 1), -2);
 }
 
 export function getText(el, selector) {

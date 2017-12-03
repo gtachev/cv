@@ -40,6 +40,10 @@ export class MutiTimeline {
             place: { height: 20, gap: 3, textMaxSize: 15, textAdjMinSize: 10, radius: 5 },
         };
 
+        this.options = {
+            yearlySkillSortCoef: 0.5,
+        };
+
         this.initPlaceAndSkillData();
 
         this.initPlaceTypeCheckboxes();
@@ -51,7 +55,8 @@ export class MutiTimeline {
         this.placesMap = new Map();
         this.placeTypesMap = new Map();
         this.skills = [];
-        this.skillsMap = {};
+        this.skillStrengths = {};
+        var now = Date.now();
 
         this.placeTypes.forEach(pt => {
             this.placeTypesMap.set(pt.id, pt);
@@ -60,18 +65,24 @@ export class MutiTimeline {
                 this.places.push(p);
                 this.placesMap.set(p.id, p);
                 p.skills.forEach(s => {
-                    this.skillsMap[s.name] = true;
                     this.skills.push(s);
-                    //TODO: calculate total skill strength
+                    var period = timeMonth.count(s.from, s.to) + 1;
+                    var yearsAgo = Math.max(0, timeMonth.count(s.to, now)) / 12.0;
+                    this.skillStrengths[s.name] =
+                        (this.skillStrengths[s.name] || 0) +
+                        period * s.strength * Math.pow(this.options.yearlySkillSortCoef, yearsAgo);
                 });
             });
         });
+        this.skillNames = Object.getOwnPropertyNames(this.skillStrengths);
+
         this.places.sort((a, b) => a.from - b.from);
         this.skills.sort((a, b) => {
             return b.to - b.from - (a.to - a.from);
         });
-
-        this.skillNames = Object.getOwnPropertyNames(this.skillsMap);
+        this.skillNames.sort((a, b) => {
+            return this.skillStrengths[b] - this.skillStrengths[a];
+        });
 
         console.log(this);
     }
