@@ -19,60 +19,72 @@
 	<script type="text/javascript" src="./bundle.js"></script>
 
 </head>
-{{#*inline "item"}}
-<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }}style="display: none;" {{/unless}}>
-	<div class="content_box timeline_content_box">
-		<p class="timeline_date">
-			<span class="fromdate">{{from}}</span>
-			-
-			<span class="todate">{{to}}</span>
-		</p>
-		<div class="timeline_title">
-			<h3 class="place_name">{{name}}</h3>
-			{{#if place}} {{#if place.name}}
-			<h4>
-				<a class="place_link" href="#{{place.id}}"> {{place.name}} {{#if place.where}} at {{place.where}}</a>
-			</h4>
-			{{/if}}
-			</a>
 
-			</h4>
-			{{/if}} {{else if where}}
-			<h4>
-				at
-				<a href="{{url}}" target="_blank"> {{where}}</a>
-			</h4>
-			{{/if}}
-		</div>
-		<div class="timeline_description">
-			<p>{{{description}}}</p>
-		</div>
-		{{#if projects}}
-		<div class="timeline_projects">
-			<p class="project_links_label">Notable projects:</p>
-			{{#each projects}}
-			<a class="project_link" href="#{{id}}">{{name}}</a>
-			{{/each}}
-		</div>
+
+{{#*inline "skill"}}
+	<div class="skill" data-strength="{{#if strength}}{{strength}}{{else}}1.0{{/if}}" {{#if from}} data-from="{{from}}" {{/if}}
+		{{#if to}} data-to="{{to}}" {{/if}} {{#if description}} data-tooltip-toggle="true" {{/if}}>
+		<span class="skill_name">{{name}}</span>
+		{{#if description}}
+			<div class="tooltip" data-position="bottom" data-color="dark">
+				<div class="tooltip_content">{{{description}}}</div>
+			</div>
 		{{/if}}
-		<div class="timeline_meta">
-			<div class="timeline_skills">
-				{{#each skills}}
-				<div class="skill" data-strength="{{#if strength}}{{strength}}{{else}}1.0{{/if}}" {{#if from}}data-from="{{from}}" {{/if}}
-				 {{#if to}}data-to="{{to}}" {{/if}} {{#if description}}data-tooltip-toggle="true" {{/if}}>
-					<span class="skill_name">{{name}}</span>
-					{{#if description}}
-					<div class="tooltip" data-position="bottom" data-color="dark">
-						<div class="tooltip_content">{{{description}}}</div>
-					</div>
+	</div>
+{{/inline}}
+
+{{#*inline "item"}}
+	<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
+		<div class="content_box timeline_content_box">
+			<p class="timeline_date">
+				<span class="fromdate">{{from}}</span>
+				-
+				<span class="todate">{{to}}</span>
+			</p>
+			<div class="timeline_title">
+				{{#if place}}
+					{{!-- This is a project --}}
+					<h3 class="place_name">	<a href="{{url}}" target="_blank"> {{name}}</a></h3>
+					{{#if place.name}}
+						<h4>
+							<a class="place_link" href="#{{place.id}}">
+								when {{place.name}}
+								{{#if place.where}} at {{place.where}} {{/if}}
+							</a>
+						</h4>
 					{{/if}}
+				{{else}}
+					{{!-- This is a work/education item --}}
+					<h3 class="place_name">{{name}}</h3>
+					{{#if where}}
+						<h4>
+							at
+							<a href="{{url}}" target="_blank"> {{where}}</a>
+						</h4>
+					{{/if}}
+				{{/if}}
+			</div>
+			<div class="timeline_description">
+				<p>{{{description}}}</p>
+			</div>
+			{{#if projects}}
+				<div class="timeline_projects">
+					{{#each projects}}
+						<div class="timeline_skills">
+							<a class="project_link" href="#{{id}}">Project «{{name}}»</a>
+							{{#each skills}} {{> skill }} {{/each}}
+						</div>
+					{{/each}}
 				</div>
-				{{/each}}
+			{{/if}}
+			<div class="timeline_meta">
+				<div class="timeline_skills">
+					{{#each skills}} {{> skill }} {{/each}}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- .timeline_item -->
+	<!-- .timeline_item -->
 {{/inline}}
 
 <body>
@@ -236,17 +248,17 @@
 								</div>
 							</a>
 							{{#if personal.linkedin}}
-							<a class="header_icon icon_linkedin" target="_blank" href="{{personal.linkedin}}" data-tooltip-toggle="true">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="#75a29c" aria-label="LinkedIn" role="img" viewBox="0 0 512 512">
-									<rect width="512" height="512" fill="#ffffff" rx="15%" />
-									<circle cx="104" cy="104" r="48" />
-									<path stroke="#75a29c" stroke-width="86" d="M237 178v259M104 178v259" />
-									<path d="M279 293c0-26 18-53 48-53 31 0 43 24 43 59v138h86V289c0-80-42-116-99-116-45 0-67 25-78 42" />
-								</svg>
-								<div class="tooltip" data-position="bottom" data-size="tiny" data-color="dark">
-									<div class="tooltip_content">LinkedIn</div>
-								</div>
-							</a>
+								<a class="header_icon icon_linkedin" target="_blank" href="{{personal.linkedin}}" data-tooltip-toggle="true">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="#75a29c" aria-label="LinkedIn" role="img" viewBox="0 0 512 512">
+										<rect width="512" height="512" fill="#ffffff" rx="15%" />
+										<circle cx="104" cy="104" r="48" />
+										<path stroke="#75a29c" stroke-width="86" d="M237 178v259M104 178v259" />
+										<path d="M279 293c0-26 18-53 48-53 31 0 43 24 43 59v138h86V289c0-80-42-116-99-116-45 0-67 25-78 42" />
+									</svg>
+									<div class="tooltip" data-position="bottom" data-size="tiny" data-color="dark">
+										<div class="tooltip_content">LinkedIn</div>
+									</div>
+								</a>
 							{{/if}}
 						</div>
 						<!-- .contact_icons -->
@@ -263,8 +275,8 @@
 									<span class="contacts_label">Phone:</span>
 									<span class="contacts_value">
 										{{#if personal.phone}}
-										<a href="tel:{{replace personal.phone " " " "}}">{{personal.phone}}</a>
-										{{else}} (redacted) {{/if}}
+											<a href="tel:{{replace personal.phone " " " "}}">{{personal.phone}}</a>
+										{{else}}(redacted) {{/if}}
 									</span>
 								</p>
 								<p>
@@ -289,8 +301,8 @@
 									<span class="contacts_label">LinkedIn:</span>
 									<span class="contacts_value">
 										{{#if personal.linkedin}}
-										<a target="_blank" href="{{personal.linkedin}}">{{replace personal.linkedin "^https://www." ""}}</a>
-										{{else}} isn't this better? :) {{/if}}
+											<a target="_blank" href="{{personal.linkedin}}">{{replace personal.linkedin "^https://www." ""}}</a>
+										{{else}}isn't this better? :) {{/if}}
 									</span>
 								</p>
 							</div>

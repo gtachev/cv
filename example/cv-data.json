@@ -9,29 +9,8 @@
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
         "linkedin": null,
-        "hobbies": "a list of personal hobbies and interests",
         "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently mastering Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
     },
-    "languages": [
-        {
-            "name": "English",
-            "ilr_level": "Full professional proficiency"
-        },
-        {
-            "name": "Bulgarian",
-            "ilr_level": "Native or bilingual proficiency"
-        },
-        {
-            "name": "Spanish",
-            "ilr_level": "No proficiency",
-            "description": "Self-study via duolingo and two 3-month courses in 2014/2015. I'd completed level A2.1, but havent practiced since."
-        },
-        {
-            "name": "German",
-            "ilr_level": "No proficiency",
-            "description": "Learned for four years as a secondary foreign language in high school. Unforrtunately I've forgotten most of the little I knew due to lack of practice."
-        }
-    ],
     "education": [
         {
             "id": "ml-course",
@@ -783,7 +762,7 @@
             "from": "May 2006",
             "to": "Feb 2007",
             "label": "Xen VPSes",
-            "name": "Xen on-demand virtual servers",
+            "name": "Xen On-Demand Virtual Servers",
             "where": "headoff",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20080218025030%2Fhttp%3A%2F%2Fwww.headoff.biz%2Findex.php%3Fpage%3Dxenvps&sandbox=1",
             "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resources, automatically install your preferred Linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed in an hour.",

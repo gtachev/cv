@@ -39,7 +39,7 @@ export function getItemsData(rootel, selector, callback) {
             el: el,
         };
 
-        el.querySelectorAll(".timeline_skills>.skill").forEach(sel => {
+        el.querySelectorAll(".timeline_meta .timeline_skills>.skill").forEach(sel => {
             item.skills.push({
                 name: getText(sel, ".skill_name"),
                 used_in: item,
