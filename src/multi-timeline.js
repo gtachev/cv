@@ -170,8 +170,7 @@ export class MutiTimeline {
         var chartPlacesEnter = chartPlaces
             .enter()
             .append("g")
-            .attr("class", d => "place " + d.type)
-            .attr("id", d => d.id);
+            .attr("class", d => "place " + d.type);
 
         chartPlacesEnter
             .append("rect")

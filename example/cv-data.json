@@ -349,7 +349,7 @@
             "from": "Jan 2013",
             "to": "Mar 2014",
             "label": "Project Manager",
-            "name": "iTrend Project Manager",
+            "name": "Project Manager",
             "where": "Avus Capital Ltd. (trading212.com)",
             "url": "https://www.trading212.com",
             "description": "I lead a team of 6 people to build and launch <span data-link-to=\"itrend\">iTrend</span> - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new <span data-link-to=\"azimuth-netcredit\">NetCredit</span> team (the two companies had the same owners and shared an office)."
@@ -522,7 +522,7 @@
                 },
                 {
                     "name": "HTML/CSS",
-                    "strength": 0.4
+                    "strength": 0.6
                 },
                 {
                     "name": "Data Wrangling",

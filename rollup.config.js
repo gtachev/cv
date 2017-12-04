@@ -11,20 +11,24 @@ handlebars.registerHelper("replace", function(str, search, replace) {
 });
 
 function transformCvData(data) {
-    let directory = new Map();
-    [...data.work, ...data.education].forEach(i => directory.set(i.id, i));
-
+    let education = new Map(data.education.map(i => [i.id, i]));
+    let work = new Map(data.work.map(i => [i.id, i]));
     data.projects.forEach(p => {
         if (!p.where) {
             return;
         }
-        p.place = directory.get(p.where);
+        if (work.has(p.where)) {
+            p.placeType = "work";
+            p.place = work.get(p.where);
+        } else {
+            p.placeType = "education";
+            p.place = education.get(p.where);
+        }
         if (!p.place.projects) {
             p.place.projects = [];
         }
         p.place.projects.push(p);
     });
-
     return data;
 }
 

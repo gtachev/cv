@@ -5,7 +5,6 @@ if (typeof NodeList.prototype.forEach !== "function") {
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
-// TODO: use something like moment?
 export var parseDate = utcParse("%b %Y");
 
 export function fromDate(dateStr) {
@@ -33,7 +32,7 @@ export function getItemsData(rootel, selector, callback) {
             from: fromDate(getText(el, ".fromdate")),
             to: toDate(getText(el, ".todate")),
             label: el.getAttribute("data-label"),
-            name: getText(el, ".place_name"),
+            name: getText(el, ".place_name, .project_name"),
             description: el.querySelector(".timeline_description").innerHTML.trim(),
             skills: [],
             el: el,

@@ -41,12 +41,13 @@
 			<div class="timeline_title">
 				{{#if place}}
 					{{!-- This is a project --}}
-					<h3 class="place_name">	<a href="{{url}}" target="_blank"> {{name}}</a></h3>
+					<h3 class="project_name"><a href="{{url}}" target="_blank">{{name}}</a></h3>
 					{{#if place.name}}
 						<h4>
-							<a class="place_link" href="#{{place.id}}">
-								when {{place.name}}
-								{{#if place.where}} at {{place.where}} {{/if}}
+								when <a class="place_link" href="#{{placeType}}" data-item-id="{{place.id}}">{{place.name}}</a>
+								{{#if place.where}}
+									at <a href="{{place.url}}" target="_blank">{{place.where}}</a>
+								{{/if}}
 							</a>
 						</h4>
 					{{/if}}
@@ -68,7 +69,7 @@
 				<div class="timeline_projects">
 					{{#each projects}}
 						<div class="timeline_skills">
-							<a class="project_link" href="#{{id}}">Project «{{name}}»</a>
+							<a class="project_link" data-item-id="{{id}}" href="#projects">Project «{{name}}»</a>
 							{{#each skills}} {{> skill }} {{/each}}
 						</div>
 					{{/each}}
@@ -579,14 +580,16 @@
 		// Timeline init
 		var holder = document.getElementById('svg-holder');
 		var places = [
-			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"]') },
-			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]') },
-			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]') },
+			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"]>div.timeline_item') },
+			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]>div.timeline_item') },
+			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') },
 		];
 		console.log(places);
 		var chart = new cv.MutiTimeline(holder, places);
 		console.log(chart);
-		window.addEventListener('resize', chart.redrawDelayed.bind(chart));
+		['resize', 'hashchange', 'load'].forEach(function (e) {
+			window.addEventListener(e, chart.redrawDelayed.bind(chart));
+		});
 
 
 		// Handle print button
@@ -597,60 +600,35 @@
 			});
 		});
 
-/*
-		// no conflicts mode
-		jQuery.noConflict();
-		jQuery(document).ready(function () {
-
-			// Page navigation
-			jQuery('a[data-link-type="transition"]').on('click', function (e) {
-				e.preventDefault();
-
-				var link_target = jQuery(this).attr('href');
-
-				jQuery('.button_holder').removeClass('active');
-				jQuery('a[href="' + link_target + '"]').parent('.button_holder').addClass('active');
-
-				if ((link_target == '#home') || (link_target == '#homepage')) {
-					jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'homepage');
-					jQuery('.single_page_content:not([data-page-name="homepage"])').hide();
-					jQuery('.single_page_content[data-page-name="homepage"]').hide();
-					jQuery('.single_page_content[data-page-name="homepage"]').fadeIn(300);
-				} else {
-					jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'header');
-					jQuery('.single_page_content:not([data-page-name="homepage"]):not(' + link_target + ')').slideUp(300).animate({ opacity: 0 }, { queue: false, duration: 300 });
-					jQuery('.single_page_content' + link_target + '').slideDown(300).animate({ opacity: 1 }, { queue: false, duration: 300 });
-				};
-
-				//if (link_target == '#timeline') {
-				//	chart.redraw(); //TODO: fix, set initial size
-				//}
-			});
-
-
-			// Project links
-			jQuery('a.project_link').on('click', function (e) {
-				e.preventDefault();
-
-				// Laxy way to activate the Projects page
-				jQuery('a[href="#projects"]').trigger('click');
-
-				// Scroll down to targe project
-				var link_target = jQuery(this).attr('href');
+		document.querySelectorAll('a.place_link, a.project_link').forEach(function (el) {
+			el.addEventListener('click', function (e) {
 				setTimeout(function () {
-					jQuery('html, body').animate({
-						scrollTop: (jQuery(link_target).offset().top - 30)
+					console.log(el.getAttribute('data-item-id'));
+					let sel = document.getElementById(el.getAttribute('data-item-id'));
+					console.log(sel);
+					sel.scrollIntoView({behavior:'smooth', /*block: 'center',*/ inline: 'nearest'});
+					sel.classList.add('highlighted');
+					setTimeout(function () {
+						sel.classList.remove('highlighted');
 					}, 1000);
-				}, 300);
-				setTimeout(function () {
-					jQuery(link_target).addClass('highlighted');
-				}, 1000);
-				setTimeout(function () {
-					jQuery(link_target).removeClass('highlighted');
-				}, 1700);
+				}, 150);
 			});
 		});
-		*/
+
+/*
+		TODO: recreate old jquery transitions with CSS or vanilla JS:
+
+		if ((link_target == '#home') || (link_target == '#homepage')) {
+			jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'homepage');
+			jQuery('.single_page_content:not([data-page-name="homepage"])').hide();
+			jQuery('.single_page_content[data-page-name="homepage"]').hide();
+			jQuery('.single_page_content[data-page-name="homepage"]').fadeIn(300);
+		} else {
+			jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'header');
+			jQuery('.single_page_content:not([data-page-name="homepage"]):not(' + link_target + ')').slideUp(300).animate({ opacity: 0 }, { queue: false, duration: 300 });
+			jQuery('.single_page_content' + link_target + '').slideDown(300).animate({ opacity: 1 }, { queue: false, duration: 300 });
+		};
+*/
 	</script>
 </body>
 </html>
