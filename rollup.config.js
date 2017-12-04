@@ -29,6 +29,19 @@ function transformCvData(data) {
         }
         p.place.projects.push(p);
     });
+    [...data.projects, ...data.work, ...data.education].forEach(i => {
+        if (!i.skills) {
+            return;
+        }
+        let skills = new Set();
+        i.skills.forEach(s => {
+            if (skills.has(s.name)) {
+                s.hideInList = true;
+            } else {
+                skills.add(s.name);
+            }
+        });
+    });
     return data;
 }
 

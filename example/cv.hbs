@@ -19,8 +19,7 @@
 
 
 {{#*inline "skill"}}
-	<div class="skill" data-strength="{{#if strength}}{{strength}}{{else}}1.0{{/if}}" {{#if from}} data-from="{{from}}" {{/if}}
-		{{#if to}} data-to="{{to}}" {{/if}} {{#if description}} data-tooltip-toggle="true" {{/if}}>
+	<div class="skill{{#if hideInList}} skill_list_hidden{{/if}}" data-strength="{{#if strength}}{{strength}}{{else}}1.0{{/if}}" {{#if from}} data-from="{{from}}" {{/if}} {{#if to}} data-to="{{to}}" {{/if}} {{#if description}} data-tooltip-toggle="true" {{/if}}>
 		<span class="skill_name">{{name}}</span>
 		{{#if description}}
 			<div class="tooltip" data-position="bottom" data-color="dark">
@@ -68,7 +67,7 @@
 			{{#each projects}}
 				<div class="timeline_meta">
 					<div class="timeline_skills timeline_skills_for_project">
-						<a class="project_link" data-item-id="{{id}}" href="#projects">Project «{{name}}»</a>
+						<a class="project_link" data-item-id="{{id}}" href="#projects">{{name}}</a>
 						{{#each skills}} {{> skill }} {{/each}}
 					</div>
 				</div>

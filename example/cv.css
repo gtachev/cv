@@ -515,7 +515,7 @@ a:hover > .circle_icon.circle_icon_grey {
 	position: relative;
 	width: 100%;
 	margin: 0 auto 30px auto;
-	padding: 50px;
+	padding: 65px;
 	background: #ffffff;
 	border-radius: 5px;
 	box-shadow: 0.5px 0.866px 1.34px 0.66px rgba(0, 0, 0, 0.1);
@@ -1235,6 +1235,10 @@ h2.title {
 .skill[data-strength="0.9"],
 .skill[data-strength="0.9"]:after {
 	background: #191919;
+}
+
+.skill.skill_list_hidden {
+	display:none;
 }
 
 .project_links_label {
