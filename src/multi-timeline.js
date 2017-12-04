@@ -1,10 +1,15 @@
-import { select as d3Select, event as d3CurrentEvent } from "d3-selection";
+import {
+    select as d3Select,
+    selectAll as d3SelectAll,
+    event as d3CurrentEvent,
+} from "d3-selection";
 import { timeFormat } from "d3-time-format";
 import { timeYear, timeMonth } from "d3-time";
 import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
 import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
+import { transition as d3Transition } from "d3-transition";
 import "d3-selection-multi";
 
 function multiFormat(date) {
@@ -28,6 +33,8 @@ function svgT(left, top, from) {
     };
     return o;
 }
+
+export { d3Select, d3SelectAll, d3Transition };
 
 export class MutiTimeline {
     constructor(holder, places, initialSkills) {

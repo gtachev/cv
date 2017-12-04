@@ -13,9 +13,6 @@
 	<!-- TODO: remove old CSS -->
 	<link rel="stylesheet" href="../example/cv_old.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	 crossorigin="anonymous"></script>
 	<script type="text/javascript" src="./bundle.js"></script>
 
 </head>
@@ -94,9 +91,198 @@
 
 		<!-- CONTENT -->
 		<div id="content_wrapper">
+			<!-- TIMELINE -->
+			<span class="page_anchor" id="timeline"></span>
+			<div class="single_page_content full_width" data-page-id="2" data-page-name="timeline">
 
-			<!-- HOMEPAGE -->
-			<div class="single_page_content" id="homepage" data-page-id="1" data-page-name="homepage">
+				<div id="timeline_holder">
+
+					<div class="place_checkboxes">
+						<div class="place_checkbox_holder" data-toggle-type="education" data-active="true">
+							<input type="checkbox" id="place_education" />
+							<label for="place_education">
+								<span class="checkbox_icon"></span>
+								<span class="checkbox_label">Education</span>
+							</label>
+						</div>
+						<div class="place_checkbox_holder" data-toggle-type="work" data-active="true">
+							<input type="checkbox" id="place_work" />
+							<label for="place_work">
+								<span class="checkbox_icon"></span>
+								<span class="checkbox_label">Work</span>
+							</label>
+						</div>
+						<div class="place_checkbox_holder" data-toggle-type="projects">
+							<input type="checkbox" id="place_projects" />
+							<label for="place_projects">
+								<span class="checkbox_icon"></span>
+								<span class="checkbox_label">Projects</span>
+							</label>
+						</div>
+					</div>
+					<!-- .place_checkboxes -->
+
+					<div class="x_axis">
+						<div class="x_axis_inner">
+							<div class="x_axis_date">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+							<div class="x_axis_date" style="left: 10%;">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+							<div class="x_axis_date" style="left: 20%;">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+							<div class="x_axis_date" style="left: 30%;">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+							<div class="x_axis_date" style="left: 40%;">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+							<div class="x_axis_date" style="left: 50%;">
+								<span class="x_axis_date_text">2014</span>
+							</div>
+						</div>
+					</div>
+					<!-- .x_axis -->
+
+					<div class="y_axis">
+						<div class="y_axis_inner">
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill" data-active="true">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+							<div class="y_axis_skill">
+								<span class="y_axis_skill_text">DevOps</span>
+								<span class="y_axis_skill_delete"></span>
+							</div>
+						</div>
+					</div>
+					<!-- .y_axis -->
+
+					<div class="timeline_chart">
+						<div class="timeline_chart_places">
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="education">Education</div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="work"> Work work</div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="project">Prrrroject!</div>
+							</div>
+						</div>
+						<div class="timeline_chart_skills">
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+							<div class="timeline_chart_row">
+								<div class="timeline_chart_item" data-type="skill"></div>
+							</div>
+						</div>
+					</div>
+					<!-- .timeline_chart -->
+
+					<div class="timeline_skills">
+						<div class="skill" data-strength="1.0">DevOps</div>
+						<div class="skill" data-strength="1.0">Algorithms/DS</div>
+						<div class="skill" data-strength="1.0">Mnagement</div>
+						<div class="skill" data-strength="0.9">HTML/CSS</div>
+						<div class="skill" data-strength="0.8">Git</div>
+						<div class="skill" data-strength="0.7">Pascal/Delphi</div>
+						<div class="skill" data-strength="0.6">Assembler</div>
+						<div class="skill" data-strength="0.5">C/C++</div>
+						<div class="skill" data-strength="0.4">Finances</div>
+						<div class="skill" data-strength="0.3">Go</div>
+						<div class="skill" data-strength="0.2">Mathematics</div>
+						<div class="skill" data-strength="0.1">Rust</div>
+					</div>
+					<!-- .timeline_skills -->
+
+					<div class="timeline_controls">
+						<div class="circle_icon disabled" data-zoom="out">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="4px">
+								<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M2.000,-0.000 L20.000,-0.000 C21.105,-0.000 22.000,0.895 22.000,2.000 C22.000,3.105 21.105,4.000 20.000,4.000 L2.000,4.000 C0.895,4.000 -0.000,3.105 -0.000,2.000 C-0.000,0.895 0.895,-0.000 2.000,-0.000 Z"
+								/>
+							</svg>
+						</div>
+						<div class="circle_icon" data-zoom="in">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px">
+								<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M20.000,13.000 L13.000,13.000 L13.000,20.000 C13.000,21.105 12.105,22.000 11.000,22.000 C9.895,22.000 9.000,21.105 9.000,20.000 L9.000,13.000 L2.000,13.000 C0.895,13.000 -0.000,12.105 -0.000,11.000 C-0.000,9.895 0.895,9.000 2.000,9.000 L9.000,9.000 L9.000,2.000 C9.000,0.895 9.895,-0.000 11.000,-0.000 C12.105,-0.000 13.000,0.895 13.000,2.000 L13.000,9.000 L20.000,9.000 C21.105,9.000 22.000,9.895 22.000,11.000 C22.000,12.105 21.105,13.000 20.000,13.000 Z"
+								/>
+							</svg>
+						</div>
+					</div>
+					<!-- .timeline_controls -->
+
+				</div>
+				<!-- #timeline_holder -->
+
+				<div id="svg-holder"></div>
+
+			</div>
+			<!-- #2 - Timeline -->
+
+			<!-- WORK -->
+			<span class="page_anchor" id="work"></span>
+			<div class="single_page_content" data-page-id="3" data-page-name="work">
+				{{#each work}} {{> item }} {{/each}}
+			</div>
+			<!-- #3 - Work -->
+
+
+			<!-- EDUCATION -->
+			<span class="page_anchor" id="education"></span>
+			<div class="single_page_content" data-page-id="4" data-page-name="education">
+				{{#each education}} {{> item }} {{/each}}
+			</div>
+			<!-- #4 - Education -->
+
+
+			<!-- PROJECTS -->
+			<span class="page_anchor" id="projects"></span>
+			<div class="single_page_content" data-page-id="5" data-page-name="projects">
+				{{#each projects}} {{> item}} {{/each}}
+			</div>
+			<!-- #5 - Projects -->
+
+			<!-- HOMEPAGE && HEADER-->
+			<div class="single_page_content" id="header" data-page-id="1" data-page-name="header">
 				<div class="content_box">
 					<div class="content_box_inner">
 
@@ -266,7 +452,7 @@
 									<span class="contacts_label">Phone:</span>
 									<span class="contacts_value">
 										{{#if personal.phone}}
-											<a href="tel:{{replace personal.phone " " " "}}">{{personal.phone}}</a>
+											<a href="tel:{{replace personal.phone " " ""}}">{{personal.phone}}</a>
 										{{else}}(redacted) {{/if}}
 									</span>
 								</p>
@@ -311,8 +497,8 @@
 
 				<div class="buttons_wrap">
 					<div class="buttons_row">
-						<div class="button_holder button_icon_only visible_menu_only">
-							<a class="button" data-link-type="transition" href="#home">
+						<div class="button_holder button_holder_home button_icon_only visible_menu_only">
+							<a class="button" data-link-type="transition" href="#">
 								<span class="circle_icon">
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23px" height="20px">
 										<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M22.629,10.779 C22.383,11.020 22.059,11.139 21.736,11.139 C21.413,11.139 21.091,11.020 20.843,10.779 L12.495,2.639 C12.224,2.376 11.745,2.376 11.473,2.640 L3.127,10.779 C2.634,11.260 1.833,11.260 1.340,10.779 C0.848,10.298 0.848,9.519 1.340,9.038 L9.688,0.899 C10.914,-0.299 13.051,-0.301 14.280,0.897 L16.766,3.321 L16.766,2.022 C16.766,1.343 17.331,0.791 18.027,0.791 C18.726,0.791 19.291,1.343 19.291,2.022 L19.291,5.783 L22.629,9.038 C23.122,9.519 23.122,10.298 22.629,10.779 ZM11.546,4.976 C11.788,4.740 12.181,4.740 12.423,4.976 L19.765,12.134 C19.882,12.247 19.947,12.401 19.947,12.562 L19.947,17.782 C19.947,19.007 18.928,20.000 17.672,20.000 L14.037,20.000 L14.037,14.511 L9.932,14.511 L9.932,20.000 L6.297,20.000 C5.041,20.000 4.022,19.007 4.022,17.782 L4.022,12.562 C4.022,12.401 4.088,12.247 4.204,12.134 L11.546,4.976 Z"
@@ -321,7 +507,7 @@
 								</span>
 							</a>
 						</div>
-						<div class="button_holder">
+						<div class="button_holder button_holder_timeline">
 							<a class="button" data-link-type="transition" href="#timeline">
 								<span class="circle_icon">
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="21px">
@@ -332,7 +518,7 @@
 								<span class="button_text">Timeline</span>
 							</a>
 						</div>
-						<div class="button_holder">
+						<div class="button_holder button_holder_work">
 							<a class="button" data-link-type="transition" href="#work">
 								<span class="circle_icon">
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="16px">
@@ -343,7 +529,7 @@
 								<span class="button_text">Work</span>
 							</a>
 						</div>
-						<div class="button_holder">
+						<div class="button_holder button_holder_education">
 							<a class="button" data-link-type="transition" href="#education">
 								<span class="circle_icon">
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="16px">
@@ -354,7 +540,7 @@
 								<span class="button_text">Education</span>
 							</a>
 						</div>
-						<div class="button_holder">
+						<div class="button_holder button_holder_projects">
 							<a class="button" data-link-type="transition" href="#projects">
 								<span class="circle_icon">
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
@@ -381,299 +567,41 @@
 				<!-- .buttons_wrap -->
 
 			</div>
-			<!-- #1 - Homepage -->
-
-
-			<!-- TIMELINE -->
-			<div class="single_page_content full_width" id="timeline" data-page-id="2" data-page-name="timeline">
-
-				<div id="timeline_holder">
-
-					<div class="place_checkboxes">
-						<div class="place_checkbox_holder" data-toggle-type="education" data-active="true">
-							<input type="checkbox" id="place_education" />
-							<label for="place_education">
-								<span class="checkbox_icon"></span>
-								<span class="checkbox_label">Education</span>
-							</label>
-						</div>
-						<div class="place_checkbox_holder" data-toggle-type="work" data-active="true">
-							<input type="checkbox" id="place_work" />
-							<label for="place_work">
-								<span class="checkbox_icon"></span>
-								<span class="checkbox_label">Work</span>
-							</label>
-						</div>
-						<div class="place_checkbox_holder" data-toggle-type="projects">
-							<input type="checkbox" id="place_projects" />
-							<label for="place_projects">
-								<span class="checkbox_icon"></span>
-								<span class="checkbox_label">Projects</span>
-							</label>
-						</div>
-					</div>
-					<!-- .place_checkboxes -->
-
-					<div class="x_axis">
-						<div class="x_axis_inner">
-							<div class="x_axis_date">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-							<div class="x_axis_date" style="left: 10%;">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-							<div class="x_axis_date" style="left: 20%;">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-							<div class="x_axis_date" style="left: 30%;">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-							<div class="x_axis_date" style="left: 40%;">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-							<div class="x_axis_date" style="left: 50%;">
-								<span class="x_axis_date_text">2014</span>
-							</div>
-						</div>
-					</div>
-					<!-- .x_axis -->
-
-					<div class="y_axis">
-						<div class="y_axis_inner">
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill" data-active="true">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-							<div class="y_axis_skill">
-								<span class="y_axis_skill_text">DevOps</span>
-								<span class="y_axis_skill_delete"></span>
-							</div>
-						</div>
-					</div>
-					<!-- .y_axis -->
-
-					<div class="timeline_chart">
-						<div class="timeline_chart_places">
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="education">Education</div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="work"> Work work</div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="project">Prrrroject!</div>
-							</div>
-						</div>
-						<div class="timeline_chart_skills">
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-							<div class="timeline_chart_row">
-								<div class="timeline_chart_item" data-type="skill"></div>
-							</div>
-						</div>
-					</div>
-					<!-- .timeline_chart -->
-
-					<div class="timeline_skills">
-						<div class="skill" data-strength="1.0">DevOps</div>
-						<div class="skill" data-strength="1.0">Algorithms/DS</div>
-						<div class="skill" data-strength="1.0">Mnagement</div>
-						<div class="skill" data-strength="0.9">HTML/CSS</div>
-						<div class="skill" data-strength="0.8">Git</div>
-						<div class="skill" data-strength="0.7">Pascal/Delphi</div>
-						<div class="skill" data-strength="0.6">Assembler</div>
-						<div class="skill" data-strength="0.5">C/C++</div>
-						<div class="skill" data-strength="0.4">Finances</div>
-						<div class="skill" data-strength="0.3">Go</div>
-						<div class="skill" data-strength="0.2">Mathematics</div>
-						<div class="skill" data-strength="0.1">Rust</div>
-					</div>
-					<!-- .timeline_skills -->
-
-					<div class="timeline_controls">
-						<div class="circle_icon disabled" data-zoom="out">
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="4px">
-								<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M2.000,-0.000 L20.000,-0.000 C21.105,-0.000 22.000,0.895 22.000,2.000 C22.000,3.105 21.105,4.000 20.000,4.000 L2.000,4.000 C0.895,4.000 -0.000,3.105 -0.000,2.000 C-0.000,0.895 0.895,-0.000 2.000,-0.000 Z"
-								/>
-							</svg>
-						</div>
-						<div class="circle_icon" data-zoom="in">
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px">
-								<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M20.000,13.000 L13.000,13.000 L13.000,20.000 C13.000,21.105 12.105,22.000 11.000,22.000 C9.895,22.000 9.000,21.105 9.000,20.000 L9.000,13.000 L2.000,13.000 C0.895,13.000 -0.000,12.105 -0.000,11.000 C-0.000,9.895 0.895,9.000 2.000,9.000 L9.000,9.000 L9.000,2.000 C9.000,0.895 9.895,-0.000 11.000,-0.000 C12.105,-0.000 13.000,0.895 13.000,2.000 L13.000,9.000 L20.000,9.000 C21.105,9.000 22.000,9.895 22.000,11.000 C22.000,12.105 21.105,13.000 20.000,13.000 Z"
-								/>
-							</svg>
-						</div>
-					</div>
-					<!-- .timeline_controls -->
-
-				</div>
-				<!-- #timeline_holder -->
-
-				<div id="svg-holder"></div>
-
-			</div>
-			<!-- #2 - Timeline -->
-
-
-			<!-- WORK -->
-			<div class="single_page_content" id="work" data-page-id="3" data-page-name="work">
-
-				{{#each work}} {{> item }} {{/each}}
-
-				<!--
-				<div class="timeline_item" data-type="work" id="work-2">
-					<div class="content_box timeline_content_box">
-						<p class="timeline_date">Apr 2014 - Sept 2015</p>
-						<div class="timeline_title">
-							<h3>Research and Development Lead</h3>
-							<h4>at
-								<a href="#" target="_blank"> Avus Cappital Ltd.</a>
-							</h4>
-						</div>
-						<div class="timeline_description">
-							<p>Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing
-								GitLab to the company and securing and overhauling other key development infrastructure components and CI/CD processes.</p>
-							<p>Lorem ipsum dolor sit amet,
-								<a href="#">consectetuer adipiscing elit</a>. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-								magnis dis parturient montes, nascetur ridiculus mus.</p>
-						</div>
-						<div class="timeline_projects">
-							<p class="project_links_label">Notable projects:</p>
-							<a class="project_link" href="#project-3">Project 1</a>
-							<a class="project_link" href="#project-4">Project Lorem ipsum 2</a>
-						</div>
-
-						<div class="timeline_meta">
-
-							<div class="timeline_skills">
-								<div class="skill" data-strength="1.0">
-									DevOps
-								</div>
-								<div class="skill" data-strength="0.8">
-									Docker
-								</div>
-								<div class="skill" data-strength="1.0">
-									Git
-								</div>
-								<div class="skill" data-strength="1.0" data-tooltip-toggle="true">
-									Linux
-									<div class="tooltip" data-position="bottom" data-size="small" data-color="dark">
-										<div class="tooltip_content">Lorem ipsum</div>
-									</div>
-								</div>
-								<div class="skill" data-strength="0.8">
-									Bash
-								</div>
-								<div class="skill" data-strength="1.0">
-									Security
-								</div>
-								<div class="skill" data-strength="0.2" data-tooltip-toggle="true">
-									Hiring
-									<div class="tooltip" data-position="bottom" data-size="small" data-color="dark">
-										<div class="tooltip_content">Interviews and skill testing</div>
-									</div>
-								</div>
-								<div class="skill" data-strength="0.7">
-									Java
-								</div>
-								<div class="skill" data-strength="0.7">
-									SQL
-								</div>
-								<div class="skill" data-strength="0.5" data-tooltip-toggle="true">
-									JavaScript
-									<div class="tooltip" data-position="bottom" data-size="small" data-color="dark">
-										<div class="tooltip_content">Minor projects</div>
-									</div>
-								</div>
-								<div class="skill" data-strength="0.2">
-									Management
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-				-->
-				<!-- .timeline_item -->
-
-			</div>
-			<!-- #3 - Work -->
-
-
-			<!-- EDUCATION -->
-			<div class="single_page_content" id="education" data-page-id="4" data-page-name="education">
-				{{#each education}} {{> item }} {{/each}}
-			</div>
-			<!-- #4 - Education -->
-
-
-			<!-- PROJECTS -->
-			<div class="single_page_content" id="projects" data-page-id="5" data-page-name="projects">
-				{{#each projects}} {{> item}} {{/each}}
-			</div>
-			<!-- #5 - Projects -->
-
+			<!-- #1 - Homepage & Header-->
 		</div>
 		<!-- #content_wrapper -->
 
 	</div>
 
 	<script type="text/javascript">
-		"use strict";
+		'use strict';
 
-		// no conflicts mode
-		jQuery.noConflict();
-
-
-		var holder = document.getElementById("svg-holder");
+		// Timeline init
+		var holder = document.getElementById('svg-holder');
 		var places = [
-			{ id: "education", name: "Education", enabled: true, items: cv.data.getItemsData(document, "#education>div") },
-			{ id: "work", name: "Work", enabled: true, items: cv.data.getItemsData(document, "#work>div") },
-			{ id: "projects", name: "Projects", enabled: false, items: cv.data.getItemsData(document, "#projects>div") },
+			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"]') },
+			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]') },
+			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]') },
 		];
 		console.log(places);
-
 		var chart = new cv.MutiTimeline(holder, places);
 		console.log(chart);
-		window.addEventListener("resize", chart.redrawDelayed.bind(chart));
+		window.addEventListener('resize', chart.redrawDelayed.bind(chart));
 
+
+		// Handle print button
+		document.querySelectorAll('a[data-print="true"]').forEach(function (el) {
+			el.addEventListener('click', function (e) {
+				e.preventDefault();
+				window.print();
+			});
+		});
+
+/*
+		// no conflicts mode
+		jQuery.noConflict();
 		jQuery(document).ready(function () {
+
 			// Page navigation
 			jQuery('a[data-link-type="transition"]').on('click', function (e) {
 				e.preventDefault();
@@ -694,9 +622,9 @@
 					jQuery('.single_page_content' + link_target + '').slideDown(300).animate({ opacity: 1 }, { queue: false, duration: 300 });
 				};
 
-				if (link_target == '#timeline') {
-					chart.redraw(); //TODO: fix, set initial size
-				}
+				//if (link_target == '#timeline') {
+				//	chart.redraw(); //TODO: fix, set initial size
+				//}
 			});
 
 
@@ -721,16 +649,8 @@
 					jQuery(link_target).removeClass('highlighted');
 				}, 1700);
 			});
-
-
-			// Print
-			jQuery('a[data-print="true"]').on('click', function (e) {
-				e.preventDefault();
-				window.print();
-			});
 		});
-
+		*/
 	</script>
 </body>
-
 </html>
