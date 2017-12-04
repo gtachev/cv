@@ -1,6 +1,9 @@
 import { utcParse } from "d3-time-format";
 import { utcDay, utcMonth } from "d3-time";
 
+//TODO: this should not be part of the library, move it wtih the example?
+// date helpers could probably stay in the lib, if properly parametrized
+
 if (typeof NodeList.prototype.forEach !== "function") {
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
@@ -38,7 +41,7 @@ export function getItemsData(rootel, selector, callback) {
             el: el,
         };
 
-        el.querySelectorAll(".timeline_meta .timeline_skills>.skill").forEach(sel => {
+        el.querySelectorAll(".own_skills>.skill").forEach(sel => {
             item.skills.push({
                 name: getText(sel, ".skill_name"),
                 used_in: item,

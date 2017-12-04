@@ -411,7 +411,7 @@ a:hover > .circle_icon.circle_icon_grey {
 
 .tooltip[data-color="dark"] .tooltip_content {
 	background: #777777;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.85);
 	color: #ffffff;
 }
 .tooltip[data-color="dark"][data-position="top"] .tooltip_content:before {
@@ -1150,20 +1150,10 @@ h2.title {
 	margin-bottom: 0;
 }
 
-.timeline_item .timeline_projects {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-	margin: 0 0 10px 0;
-}
-.timeline_item .timeline_projects:last-child {
-	margin-bottom: -10px;
-}
-
 .timeline_item .timeline_meta {
-	padding-top: 20px;
+	padding-top: 5px;
 	border-top: 1px solid #eee;
+	padding-bottom: 5px;
 }
 
 .timeline_skills {
@@ -1171,7 +1161,15 @@ h2.title {
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
-	margin: 0 0 -10px 0;
+	margin: 10px 0 -5px 0;
+}
+
+.timeline_skills_for_project a {
+	margin-left:-20px;
+}
+
+.timeline_skills_for_project {
+	margin-left:20px;
 }
 
 .skill {

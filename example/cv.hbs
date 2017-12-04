@@ -65,21 +65,21 @@
 			<div class="timeline_description">
 				<p>{{{description}}}</p>
 			</div>
-			{{#if projects}}
-				<div class="timeline_projects">
-					{{#each projects}}
-						<div class="timeline_skills">
-							<a class="project_link" data-item-id="{{id}}" href="#projects">Project «{{name}}»</a>
-							{{#each skills}} {{> skill }} {{/each}}
-						</div>
-					{{/each}}
+			{{#each projects}}
+				<div class="timeline_meta">
+					<div class="timeline_skills timeline_skills_for_project">
+						<a class="project_link" data-item-id="{{id}}" href="#projects">Project «{{name}}»</a>
+						{{#each skills}} {{> skill }} {{/each}}
+					</div>
+				</div>
+			{{/each}}
+			{{#if skills}}
+				<div class="timeline_meta">
+					<div class="timeline_skills own_skills">
+						{{#each skills}} {{> skill }} {{/each}}
+					</div>
 				</div>
 			{{/if}}
-			<div class="timeline_meta">
-				<div class="timeline_skills">
-					{{#each skills}} {{> skill }} {{/each}}
-				</div>
-			</div>
 		</div>
 	</div>
 	<!-- .timeline_item -->

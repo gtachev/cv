@@ -1,8 +1,4 @@
-import {
-    select as d3Select,
-    selectAll as d3SelectAll,
-    event as d3CurrentEvent,
-} from "d3-selection";
+import { select as d3Select, event as d3CurrentEvent } from "d3-selection";
 import { timeFormat } from "d3-time-format";
 import { timeYear, timeMonth } from "d3-time";
 import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
@@ -33,8 +29,6 @@ function svgT(left, top, from) {
     };
     return o;
 }
-
-export { d3Select, d3SelectAll, d3Transition };
 
 export class MutiTimeline {
     constructor(holder, places, initialSkills) {
