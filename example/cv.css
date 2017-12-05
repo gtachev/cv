@@ -1164,14 +1164,6 @@ h2.title {
 	margin: 10px 0 -5px 0;
 }
 
-.timeline_skills_for_project a {
-	margin-left:-20px;
-}
-
-.timeline_skills_for_project {
-	margin-left:20px;
-}
-
 .skill {
 	display: block;
 	position: relative;

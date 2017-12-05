@@ -9,7 +9,7 @@
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
         "linkedin": null,
-        "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently trying to master Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
+        "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently striving to master Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
     },
     "education": [
         {
@@ -20,7 +20,7 @@
             "name": "Machine Learning with Python Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "http://fmi.machine-learning.bg/",
-            "description": "An introductory course about machine learning with Python. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The teachers are <a href=\"https://github.com/skanev\" target=\"_blank\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\" target=\"_blank\">Lachezar Bozhkov</a>.",
+            "description": "An introductory course in machine learning with Python taught by <a href=\"https://github.com/skanev\" target=\"_blank\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\" target=\"_blank\">Lachezar Bozhkov</a>.",
             "skills": [
                 {
                     "name": "Machine Learning"
@@ -42,7 +42,7 @@
             "name": "Rust Programming Language Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://fmi.rust-lang.bg/",
-            "description": "A comprehensive course about the Rust programming language. It is an elective course at Sofia University's Faculty of Mathematics and Informatics. The main teacher is <a href=\"https://github.com/AndrewRadev\" target=\"_blank\">Andrew Radev</a>.",
+            "description": "A comprehensive course in the Rust programming language taught by <a href=\"https://github.com/AndrewRadev\" target=\"_blank\">Andrew Radev</a>.",
             "skills": [
                 {
                     "name": "Rust"
@@ -57,7 +57,7 @@
             "name": "Master's Program in \"Distributed Systems and Mobile Technologies\" (Unfinished)",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://www.fmi.uni-sofia.bg/en/distributed-systems-and-mobile-technologies",
-            "description": "One of the more diversified master's programs at Sofia University's Faculty of Mathematics and Informatics. It focuses on teaching students to design, build and interconnect complex distributed systems. It also has a very wide range of elective courses on networking, security and system architecture and administration. I successfully completed all of the needed courses, but I've not yet prepared and defended a thesis.",
+            "description": "A diversified master's program at the Faculty of Mathematics and Informatics at Sofia University that focuses on designing, building, and interconnecting complex distributed systems. It also has a very wide range of optional courses on networking, security, and system architecture and administration. I have completed all necessary courses, but am yet to defend a thesis.",
             "skills": [
                 {
                     "name": "DevOps",
@@ -94,7 +94,7 @@
             "name": "Bachelor's Degree in Software Engineering",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://www.fmi.uni-sofia.bg/en/software-engineering",
-            "description": "One of the most sought after and difficult to enter undergraduate programs at Sofia University's Faculty of Mathematics. It offers a balanced course selection that includes many mathematics and computer science subjects as well as courses for project management and \"soft\" skills. The diversity of the core course program is only exceeded by the abundance of quality elective courses, of which I tried to take full advantage.",
+            "description": "One of the most highly selective undergraduate programs at the Faculty of Mathematics and Informatics at Sofia University. It offers a balanced course selection that includes many mathematics and computer science subjects as well as courses for project management and soft skills. The diversity of the core course program is only exceeded by the abundance of quality optional courses, of which I took full advantage.",
             "skills": [
                 {
                     "name": "Mathematics",
@@ -203,7 +203,7 @@
             "label": "Extracurricular",
             "name": "School of Computer Science",
             "url": "https://translate.google.bg/translate?sl=bg&tl=en&js=y&prev=_t&hl=bg&ie=UTF-8&u=https%3A%2F%2Farchive.fo%2FUn5PT&act=url",
-            "description": "Very high quality extracurricular mathematics and programming courses organized by Prof. Dimitar Shishkov. The idea was to teach the most useful and fundamental parts of a univirsity computer science education during high school.",
+            "description": "Excellent extracurricular mathematics and programming courses organized by Prof. Dimitar Shishkov. The aim was to teach the most useful and fundamental parts of a univirsity computer science education during high school.",
             "skills": [
                 {
                     "name": "Mathematics",
@@ -236,7 +236,7 @@
             "label": "High School",
             "name": "Secondary Education",
             "where": "Sofia High School of Mathematics",
-            "description": "One of the best secondary schools in the country, especially in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and competed in national programming competitions.",
+            "description": "One of the most selective and distinguished secondary schools in the country, especially known for its merit in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and participated in national programming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
@@ -291,7 +291,7 @@
             "name": "Research and Development Lead",
             "where": "Avus Capital Ltd. (trading212.com)",
             "url": "https://www.trading212.com",
-            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company and securing and overhauling other key development infrastructure components and CI/CD processes.",
+            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company, and securing and overhauling other key development infrastructure components and CI/CD processes.",
             "skills": [
                 {
                     "name": "DevOps"
@@ -357,7 +357,7 @@
             "name": "Senior Web Developer",
             "where": "NetCredit Ltd.",
             "url": "https://www.netcredit.bg/",
-            "description": "I was the initial and later lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money."
+            "description": "I was the initial and later the lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money."
         },
         {
             "id": "freelance-2009-2010",
@@ -432,7 +432,7 @@
             "label": "Web Developer",
             "name": "Web Developer",
             "where": "Detail-it Ltd.",
-            "description": "Developed a network of websites for sharing links to interesting internet resources, similar to digg.com at the time. All sites shared a common engine, functionality and database, but each one had its own design and content. The project was never finished because the company went bankrupt.",
+            "description": "Developed a network of websites for sharing links to interesting internet resources, similar to digg.com at the time. All sites shared a common engine, functionality and database, but each one had its own design and content. The project was left unfinished because the company went bankrupt.",
             "skills": [
                 {
                     "name": "PHP"
@@ -458,7 +458,7 @@
             "name": "Web Developer",
             "where": "Headoff G.I.",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
-            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two wholly new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
+            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two entirely new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
             "skills": [
                 {
                     "name": "PHP"
@@ -509,7 +509,7 @@
             "where": "_personal",
             "label": "CV Timeline",
             "name": "CV Multi-Timeline with D3",
-            "description": "The somewhat fancy and very over-complicated CV skill timeline you are probably viewing right now :)",
+            "description": "The somewhat fancy and rather over-complicated CV skill timeline you are probably looking at right now :)",
             "url": "https://github.com/na--/d3-cv-multitimeline",
             "skills": [
                 {
@@ -532,7 +532,7 @@
             "where": "_personal",
             "label": "eBook Tools",
             "name": "eBook Tools",
-            "description": "This is a somewhat sophisticated collection of shell scripts for automated and semi-automated organization and management of large ebook collections.",
+            "description": "A relatively sophisticated collection of shell scripts for automated and semi-automated organization and management of large ebook collections.",
             "url": "https://github.com/na--/ebook-tools",
             "skills": [
                 {
@@ -651,7 +651,7 @@
             "label": "nedomi",
             "name": "nedomi",
             "role": "Developer",
-            "description": "nedomi is an open-source highly performant HTTP reverse proxy that efficiently caches big files. It was written for a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
+            "description": "nedomi is an open-source high performance HTTP reverse proxy that efficiently caches big files. It was written for a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
             "url": "https://github.com/ironsmile/nedomi",
             "skills": [
                 {
@@ -719,14 +719,14 @@
             "role": "Lead Developer",
             "where": "azimuth-netcredit",
             "url": "https://www.netcredit.bg/",
-            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an an advisor and mentor until Sep that year.",
+            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an advisor and mentor until Sep that year.",
             "skills": [
                 {
                     "name": "PHP"
                 },
                 {
                     "name": "Data Wrangling",
-                    "description": "I created a highly customizable BI system in the backend administrative interface. It could be used for searching, aggregating, exporting and plotting arbitrary data directly in the application, without the need to use external tools."
+                    "description": "I created a highly customizable BI system in the backend administrative interface. It could be used for searching, aggregating, exporting, and plotting arbitrary data directly in the application, without the need to use external tools."
                 },
                 {
                     "name": "Management",
@@ -760,7 +760,7 @@
             "name": "Xen On-Demand Virtual Servers",
             "where": "headoff",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20080218025030%2Fhttp%3A%2F%2Fwww.headoff.biz%2Findex.php%3Fpage%3Dxenvps&sandbox=1",
-            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resources, automatically install your preferred Linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed in an hour.",
+            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resources, automatically install your preferred Linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed it in an hour.",
             "skills": [
                 {
                     "name": "DevOps",
