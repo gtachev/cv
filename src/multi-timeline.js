@@ -43,9 +43,10 @@ export class MutiTimeline {
         };
 
         this.options = {
-            defaultNumberOfSkillLines: 12,
-            yearlySkillSortCoef: 0.5,
             skillMaxOpacity: 0.8,
+            defaultNumberOfSkillLines: 10,
+            yearlySkillSortCoef: 0.5,
+            extraSkillEquilibrationExp: 0.12,
         };
 
         this.initPlaceAndSkillData();
@@ -125,14 +126,24 @@ export class MutiTimeline {
     }
 
     chartUpdateExtraSkills() {
+        var maxStrength = Math.pow(
+            this.skillStrengths[this.skillNames[0]],
+            this.options.extraSkillEquilibrationExp
+        );
         var extraSkills = this.skillNames.filter(s => !this.skillsToShowSet.has(s));
 
         var chartExtraSkills = this.extraSkillsDiv.selectAll("div.skill").data(extraSkills, d => d);
-
         chartExtraSkills
             .enter()
             .append("div")
             .attr("class", "skill")
+            .attr("data-strength", d =>
+                Math.max(
+                    0.1,
+                    Math.pow(this.skillStrengths[d], this.options.extraSkillEquilibrationExp) /
+                        maxStrength
+                ).toFixed(1)
+            )
             .text(d => d)
             .on("click", d => {
                 this.skillsToShow.push(d);

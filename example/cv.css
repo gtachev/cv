@@ -1277,7 +1277,7 @@ h2.title {
 */
 
 
-#timeline_holder {
+.timeline_holder {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -1289,7 +1289,7 @@ h2.title {
 
 /*** X Axis ***/
 
-#timeline_holder .x_axis {
+.timeline_holder .x_axis {
 	display: block;
 	position: absolute;
 	left: 170px;
@@ -1298,14 +1298,14 @@ h2.title {
 	height: 35px;
 }
 
-#timeline_holder .x_axis .x_axis_inner {
+.timeline_holder .x_axis .x_axis_inner {
 	height: 100%;
 	width: auto;
 	margin: 0 20px;
 	position: relative;
 }
 
-#timeline_holder .x_axis .x_axis_date {
+.timeline_holder .x_axis .x_axis_date {
 	display: block;
 	position: absolute;
 	height: 35px;
@@ -1316,7 +1316,7 @@ h2.title {
 	text-align: center;
 }
 
-#timeline_holder .x_axis .x_axis_date:after {
+.timeline_holder .x_axis .x_axis_date:after {
 	content: '';
 	display: block;
 	width: 12px;
@@ -1334,7 +1334,7 @@ h2.title {
 	z-index: 2;
 }
 
-#timeline_holder .x_axis .x_axis_date .x_axis_date_text {
+.timeline_holder .x_axis .x_axis_date .x_axis_date_text {
 	display: inline-block;
 	width: 50px;
 	margin-left: -25px;
@@ -1343,7 +1343,7 @@ h2.title {
 
 /*** Y Axis ***/
 
-#timeline_holder .y_axis {
+.timeline_holder .y_axis {
 	display: block;
 	width: 170px;
 	position: absolute;
@@ -1351,7 +1351,7 @@ h2.title {
 	top: 201px;
 }
 
-#timeline_holder .y_axis .y_axis_skill {
+.timeline_holder .y_axis .y_axis_skill {
 	display: block;
 	position: relative;
 	text-align: right;
@@ -1360,13 +1360,13 @@ h2.title {
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_text {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_text {
 	display: inline-block;
 	position: relative;
 	z-index: 3;
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete {
 	display: block;
 	width: 20px;
 	height: 20px;
@@ -1382,8 +1382,8 @@ h2.title {
 	opacity: 0;
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:before,
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:after {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:before,
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:after {
 	content: '';
 	display: block;
 	width: 14px;
@@ -1398,20 +1398,20 @@ h2.title {
 	border-radius: 10px;
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:before {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:before {
 	transform: rotate(-45deg);
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:after {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:after {
 	transform: rotate(45deg);
 }
 
-#timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:hover {
+.timeline_holder .y_axis .y_axis_skill .y_axis_skill_delete:hover {
 	cursor: pointer;
 	background: #c94545;
 }
 
-#timeline_holder .y_axis .y_axis_skill:before {
+.timeline_holder .y_axis .y_axis_skill:before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -1428,7 +1428,7 @@ h2.title {
 	opacity: 0;
 }
 
-#timeline_holder .y_axis .y_axis_skill:after {
+.timeline_holder .y_axis .y_axis_skill:after {
 	content: '';
 	display: block;
 	width: 10px;
@@ -1444,30 +1444,30 @@ h2.title {
 	z-index: 2;
 }
 
-#timeline_holder .y_axis .y_axis_skill:hover,
-#timeline_holder .y_axis .y_axis_skill[data-active="true"] {
+.timeline_holder .y_axis .y_axis_skill:hover,
+.timeline_holder .y_axis .y_axis_skill[data-active="true"] {
 	color: #000000;
 	cursor: default;
 }
 
-#timeline_holder .y_axis .y_axis_skill:hover:before,
-#timeline_holder .y_axis .y_axis_skill[data-active="true"]:before {
+.timeline_holder .y_axis .y_axis_skill:hover:before,
+.timeline_holder .y_axis .y_axis_skill[data-active="true"]:before {
 	opacity: 1;
 }
 
-#timeline_holder .y_axis .y_axis_skill:hover:after,
-#timeline_holder .y_axis .y_axis_skill[data-active="true"]:after {
+.timeline_holder .y_axis .y_axis_skill:hover:after,
+.timeline_holder .y_axis .y_axis_skill[data-active="true"]:after {
 	background: #75a29c;
 }
 
-#timeline_holder .y_axis .y_axis_skill:hover .y_axis_skill_delete,
-#timeline_holder .y_axis .y_axis_skill[data-active="true"] .y_axis_skill_delete {
+.timeline_holder .y_axis .y_axis_skill:hover .y_axis_skill_delete,
+.timeline_holder .y_axis .y_axis_skill[data-active="true"] .y_axis_skill_delete {
 	opacity: 1;
 }
 
 /*** Timeline Items ***/
 
-#timeline_holder .timeline_chart {
+.timeline_holder .timeline_chart {
 	display: block;
 	width: 100%;
 	padding: 20px 0 15px 0;
@@ -1477,51 +1477,51 @@ h2.title {
 	box-shadow: 0.5px 0.866px 1.34px 0.66px rgba(0, 0, 0, 0.1);
 }
 
-#timeline_holder .timeline_chart_places {
+.timeline_holder .timeline_chart_places {
 	margin: 0 0 15px 0;
 	padding: 0 0 20px 0;
 	border-bottom: 1px solid #f5f5f5;
 }
-#timeline_holder .timeline_chart_places .timeline_chart_row {
+.timeline_holder .timeline_chart_places .timeline_chart_row {
 	height: 30px;
 	margin-bottom: 10px;
 }
-#timeline_holder .timeline_chart_places .timeline_chart_row:last-child {
+.timeline_holder .timeline_chart_places .timeline_chart_row:last-child {
 	margin-bottom: 0;
 }
 
 
 
-#timeline_holder .timeline_chart_skills .timeline_chart_row {
+.timeline_holder .timeline_chart_skills .timeline_chart_row {
 	height: 30px;
 	padding: 5px 20px;
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .timeline_chart_skills .timeline_chart_row:hover {
+.timeline_holder .timeline_chart_skills .timeline_chart_row:hover {
 	background: #f5f5f5;
 }
 
-#timeline_holder .timeline_chart_row {
+.timeline_holder .timeline_chart_row {
 	display: block;
 	padding: 0 20px;
 	position: relative;
 }
 
-#timeline_holder .timeline_chart_item {
+.timeline_holder .timeline_chart_item {
 	display: block;
 	border-radius: 5px;
 	/*transition: all 0.15s ease-in-out;*/
 	font-weight: 400;
 }
 
-#timeline_holder .timeline_chart_item:hover {
+.timeline_holder .timeline_chart_item:hover {
 	cursor: pointer;
 }
 
-#timeline_holder .timeline_chart_item[data-type="education"],
-#timeline_holder .timeline_chart_item[data-type="work"],
-#timeline_holder .timeline_chart_item[data-type="project"] {
+.timeline_holder .timeline_chart_item[data-type="education"],
+.timeline_holder .timeline_chart_item[data-type="work"],
+.timeline_holder .timeline_chart_item[data-type="project"] {
 	display: block;
 	border-radius: 5px;
 	height: 30px;
@@ -1531,41 +1531,41 @@ h2.title {
 	text-align: center;
 }
 
-#timeline_holder .timeline_chart_item[data-type="education"] {
+.timeline_holder .timeline_chart_item[data-type="education"] {
 	background: #75a29c;
 }
-#timeline_holder .timeline_chart_item[data-type="education"]:hover {
+.timeline_holder .timeline_chart_item[data-type="education"]:hover {
 	background: #5e827d;
 }
 
-#timeline_holder .timeline_chart_item[data-type="work"] {
+.timeline_holder .timeline_chart_item[data-type="work"] {
 	background: #69aace;
 }
-#timeline_holder .timeline_chart_item[data-type="work"]:hover {
+.timeline_holder .timeline_chart_item[data-type="work"]:hover {
 	background: #5991af;
 }
 
-#timeline_holder .timeline_chart_item[data-type="project"] {
+.timeline_holder .timeline_chart_item[data-type="project"] {
 	background: #b18ea8;
 }
-#timeline_holder .timeline_chart_item[data-type="project"]:hover {
+.timeline_holder .timeline_chart_item[data-type="project"]:hover {
 	background: #97798f;
 }
 
-#timeline_holder .timeline_chart_item[data-type="skill"] {
+.timeline_holder .timeline_chart_item[data-type="skill"] {
 	height: 20px;
 	background: rgba(0, 0, 0, 0.5);
 	border: 1px solid #777777;
 }
 
-#timeline_holder .timeline_chart_item[data-type="skill"]:hover {
+.timeline_holder .timeline_chart_item[data-type="skill"]:hover {
 	background: #ffc248;
 	border-color: #ffc248;
 }
 
 /*** Checkboxes ***/
 
-#timeline_holder .place_checkboxes {
+.timeline_holder .place_checkboxes {
 	display: block;
 	position: absolute;
 	left: 0;
@@ -1574,27 +1574,27 @@ h2.title {
 	padding-right: 20px;
 }
 
-#timeline_holder .place_checkbox_holder {
+.timeline_holder .place_checkbox_holder {
 	display: block;
 	margin: 0 0 10px 0;
 }
 
-#timeline_holder .place_checkbox_holder:last-child {
+.timeline_holder .place_checkbox_holder:last-child {
 	margin-bottom: 0;
 }
 
-#timeline_holder .place_checkbox_holder input[type="checkbox"] {
+.timeline_holder .place_checkbox_holder input[type="checkbox"] {
 	display: none;
 }
 
-#timeline_holder .place_checkbox_holder label {
+.timeline_holder .place_checkbox_holder label {
 	display: inline-block;
 	position: relative;
 	font-weight: 400;
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .place_checkbox_holder label .checkbox_icon {
+.timeline_holder .place_checkbox_holder label .checkbox_icon {
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
@@ -1609,8 +1609,8 @@ h2.title {
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .place_checkbox_holder label .checkbox_icon:before,
-#timeline_holder .place_checkbox_holder label .checkbox_icon:after {
+.timeline_holder .place_checkbox_holder label .checkbox_icon:before,
+.timeline_holder .place_checkbox_holder label .checkbox_icon:after {
 	content: '';
 	display: block;
 	width: 14px;
@@ -1626,15 +1626,15 @@ h2.title {
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .place_checkbox_holder label .checkbox_icon:before {
+.timeline_holder .place_checkbox_holder label .checkbox_icon:before {
 	transform: rotate(-45deg);
 }
 
-#timeline_holder .place_checkbox_holder label .checkbox_icon:after {
+.timeline_holder .place_checkbox_holder label .checkbox_icon:after {
 	transform: rotate(45deg);
 }
 
-#timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:before {
+.timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:before {
 	bottom: auto;
 	left: auto;
 	top: 9px;
@@ -1643,7 +1643,7 @@ h2.title {
 	background: #ffffff;
 }
 
-#timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:after {
+.timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:after {
 	bottom: auto;
 	right: auto;
 	top: 11px;
@@ -1652,79 +1652,79 @@ h2.title {
 	background: #ffffff;
 }
 
-#timeline_holder .place_checkbox_holder label .checkbox_label {
+.timeline_holder .place_checkbox_holder label .checkbox_label {
 	display: inline-block;
 	vertical-align: middle;
 }
 
-#timeline_holder .place_checkbox_holder label:hover {
+.timeline_holder .place_checkbox_holder label:hover {
 	cursor: pointer;
 }
 
-#timeline_holder .place_checkbox_holder[data-toggle-type="education"] label:hover {
+.timeline_holder .place_checkbox_holder[data-toggle-type="education"] label:hover {
 	color: #5e827d;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="education"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="education"] label .checkbox_icon {
 	border-color: #75a29c;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="education"] label:hover .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="education"] label:hover .checkbox_icon {
 	border-color: #5e827d;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="education"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="education"][data-active="true"] label .checkbox_icon {
 	background: #75a29c;
 }
 
-#timeline_holder .place_checkbox_holder[data-toggle-type="work"] label:hover {
+.timeline_holder .place_checkbox_holder[data-toggle-type="work"] label:hover {
 	color: #5991af;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="work"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="work"] label .checkbox_icon {
 	border-color: #69aace;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="work"] label:hover .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="work"] label:hover .checkbox_icon {
 	border-color: #5991af;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="work"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="work"][data-active="true"] label .checkbox_icon {
 	background: #69aace;
 }
 
-#timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label:hover {
+.timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label:hover {
 	color: #97798f;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label .checkbox_icon {
 	border-color: #b18ea8;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label:hover .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label:hover .checkbox_icon {
 	border-color: #97798f;
 }
-#timeline_holder .place_checkbox_holder[data-toggle-type="projects"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="projects"][data-active="true"] label .checkbox_icon {
 	background: #b18ea8;
 }
 
-#timeline_holder .timeline_chart_item[data-type="education"] {
+.timeline_holder .timeline_chart_item[data-type="education"] {
 	background: #75a29c;
 }
-#timeline_holder .timeline_chart_item[data-type="education"]:hover {
+.timeline_holder .timeline_chart_item[data-type="education"]:hover {
 	background: #5e827d;
 }
 
-#timeline_holder .timeline_chart_item[data-type="work"] {
+.timeline_holder .timeline_chart_item[data-type="work"] {
 	background: #69aace;
 }
-#timeline_holder .timeline_chart_item[data-type="work"]:hover {
+.timeline_holder .timeline_chart_item[data-type="work"]:hover {
 	background: #5991af;
 }
 
 /*** Timeline Skills Buttons ***/
 
-#timeline_holder .timeline_skills {
+.timeline_holder .timeline_skills {
 	width: calc(100% - 100px);
 }
 
-#timeline_holder .timeline_skills .skill {
+.timeline_holder .timeline_skills .skill {
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .timeline_skills .skill:after {
+.timeline_holder .timeline_skills .skill:after {
 	content: '+';
 	display: block;
 	width: 16px;
@@ -1744,18 +1744,18 @@ h2.title {
 	/*transition: all 0.15s ease-in-out;*/
 }
 
-#timeline_holder .timeline_skills .skill:hover {
+.timeline_holder .timeline_skills .skill:hover {
 	cursor: pointer;
 	background: #75a29c;
 }
 
-#timeline_holder .timeline_skills .skill:hover:after {
+.timeline_holder .timeline_skills .skill:hover:after {
 	opacity: 1;
 }
 
 /*** Timeline Controls ***/
 
-#timeline_holder .timeline_controls {
+.timeline_holder .timeline_controls {
 	margin-left: auto;
 	width: 90px;
 }

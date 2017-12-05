@@ -3,17 +3,14 @@
 }
 
 #svg-holder {
-    margin: 10px;
-    height: 500px;
     border: 1px solid blue;
-    padding: 5px;
     position: relative;
 }
 
 #svg-holder svg {
     border: 1px solid red;
     width: 100%;
-    height: 90%;
+    height: 400px;
     pointer-events: all;
 }
 

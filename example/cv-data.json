@@ -23,10 +23,12 @@
             "description": "An introductory course in machine learning with Python taught by <a href=\"https://github.com/skanev\" target=\"_blank\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\" target=\"_blank\">Lachezar Bozhkov</a>.",
             "skills": [
                 {
-                    "name": "Machine Learning"
+                    "name": "Machine Learning",
+                    "strength": 0.9
                 },
                 {
-                    "name": "Data Wrangling"
+                    "name": "Data Wrangling",
+                    "strength": 0.9
                 },
                 {
                     "name": "Python",
@@ -491,7 +493,7 @@
                     "name": "Linux",
                     "from": "Feb 2008",
                     "to": "Dec 2017",
-                    "strength": 0.3,
+                    "strength": 0.2,
                     "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
                 },
                 {
