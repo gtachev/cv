@@ -268,9 +268,6 @@
                     "strength": 0.2,
                     "description": "The normal school computer science education"
                 }
-            ],
-            "properties": [
-                "list-visible"
             ]
         }
     ],
@@ -393,6 +390,9 @@
                     "name": "Finance",
                     "strength": 0.2
                 }
+            ],
+            "options": [
+                "minor"
             ]
         },
         {
@@ -448,6 +448,9 @@
                     "name": "HTML/CSS",
                     "strength": 0.8
                 }
+            ],
+            "options": [
+                "minor"
             ]
         },
         {
@@ -498,6 +501,9 @@
                     "strength": 0.4,
                     "description": "First attempts at learning Rust with some small toy projects."
                 }
+            ],
+            "options": [
+                "minor"
             ]
         }
     ],
@@ -523,6 +529,9 @@
                     "name": "Data Wrangling",
                     "strength": 0.5
                 }
+            ],
+            "options": [
+                "minor"
             ]
         },
         {
@@ -591,6 +600,9 @@
                 {
                     "name": "Teaching"
                 }
+            ],
+            "options": [
+                "minor"
             ]
         },
         {
@@ -802,6 +814,9 @@
                     "name": "HTML/CSS",
                     "strength": 0.5
                 }
+            ],
+            "options": [
+                "minor"
             ]
         }
     ]

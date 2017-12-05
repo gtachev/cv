@@ -30,7 +30,7 @@
 {{/inline}}
 
 {{#*inline "item"}}
-	<div class="timeline_item" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
+	<div class="timeline_item {{#each options}}{{this}}{{/each}}" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
 		<div class="content_box timeline_content_box">
 			<p class="timeline_date">
 				<span class="fromdate">{{from}}</span>
