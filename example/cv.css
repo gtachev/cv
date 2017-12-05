@@ -496,7 +496,7 @@ a:hover > .circle_icon.circle_icon_grey {
 }
 
 .page_anchor {
-	position:fixed;
+	position: fixed;
 }
 
 .page_anchor:target+.single_page_content {
@@ -531,25 +531,6 @@ a:hover > .circle_icon.circle_icon_grey {
 	HEADER
 ------------------------------------------------------------
 */
-
-
-/*
-
-#header_top {
-	background: #75a29c;
-	color: #ffffff;
-}
-
-#header_content {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	max-width: 940px;
-	padding: 10px 20px;
-	margin: 0 auto;
-}
-*/
-
 
 #header {
 	order:0;
@@ -1591,7 +1572,7 @@ h2.title {
 	display: inline-block;
 	position: relative;
 	font-weight: 400;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .place_checkbox_holder label .checkbox_icon {
@@ -1606,7 +1587,7 @@ h2.title {
 	background: transparent;
 	border: 2px solid #75a29c;
 	border-radius: 5px;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .place_checkbox_holder label .checkbox_icon:before,
@@ -1623,7 +1604,7 @@ h2.title {
 	margin: auto;
 	background: #bbbbbb;
 	border-radius: 10px;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .place_checkbox_holder label .checkbox_icon:before {
@@ -1634,7 +1615,7 @@ h2.title {
 	transform: rotate(45deg);
 }
 
-.timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:before {
+.timeline_holder .place_checkbox_holder input[type="checkbox"]:checked + label .checkbox_icon:before {
 	bottom: auto;
 	left: auto;
 	top: 9px;
@@ -1643,7 +1624,7 @@ h2.title {
 	background: #ffffff;
 }
 
-.timeline_holder .place_checkbox_holder[data-active="true"] label .checkbox_icon:after {
+.timeline_holder .place_checkbox_holder input[type="checkbox"]:checked + label .checkbox_icon:after {
 	bottom: auto;
 	right: auto;
 	top: 11px;
@@ -1670,7 +1651,7 @@ h2.title {
 .timeline_holder .place_checkbox_holder[data-toggle-type="education"] label:hover .checkbox_icon {
 	border-color: #5e827d;
 }
-.timeline_holder .place_checkbox_holder[data-toggle-type="education"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="education"] input[type="checkbox"]:checked + label .checkbox_icon {
 	background: #75a29c;
 }
 
@@ -1683,7 +1664,7 @@ h2.title {
 .timeline_holder .place_checkbox_holder[data-toggle-type="work"] label:hover .checkbox_icon {
 	border-color: #5991af;
 }
-.timeline_holder .place_checkbox_holder[data-toggle-type="work"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="work"] input[type="checkbox"]:checked + label .checkbox_icon {
 	background: #69aace;
 }
 
@@ -1696,7 +1677,7 @@ h2.title {
 .timeline_holder .place_checkbox_holder[data-toggle-type="projects"] label:hover .checkbox_icon {
 	border-color: #97798f;
 }
-.timeline_holder .place_checkbox_holder[data-toggle-type="projects"][data-active="true"] label .checkbox_icon {
+.timeline_holder .place_checkbox_holder[data-toggle-type="projects"] input[type="checkbox"]:checked + label .checkbox_icon {
 	background: #b18ea8;
 }
 
@@ -1721,7 +1702,7 @@ h2.title {
 }
 
 .timeline_holder .timeline_skills .skill {
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .timeline_skills .skill:after {
@@ -1741,7 +1722,7 @@ h2.title {
 	font-size: 15px;
 	text-align: center;
 	opacity: 0;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .timeline_skills .skill:hover {
@@ -1769,6 +1750,14 @@ h2.title {
 
 
 @media screen and (max-width: 940px) {
+	.page_anchor {
+		position: absolute;
+	}
+
+	.single_page_content.full_width {
+		padding: 20px 5px;
+	}
+
 	.content_box {
 		padding: 30px;
 	}
@@ -2284,6 +2273,81 @@ h2.title {
 		vertical-align: middle;
 	}
 }
+
+/*
+------------------------------------------------------------
+	PRINTING
+------------------------------------------------------------
+*/
+
+/*
+* {
+    -webkit-print-color-adjust: exact !important;
+}
+
+@page {
+  margin: 1cm;
+  size: A4 portrait;
+}
+
+
+@media print {
+  body {
+    overflow: visible !important;
+  }
+}
+*/
+
+/*
+------------------------------------------------------------
+	OLD CSS FROM TIMELINE EXPERIMENTS; TODO: REMOVE!
+------------------------------------------------------------
+*/
+
+#svg-holder svg {
+    border: 1px solid red;
+    width: 100%;
+    height: 400px;
+    pointer-events: all;
+}
+
+#svg-holder svg rect {
+    stroke-width: 0.5;
+    stroke-opacity: 0.5;
+}
+
+#svg-holder svg g.place:hover rect,
+#svg-holder svg rect:hover {
+    stroke-width: 1;
+    stroke-opacity: 0.8;
+    cursor: pointer;
+}
+
+#svg-holder svg g.place.education rect {
+    fill: rgb(142, 185, 72);
+    stroke: rgb(48, 83, 48);
+}
+
+#svg-holder svg g.place.work rect {
+    fill: rgb(105, 170, 206);
+    stroke: rgb(18, 40, 51);
+}
+
+#svg-holder svg g.place.projects rect {
+    fill: rgb(142, 166, 177);
+    stroke: rgb(28, 34, 37);
+}
+
+#svg-holder svg #skills rect {
+    fill: rgb(255, 206, 108);
+    stroke: rgb(187, 128, 10);
+}
+
+#svg-holder svg text.place-label {
+    font-family: sans-serif;
+}
+
+
 
 
 /*

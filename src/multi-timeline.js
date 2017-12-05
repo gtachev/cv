@@ -107,7 +107,8 @@ export class MutiTimeline {
         var checkboxEnter = this.placeCheckboxes
             .enter()
             .append("div")
-            .attr("class", "place_checkbox_holder");
+            .attr("class", "place_checkbox_holder")
+            .attr("data-toggle-type", d => d.id);
         checkboxEnter
             .append("input")
             .attr("type", "checkbox")
@@ -118,10 +119,11 @@ export class MutiTimeline {
                 this.chartUpdatePlaces();
                 this.redraw(); //TODO: use something like this.updatePlacesX();
             });
-        checkboxEnter
-            .append("label")
-            .attr("for", d => "place_" + d.id)
+        var label = checkboxEnter.append("label").attr("for", d => "place_" + d.id);
+        label.append("span").attr("class", "checkbox_icon");
+        label
             .append("span")
+            .attr("class", "checkbox_label")
             .text(d => d.name);
     }
 
