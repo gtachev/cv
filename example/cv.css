@@ -2400,15 +2400,16 @@ h2.title {
 		text-align: center;
 	}
 
-	.timeline_holder {
-		display: none;
-	}
 
 	#svg-holder {
 		page-break-inside: avoid;
 	}
 }
 
+
+.timeline_holder {
+	display: none;
+}
 
 /*
 ------------------------------------------------------------
