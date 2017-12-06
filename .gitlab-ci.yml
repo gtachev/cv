@@ -20,6 +20,7 @@ pages:
   stage: deploy
   script:
   - mv build public
+  - mv "public/cv-bundled-minified.html" "public/index.html"
   - 'echo -e "User-agent: *\nDisallow: /" > public/robots.txt'
   - mkdir -p "public/.well-known/acme-challenge"
   - 'echo "_nj19rpqUggx7XlSe7VK9eTtt9EoZ53ePF0D24N55V4.NqbHTRITdHJab9224gXLM8RsCLX48NOe3mMr8Hr7qu8" > "public/.well-known/acme-challenge/_nj19rpqUggx7XlSe7VK9eTtt9EoZ53ePF0D24N55V4"'
