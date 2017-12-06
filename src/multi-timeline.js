@@ -38,7 +38,7 @@ export class MutiTimeline {
         this.dims = {
             margin: { top: 35, right: 20, bottom: 25, left: 150 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
-            skill: { rowHeight: 20, rectHeightRatio: 0.9, radius: 2 },
+            skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
 
         this.options = {
@@ -64,8 +64,9 @@ export class MutiTimeline {
 
         this.placeTypes.forEach(pt => {
             this.placeTypesMap.set(pt.id, pt);
-            pt.items.forEach(p => {
+            pt.items.forEach((p, i) => {
                 p.type = pt.id;
+                p.typeNum = i;
                 this.places.push(p);
                 this.placesMap.set(p.id, p);
                 p.skills.forEach(s => {
@@ -80,13 +81,9 @@ export class MutiTimeline {
         });
         this.skillNames = Object.getOwnPropertyNames(this.skillStrengths);
 
-        this.places.sort((a, b) => a.from - b.from);
-        this.skills.sort((a, b) => {
-            return b.to - b.from - (a.to - a.from);
-        });
-        this.skillNames.sort((a, b) => {
-            return this.skillStrengths[b] - this.skillStrengths[a];
-        });
+        this.places.sort((a, b) => a.from - b.from || a.typeNum - b.typeNum);
+        this.skills.sort((a, b) => b.to - b.from - (a.to - a.from));
+        this.skillNames.sort((a, b) => this.skillStrengths[b] - this.skillStrengths[a]);
 
         if (!this.skillsToShow) {
             this.skillsToShow = this.skillNames.slice(0, this.options.defaultNumberOfSkillLines);
@@ -114,7 +111,7 @@ export class MutiTimeline {
             .on("change", d => {
                 d.enabled = d3CurrentEvent.target.checked;
                 this.chartUpdatePlaces();
-                this.redraw(); //TODO: use something like this.updatePlacesX();
+                this.xResize();
             });
         var label = checkboxEnter.append("label").attr("for", d => "place_" + d.id);
         label.append("span").attr("class", "checkbox_icon");
@@ -150,7 +147,7 @@ export class MutiTimeline {
                 //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
-                this.redraw(); //TODO: don't use this
+                this.xResize(); //TODO: don't use this
             });
         chartExtraSkills.exit().remove();
     }
@@ -219,7 +216,7 @@ export class MutiTimeline {
                 //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
-                this.redraw(); //TODO: don't use this
+                this.xResize(); //TODO: don't use this
             });
         };
 
@@ -239,14 +236,15 @@ export class MutiTimeline {
             .attr("fill-opacity", d => this.options.skillMaxOpacity * d.strength)
             .attr("rx", this.dims.skill.radius)
             .attr("width", 0)
-            .attr("height", this.dims.skill.rectHeightRatio * bandwidth);
+            .attr("height", this.dims.skill.rectHeight);
+
+        chartSkillsEnter.append("title").text(d => d.description);
 
         chartSkillsEnter
             .merge(chartSkills)
             .attr(
                 "y",
-                d =>
-                    this.ySkillScale(d.name) + (1 - this.dims.skill.rectHeightRatio) / 2 * bandwidth
+                d => this.ySkillScale(d.name) + (bandwidth - this.dims.skill.rectHeight) / 2
             );
         chartSkills.exit().remove(); //TODO: fade transition
     }
@@ -317,16 +315,16 @@ export class MutiTimeline {
                 //console.log(d3CurrentEvent);
                 this.xScale = d3CurrentEvent.transform.rescaleX(this.xScaleAll);
                 this.xAxis.scale(this.xScale);
-                //TODO: do not redraw everything when not zooming, just pan
-                this.redrawDelayed();
+                //TODO: do not resize everything when not zooming, just pan
+                this.xResizeDelayed();
             });
-        this.svg.call(this.zoom);
+        this.chartBackground.call(this.zoom);
 
-        this.redraw();
+        this.xResize();
     }
 
-    redraw() {
-        //console.log("redraw");
+    xResize() {
+        //console.log("xResize");
         this.width = this.svg.node().getBoundingClientRect().width;
 
         var width = this.width - this.dims.margin.left - this.dims.margin.right;
@@ -389,12 +387,12 @@ export class MutiTimeline {
             });
     }
 
-    redrawDelayed() {
+    xResizeDelayed() {
         if (!this.requested) {
             this.requested = true;
             d3Timeout(() => {
                 this.requested = false;
-                this.redraw();
+                this.xResize();
             });
         }
     }

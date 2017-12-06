@@ -2347,7 +2347,6 @@ h2.title {
 	.single_page_content[data-page-name="timeline"] {
 		order:4;
 		max-width: 98%;
-		display:none; /* TODO: remove */
 	}
 
 	.content_box {
@@ -2563,8 +2562,8 @@ h2.title {
 /*** Timeline Skills Buttons ***/
 
 #svg-holder .timeline_skills {
-	padding-left:200px;
-	width: calc(100% - 100px);
+	padding-left:150px;
+	/*width: calc(100% - 100px);*/
 }
 
 #svg-holder .timeline_skills .skill {
@@ -2606,7 +2605,7 @@ h2.title {
 #svg-holder svg {
 	width: 100%;
 	min-width: 540px;
-    min-height: 400px;
+    min-height: 500px;
     pointer-events: all;
 }
 

@@ -592,10 +592,11 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]>div.timeline_item') },
 			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') }
 		];
+		var defaultSkills = ['Go', 'Linux', 'DevOps', 'Security','Management', 'Data Wrangling', 'Docker', 'Rust', 'Bash', 'JavaScript', 'PHP', 'Machine Learning', 'Hiring', 'Teaching'];
 
-		var chart = new cv.MutiTimeline(holder, places);
+		var chart = new cv.MutiTimeline(holder, places, defaultSkills);
 		['resize', 'hashchange', 'load'].forEach(function (e) {
-			window.addEventListener(e, chart.redrawDelayed.bind(chart));
+			window.addEventListener(e, chart.xResizeDelayed.bind(chart));
 		});
 
 		/*
