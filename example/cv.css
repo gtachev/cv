@@ -1084,6 +1084,7 @@ h2.title {
 
 .timeline_item .content_box {
 	padding: 20px;
+	padding-bottom: 5px;
 	position: relative;
 	transition: all 0.50s ease-in-out; /* for highlighting animation */
 }
@@ -1265,7 +1266,7 @@ h2.title {
 
 /*
 ------------------------------------------------------------
-	TIMELINE CHART
+	HTML TIMELINE CHART; TODO: delete or incorporate
 ------------------------------------------------------------
 */
 
@@ -1323,7 +1324,7 @@ h2.title {
 	margin-left: -6px;
 	border: 2px solid #ffffff;
 	border-radius: 50%;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 	z-index: 2;
 }
 
@@ -1341,7 +1342,7 @@ h2.title {
 	width: 170px;
 	position: absolute;
 	left: 0;
-	top: 201px;
+	top: 200px;
 }
 
 .timeline_holder .y_axis .y_axis_skill {
@@ -1350,7 +1351,7 @@ h2.title {
 	text-align: right;
 	font-weight: 400;
 	padding: 3px 20px 3px 30px;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .y_axis .y_axis_skill .y_axis_skill_text {
@@ -1371,7 +1372,7 @@ h2.title {
 	margin: auto;
 	border-radius: 5px;
 	z-index: 3;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 	opacity: 0;
 }
 
@@ -1412,7 +1413,7 @@ h2.title {
 	right: 0;
 	width: 100%;
 	height: 100%;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 	background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
 	background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%);
 	background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%);
@@ -1433,7 +1434,7 @@ h2.title {
 	margin-top: -5px;
 	border: 2px solid #ffffff;
 	border-radius: 50%;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 	z-index: 2;
 }
 
@@ -1488,7 +1489,7 @@ h2.title {
 .timeline_holder .timeline_chart_skills .timeline_chart_row {
 	height: 30px;
 	padding: 5px 20px;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 }
 
 .timeline_holder .timeline_chart_skills .timeline_chart_row:hover {
@@ -1504,7 +1505,7 @@ h2.title {
 .timeline_holder .timeline_chart_item {
 	display: block;
 	border-radius: 5px;
-	/*transition: all 0.15s ease-in-out;*/
+	transition: all 0.15s ease-in-out;
 	font-weight: 400;
 }
 
@@ -2397,15 +2398,224 @@ h2.title {
 
 /*
 ------------------------------------------------------------
-	OLD CSS FROM TIMELINE EXPERIMENTS; TODO: REMOVE!
+	NEW STYLES FOR THE SVG TIMELINE
 ------------------------------------------------------------
 */
 
+#svg-holder {
+	position: relative;
+	width: 100%;
+	padding: 20px 0 0 0;
+}
+
+/*** Checkboxes ***/
+
+#svg-holder .place_checkboxes {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 35px;
+	width: 200px;
+	padding-right: 20px;
+}
+
+#svg-holder .place_checkbox_holder {
+	display: block;
+	margin: 0 0 10px 0;
+}
+
+#svg-holder .place_checkbox_holder:last-child {
+	margin-bottom: 0;
+}
+
+#svg-holder .place_checkbox_holder input[type="checkbox"] {
+	display: none;
+}
+
+#svg-holder .place_checkbox_holder label {
+	display: inline-block;
+	position: relative;
+	font-weight: 400;
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .place_checkbox_holder label .checkbox_icon {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	margin: 0 10px 0 0;
+	padding: 0;
+	background: #75a29c;
+	background: transparent;
+	border: 2px solid #75a29c;
+	border-radius: 5px;
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .place_checkbox_holder label .checkbox_icon:before,
+#svg-holder .place_checkbox_holder label .checkbox_icon:after {
+	content: '';
+	display: block;
+	width: 14px;
+	height: 2px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: #bbbbbb;
+	border-radius: 10px;
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .place_checkbox_holder label .checkbox_icon:before {
+	transform: rotate(-45deg);
+}
+
+#svg-holder .place_checkbox_holder label .checkbox_icon:after {
+	transform: rotate(45deg);
+}
+
+#svg-holder .place_checkbox_holder input[type="checkbox"]:checked + label .checkbox_icon:before {
+	bottom: auto;
+	left: auto;
+	top: 9px;
+	right: 2px;
+	width: 12px;
+	background: #ffffff;
+}
+
+#svg-holder .place_checkbox_holder input[type="checkbox"]:checked + label .checkbox_icon:after {
+	bottom: auto;
+	right: auto;
+	top: 11px;
+	left: 3px;
+	width: 7px;
+	background: #ffffff;
+}
+
+#svg-holder .place_checkbox_holder label .checkbox_label {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#svg-holder .place_checkbox_holder label:hover {
+	cursor: pointer;
+}
+
+#svg-holder .place_checkbox_holder[data-toggle-type="education"] label:hover {
+	color: #5e827d;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="education"] label .checkbox_icon {
+	border-color: #75a29c;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="education"] label:hover .checkbox_icon {
+	border-color: #5e827d;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="education"] input[type="checkbox"]:checked + label .checkbox_icon {
+	background: #75a29c;
+}
+
+#svg-holder .place_checkbox_holder[data-toggle-type="work"] label:hover {
+	color: #5991af;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="work"] label .checkbox_icon {
+	border-color: #69aace;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="work"] label:hover .checkbox_icon {
+	border-color: #5991af;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="work"] input[type="checkbox"]:checked + label .checkbox_icon {
+	background: #69aace;
+}
+
+#svg-holder .place_checkbox_holder[data-toggle-type="projects"] label:hover {
+	color: #97798f;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="projects"] label .checkbox_icon {
+	border-color: #b18ea8;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="projects"] label:hover .checkbox_icon {
+	border-color: #97798f;
+}
+#svg-holder .place_checkbox_holder[data-toggle-type="projects"] input[type="checkbox"]:checked + label .checkbox_icon {
+	background: #b18ea8;
+}
+
+#svg-holder .timeline_chart_item[data-type="education"] {
+	background: #75a29c;
+}
+#svg-holder .timeline_chart_item[data-type="education"]:hover {
+	background: #5e827d;
+}
+
+#svg-holder .timeline_chart_item[data-type="work"] {
+	background: #69aace;
+}
+#svg-holder .timeline_chart_item[data-type="work"]:hover {
+	background: #5991af;
+}
+
+
+/*** Timeline Skills Buttons ***/
+
+#svg-holder .timeline_skills {
+	padding-left:200px;
+	width: calc(100% - 100px);
+}
+
+#svg-holder .timeline_skills .skill {
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .timeline_skills .skill:after {
+	content: '+';
+	display: block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	border: 1px solid #ffffff;
+	border-radius: 50%;
+	background: #75a29c;
+	color: #ffffff;
+	line-height: 13px;
+	font-weight: 400;
+	font-size: 15px;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .timeline_skills .skill:hover {
+	cursor: pointer;
+	background: #75a29c;
+}
+
+#svg-holder .timeline_skills .skill:hover:after {
+	opacity: 1;
+}
+
+
+
+
 #svg-holder svg {
-    border: 1px solid red;
-    width: 100%;
-    height: 400px;
+	width: 100%;
+	min-width: 540px;
+    min-height: 400px;
     pointer-events: all;
+}
+
+#svg-holder svg #timeline path {
+	display: none;
+}
+
+#svg-holder svg .rect_background {
+	fill: #ffffff;
 }
 
 #svg-holder svg rect {
@@ -2413,38 +2623,57 @@ h2.title {
     stroke-opacity: 0.5;
 }
 
-#svg-holder svg g.place:hover rect,
-#svg-holder svg rect:hover {
-    stroke-width: 1;
-    stroke-opacity: 0.8;
+#svg-holder svg g.place {
+	transition: all 0.15s ease-in-out;
+	font-weight: 400;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+}
+
+#svg-holder svg g.place text {
+	fill: #ffffff;
+}
+
+#svg-holder svg g.place:hover rect {
     cursor: pointer;
 }
 
 #svg-holder svg g.place.education rect {
-    fill: rgb(142, 185, 72);
-    stroke: rgb(48, 83, 48);
+    fill: #75a29c;
+}
+#svg-holder svg g.place.education rect:hover {
+    fill: #5e827d;
 }
 
 #svg-holder svg g.place.work rect {
-    fill: rgb(105, 170, 206);
-    stroke: rgb(18, 40, 51);
+    fill: #69aace;
+}
+#svg-holder svg g.place.work rect:hover {
+    fill: #5991af;
 }
 
 #svg-holder svg g.place.projects rect {
-    fill: rgb(142, 166, 177);
-    stroke: rgb(28, 34, 37);
+    fill: #b18ea8;
+}
+#svg-holder svg g.place.projects rect:hover {
+    fill: #97798f;
 }
 
 #svg-holder svg #skills rect {
-    fill: rgb(255, 206, 108);
-    stroke: rgb(187, 128, 10);
+    fill: rgb(20,20,20);
+	height: 20px;
+	stroke: 1px solid #777777;
+}
+
+#svg-holder svg #skills rect:hover {
+    fill: #ffc248;
+	stroke: 1px solid #ffc248;
 }
 
 #svg-holder svg text.place-label {
     font-family: sans-serif;
 }
-
-
 
 
 /*

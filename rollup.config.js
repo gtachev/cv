@@ -73,6 +73,7 @@ function parseAndBundleExample() {
             minifyCSS: true,
             collapseWhitespace: true,
             conservativeCollapse: true,
+            removeComments: true
         })
     );
 }

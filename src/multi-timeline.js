@@ -5,7 +5,6 @@ import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
 import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
-import { transition as d3Transition } from "d3-transition";
 import "d3-selection-multi";
 
 function multiFormat(date) {
@@ -37,9 +36,9 @@ export class MutiTimeline {
         this.skillsToShow = initialSkills;
 
         this.dims = {
-            margin: { top: 35, right: 20, bottom: 25, left: 85 },
-            place: { height: 20, gap: 3, textMaxSize: 15, textAdjMinSize: 10, radius: 5 },
-            skill: { rowHeight: 15, rectHeightRatio: 0.8, radius: 2 },
+            margin: { top: 35, right: 20, bottom: 25, left: 150 },
+            place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
+            skill: { rowHeight: 20, rectHeightRatio: 0.9, radius: 2 },
         };
 
         this.options = {
@@ -93,8 +92,6 @@ export class MutiTimeline {
             this.skillsToShow = this.skillNames.slice(0, this.options.defaultNumberOfSkillLines);
         }
         this.skillsToShowSet = new Set(this.skillsToShow);
-
-        console.log(this);
     }
 
     chartAddPlaceTypeCheckboxes() {
@@ -217,7 +214,6 @@ export class MutiTimeline {
             g.call(this.ySkillAxis);
             g.select(".domain").remove();
             g.selectAll(".tick text").on("click", s => {
-                console.log(s);
                 this.skillsToShow = this.skillsToShow.filter(d => d != s);
                 this.skillsToShowSet.delete(s);
                 //TODO: animate/fade out
@@ -274,6 +270,14 @@ export class MutiTimeline {
         this.xScale = this.xScaleAll;
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
+
+        this.chartBackground = this.svg
+            .append("rect")
+            .attr("class", "rect_background")
+            .attr("width", 0)
+            .attr("height", 600)
+            .attr("rx", this.dims.place.radius)
+            .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top));
 
         this.xAxisSvg = this.svg
             .append("g")
@@ -341,6 +345,8 @@ export class MutiTimeline {
         var widthPerTick = width / this.xScale.ticks().length;
         // Sigmoidal between 1 (no space) and 0 (a lot of space)
         var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 30) / 5)), 3);
+
+        this.chartBackground.attr("width", width);
 
         this.xAxisSvg
             .call(this.xAxis)

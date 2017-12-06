@@ -1,6 +1,10 @@
 <!doctype html>
+<!--!
+Copyright 2017 Nedyalko Andreev, licensed under the BSD 3-clause license.
+Using the D3.js library by Mike Bostock, also BSD 3-clause licensed.
+If this is the bundled and minified version of the CV, you can find the full source code and license text in my GitLab/GitHub profile.
+-->
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -251,7 +255,7 @@
 				</div>
 				<!-- .timeline_holder -->
 
-				<div id="svg-holder" class="timeline_holder"></div>
+				<div id="svg-holder"></div>
 
 			</div>
 			<!-- #2 - Timeline -->
@@ -586,11 +590,10 @@
 		var places = [
 			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"]>div.timeline_item') },
 			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]>div.timeline_item') },
-			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') },
+			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') }
 		];
-		console.log(places);
+
 		var chart = new cv.MutiTimeline(holder, places);
-		console.log(chart);
 		['resize', 'hashchange', 'load'].forEach(function (e) {
 			window.addEventListener(e, chart.redrawDelayed.bind(chart));
 		});
@@ -614,19 +617,17 @@
 		 window.matchMedia('print').addListener(function(mql) {
 			//TODO: use this for any fixes, for warning about firefox print issues, etc.
 			if (mql.matches) {
-				console.log('before print');
+				//console.log('before print');
 				window.location.hash = "";
 			} else {
-				console.log('after print');
+				//console.log('after print');
 			}
 		});
 
 		document.querySelectorAll('a.place_link, a.project_link').forEach(function (el) {
 			el.addEventListener('click', function (e) {
 				setTimeout(function () {
-					console.log(el.getAttribute('data-item-id'));
-					let sel = document.getElementById(el.getAttribute('data-item-id'));
-					console.log(sel);
+					var sel = document.getElementById(el.getAttribute('data-item-id'));
 					sel.scrollIntoView({behavior:'smooth', /*block: 'center',*/ inline: 'nearest'});
 					sel.classList.add('highlighted');
 					setTimeout(function () {
@@ -635,21 +636,6 @@
 				}, 150);
 			});
 		});
-
-/*
-		TODO: recreate old jquery transitions with CSS or vanilla JS:
-
-		if ((link_target == '#home') || (link_target == '#homepage')) {
-			jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'homepage');
-			jQuery('.single_page_content:not([data-page-name="homepage"])').hide();
-			jQuery('.single_page_content[data-page-name="homepage"]').hide();
-			jQuery('.single_page_content[data-page-name="homepage"]').fadeIn(300);
-		} else {
-			jQuery('.single_page_content[data-page-name="homepage"]').attr('id', 'header');
-			jQuery('.single_page_content:not([data-page-name="homepage"]):not(' + link_target + ')').slideUp(300).animate({ opacity: 0 }, { queue: false, duration: 300 });
-			jQuery('.single_page_content' + link_target + '').slideDown(300).animate({ opacity: 1 }, { queue: false, duration: 300 });
-		};
-*/
 	</script>
 </body>
 </html>
