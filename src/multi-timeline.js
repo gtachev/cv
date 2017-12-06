@@ -5,6 +5,7 @@ import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
 import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
+import "d3-transition";
 import "d3-selection-multi";
 
 function multiFormat(date) {
@@ -36,7 +37,9 @@ export class MutiTimeline {
         this.skillsToShow = initialSkills;
 
         this.dims = {
-            margin: { top: 35, right: 20, bottom: 25, left: 150 },
+            minWidth: 350,
+            minHeight: 200,
+            margin: { top: 35, right: 20, bottom: 25, left: 150, between: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
@@ -111,7 +114,8 @@ export class MutiTimeline {
             .on("change", d => {
                 d.enabled = d3CurrentEvent.target.checked;
                 this.chartUpdatePlaces();
-                this.xResize();
+                this.yResize();
+                this.xResize(); //TODO: remove
             });
         var label = checkboxEnter.append("label").attr("for", d => "place_" + d.id);
         label.append("span").attr("class", "checkbox_icon");
@@ -147,6 +151,7 @@ export class MutiTimeline {
                 //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
+                this.yResize();
                 this.xResize(); //TODO: don't use this
             });
         chartExtraSkills.exit().remove();
@@ -164,6 +169,7 @@ export class MutiTimeline {
             lastAtPos[pos] = p.to;
             p.pos = pos;
         });
+        this.dims.placesHeight = lastAtPos.length * (this.dims.place.height + this.dims.place.gap);
 
         var chartPlaces = this.placesHolderSvg.selectAll("g.place").data(visiblePlaces, d => d.id);
         chartPlaces.exit().remove(); //TODO: fade transition
@@ -203,9 +209,8 @@ export class MutiTimeline {
     chartUpdateSkills() {
         var shownSkills = this.skills.filter(s => this.skillsToShowSet.has(s.name));
 
-        this.ySkillScale
-            .domain(this.skillsToShow)
-            .range([0, this.skillsToShow.length * this.dims.skill.rowHeight]);
+        this.dims.skillsHeight = this.skillsToShow.length * this.dims.skill.rowHeight;
+        this.ySkillScale.domain(this.skillsToShow).range([0, this.dims.skillsHeight]);
 
         var customAxis = g => {
             g.call(this.ySkillAxis);
@@ -216,6 +221,7 @@ export class MutiTimeline {
                 //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
+                this.yResize();
                 this.xResize(); //TODO: don't use this
             });
         };
@@ -251,12 +257,20 @@ export class MutiTimeline {
 
     initChart() {
         this.svg = d3Select(this.holder).append("svg");
+        this.dims.width = Math.max(
+            this.dims.minWidth,
+            this.svg.node().getBoundingClientRect().width
+        );
+
         this.clipPath = this.svg
             .append("defs")
             .append("clipPath")
             .attr("id", "clip")
             .append("rect");
-        this.clipPath.attr("width", 400).attr("height", 1400); //TODO: move?
+        this.clipPath.attr(
+            "width",
+            this.dims.width - this.dims.margin.left - this.dims.margin.right
+        ); //TODO: move?
 
         this.extraSkillsDiv = d3Select(this.holder)
             .append("div")
@@ -269,11 +283,13 @@ export class MutiTimeline {
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
 
+        //TODO: create a g with margin top and left preset for all elements
+
         this.chartBackground = this.svg
             .append("rect")
             .attr("class", "rect_background")
             .attr("width", 0)
-            .attr("height", 600)
+            .attr("height", 0)
             .attr("rx", this.dims.place.radius)
             .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top));
 
@@ -288,23 +304,20 @@ export class MutiTimeline {
             .style("clip-path", "url(#clip)")
             .attr("transform", new svgT(this.dims.margin.left, 40));
 
-        this.chartUpdatePlaces();
-
         this.ySkillScale = d3ScaleBand();
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
         //.tickFormat(d => d.replace("/", '\n'));
 
-        this.skillnameHolder = this.svg
-            .append("g")
-            .attr("id", "skillnames")
-            .attr("transform", svgT(this.dims.margin.left - 20, 150));
+        this.skillnameHolder = this.svg.append("g").attr("id", "skillnames");
+
 
         this.skillsHolderSvg = this.svg
             .append("g")
             .attr("id", "skills")
-            .style("clip-path", "url(#clip)")
-            .attr("transform", svgT(this.dims.margin.left, 150));
+            .style("clip-path", "url(#clip)");
 
+
+        this.chartUpdatePlaces();
         this.chartUpdateSkills();
 
         this.zoom = d3Zoom()
@@ -320,14 +333,32 @@ export class MutiTimeline {
             });
         this.chartBackground.call(this.zoom);
 
+        this.yResize();
         this.xResize();
     }
 
-    xResize() {
-        //console.log("xResize");
-        this.width = this.svg.node().getBoundingClientRect().width;
+    yResize() {
+        var toSkillsHeight =
+            this.dims.margin.top + this.dims.placesHeight + this.dims.margin.between;
 
-        var width = this.width - this.dims.margin.left - this.dims.margin.right;
+        var totalHeight = toSkillsHeight + this.dims.skillsHeight + this.dims.margin.bottom;
+
+        this.svg.attr("height", totalHeight);
+        this.chartBackground.attr("height", totalHeight);
+        this.clipPath.attr("height", totalHeight);
+
+        this.skillnameHolder.attr("transform", svgT(this.dims.margin.left - 20, toSkillsHeight));
+
+        this.skillsHolderSvg.attr("transform", svgT(this.dims.margin.left, toSkillsHeight));
+    }
+
+    xResize() {
+        this.dims.width = Math.max(
+            this.dims.minWidth,
+            this.svg.node().getBoundingClientRect().width
+        );
+
+        var width = this.dims.width - this.dims.margin.left - this.dims.margin.right;
         // var height = svg.node().getBoundingClientRect().height - this.dims.margin.top - this.dims.margin.bottom;
 
         this.clipPath.attr("width", Math.max(0, width));

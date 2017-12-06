@@ -515,7 +515,7 @@ a:hover > .circle_icon.circle_icon_grey {
 
 .single_page_content.full_width {
 	max-width: 100%;
-	padding: 80px 30px;
+	padding: 40px 10px;
 }
 
 .content_box {
@@ -1279,6 +1279,7 @@ h2.title {
 	position: relative;
 	width: 100%;
 	padding: 35px 0 0 170px;
+	margin-top: 100px;
 }
 
 /*** X Axis ***/
@@ -1768,7 +1769,7 @@ h2.title {
 	}
 
 	.single_page_content.full_width {
-		padding: 20px 5px;
+		padding: 40px 5px;
 	}
 
 	.content_box {
@@ -2311,6 +2312,7 @@ h2.title {
 		overflow: visible !important;
 		background-image: none;
 		background-color: #f0f0f0;
+		width: 1250px;
 	}
 
 	.single_page_content {
@@ -2347,6 +2349,11 @@ h2.title {
 	.single_page_content[data-page-name="timeline"] {
 		order:4;
 		max-width: 98%;
+	}
+
+	.single_page_content.full_width {
+		max-width: 100%;
+		padding: 50px 10px;
 	}
 
 	.content_box {
@@ -2392,6 +2399,14 @@ h2.title {
 	.disclaimer {
 		text-align: center;
 	}
+
+	.timeline_holder {
+		display: none;
+	}
+
+	#svg-holder {
+		page-break-inside: avoid;
+	}
 }
 
 
@@ -2404,7 +2419,7 @@ h2.title {
 #svg-holder {
 	position: relative;
 	width: 100%;
-	padding: 20px 0 0 0;
+	padding: 5px 0 0 0;
 }
 
 /*** Checkboxes ***/
@@ -2604,8 +2619,7 @@ h2.title {
 
 #svg-holder svg {
 	width: 100%;
-	min-width: 540px;
-    min-height: 500px;
+	min-width: 350px;
     pointer-events: all;
 }
 

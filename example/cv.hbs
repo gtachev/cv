@@ -97,6 +97,10 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			<span class="page_anchor" id="timeline"></span>
 			<div class="single_page_content full_width" data-page-id="2" data-page-name="timeline">
 
+				<h1>Timeline</h1>
+
+				<div id="svg-holder"></div>
+
 				<div class="timeline_holder">
 
 					<div class="place_checkboxes">
@@ -254,8 +258,6 @@ If this is the bundled and minified version of the CV, you can find the full sou
 
 				</div>
 				<!-- .timeline_holder -->
-
-				<div id="svg-holder"></div>
 
 			</div>
 			<!-- #2 - Timeline -->
@@ -616,12 +618,13 @@ If this is the bundled and minified version of the CV, you can find the full sou
 		*/
 
 		 window.matchMedia('print').addListener(function(mql) {
-			//TODO: use this for any fixes, for warning about firefox print issues, etc.
+			//TODO: warn about firefox print issues?
 			if (mql.matches) {
-				//console.log('before print');
+				// Before print
 				window.location.hash = "";
+				chart.xResize();
 			} else {
-				//console.log('after print');
+				// After print?
 			}
 		});
 
