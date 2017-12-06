@@ -328,7 +328,7 @@ export class MutiTimeline {
         var width = this.width - this.dims.margin.left - this.dims.margin.right;
         // var height = svg.node().getBoundingClientRect().height - this.dims.margin.top - this.dims.margin.bottom;
 
-        this.clipPath.attr("width", width);
+        this.clipPath.attr("width", Math.max(0, width));
 
         //TODO: fix this - part of chart is hidden after zooming and resizing
         this.zoom.translateExtent([[-100, 0], [width + 100, 0]]);
@@ -354,7 +354,7 @@ export class MutiTimeline {
         this.svg
             .selectAll("#places rect, #skills rect")
             .attr("x", d => this.xScale(d.from))
-            .attr("width", d => this.xScale(d.to) - this.xScale(d.from));
+            .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)));
 
         this.placesHolderSvg
             .selectAll("text")
