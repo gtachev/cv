@@ -39,7 +39,7 @@ export class MutiTimeline {
         this.dims = {
             minWidth: 350,
             minPlacesHight: 100,
-            margin: { top: 35, right: 20, bottom: 25, left: 150, between: 15 },
+            margin: { top: 35, right: 20, bottom: 15, left: 150, padding: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
@@ -280,7 +280,7 @@ export class MutiTimeline {
 
         this.chartUpdateExtraSkills();
 
-        this.xScaleAll = d3ScaleTime().domain([new Date(2002, 9, 1), new Date(2017, 12, 1)]); //TODO: make dynamic
+        this.xScaleAll = d3ScaleTime().domain([new Date(2002, 6, 1), new Date(2018, 2, 1)]); //TODO: make dynamic
         this.xScale = this.xScaleAll;
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
@@ -303,7 +303,10 @@ export class MutiTimeline {
             .attr("height", 0)
             .attr("rx", this.dims.place.radius);
 
-        this.placesHolderSvg = this.timelineElements.append("g").attr("id", "places");
+        this.placesHolderSvg = this.timelineElements
+            .append("g")
+            .attr("id", "places")
+            .attr("transform", svgT(0, this.dims.margin.padding));
 
         this.ySkillScale = d3ScaleBand();
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
@@ -334,13 +337,17 @@ export class MutiTimeline {
     }
 
     yResize() {
-        var toSkillsHeight = this.dims.placesHeight + this.dims.margin.between;
+        var toSkillsHeight = this.dims.placesHeight + 2 * this.dims.margin.padding;
         var elementsHeight = toSkillsHeight + this.dims.skillsHeight;
-        var totalHeight = this.dims.margin.top + elementsHeight + this.dims.margin.bottom;
+        var totalHeight =
+            this.dims.margin.top +
+            elementsHeight +
+            this.dims.margin.bottom +
+            this.dims.margin.padding;
 
         this.svg.attr("height", totalHeight);
         this.clipPath.attr("height", totalHeight);
-        this.chartBackground.attr("height", elementsHeight);
+        this.chartBackground.attr("height", elementsHeight + this.dims.margin.padding);
 
         this.skillnameHolder.attr(
             "transform",
