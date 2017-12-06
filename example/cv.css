@@ -495,6 +495,14 @@ a:hover > .circle_icon.circle_icon_grey {
 	margin: 0 auto;
 }
 
+
+.single_page_content>h1{
+	font-size: 34px;
+	text-align: center;
+	display: none;
+	opacity: 0;
+}
+
 .page_anchor {
 	position: fixed;
 }
@@ -523,6 +531,10 @@ a:hover > .circle_icon.circle_icon_grey {
 
 .content_box:last-child {
 	margin-bottom: 0;
+}
+
+.printonly {
+	display: none;
 }
 
 
@@ -1840,6 +1852,12 @@ h2.title {
 		padding-bottom: 40px;
 	}
 
+	.single_page_content>h1{
+		display: block;
+		opacity: 1;
+		margin-top: -20px;
+	}
+
 	.content_box {
 		padding: 20px;
 		margin-bottom: 20px;
@@ -1961,10 +1979,6 @@ h2.title {
 		flex: 1 1 auto;
 		margin: 0;
 		padding: 0;
-	}
-
-	.page_anchor:target ~ #header .button_holder:last-child {
-		display: none !important;
 	}
 
 	.page_anchor:target ~ #header .button_holder.button_icon_only {
@@ -2280,23 +2294,106 @@ h2.title {
 ------------------------------------------------------------
 */
 
-/*
+
 * {
     -webkit-print-color-adjust: exact !important;
 }
 
 @page {
-  margin: 1cm;
-  size: A4 portrait;
+	margin: 0cm 0cm;
+	size: A3 portrait;
 }
 
 
 @media print {
-  body {
-    overflow: visible !important;
-  }
+	body {
+		overflow: visible !important;
+		background-image: none;
+		background-color: #f0f0f0;
+	}
+
+	.single_page_content {
+		display: block;
+		opacity: 1;
+		order: 1;
+		padding: 5px 0px;
+	}
+
+	.single_page_content[data-page-name="header"] {
+		order:0;
+		padding-bottom: 10px !important;
+		padding-top: 120px !important;
+	}
+	.single_page_content[data-page-name="header"] .content_box{
+		padding-bottom: 50px;
+	}
+
+	.single_page_content[data-page-name="header"] .buttons_wrap{
+		display:none;
+	}
+	.single_page_content[data-page-name="work"] {
+		order:1;
+		max-width: 98%;
+	}
+	.single_page_content[data-page-name="education"] {
+		order:2;
+		max-width: 98%;
+	}
+	.single_page_content[data-page-name="projects"] {
+		order:3;
+		max-width: 98%;
+	}
+	.single_page_content[data-page-name="timeline"] {
+		order:4;
+		max-width: 98%;
+		display:none; /* TODO: remove */
+	}
+
+	.content_box {
+        page-break-inside: avoid;
+		padding-bottom: 10px !important;
+    }
+
+	.single_page_content .timeline_item {
+		padding: 0 0 10px 0px;
+	}
+
+	.single_page_content .timeline_item:before {
+		display:none;
+	}
+
+	.single_page_content .timeline_item:after {
+		display:none;
+	}
+
+	.single_page_content .timeline_item .content_box:before {
+		display:none;
+	}
+
+	.single_page_content .timeline_item.minor {
+		display: none;
+	}
+
+	.single_page_content>h1{
+		display: block;
+		opacity: 1;
+		page-break-after: avoid;
+		break-after: avoid;
+	}
+
+	.timeline_meta {
+		padding: 5px 0px !important;
+	}
+
+	.printonly {
+		display:block;
+	}
+
+	.disclaimer {
+		text-align: center;
+	}
 }
-*/
+
 
 /*
 ------------------------------------------------------------

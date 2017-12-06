@@ -229,6 +229,9 @@
                     "from": "Jun 2003",
                     "strength": 0.4
                 }
+            ],
+            "options": [
+                "minor"
             ]
         },
         {
@@ -517,7 +520,7 @@
             "where": "_personal",
             "label": "CV Timeline",
             "name": "CV Multi-Timeline with D3",
-            "description": "The somewhat fancy and rather over-complicated CV skill timeline you are probably looking at right now :)",
+            "description": "The somewhat fancy and rather over-complicated skill timeline in the CV you are probably looking at right now :)",
             "url": "https://github.com/na--/d3-cv-multitimeline",
             "skills": [
                 {

@@ -259,6 +259,7 @@
 			<!-- WORK -->
 			<span class="page_anchor" id="work"></span>
 			<div class="single_page_content" data-page-id="3" data-page-name="work">
+				<h1>Work</h1>
 				{{#each work}} {{> item }} {{/each}}
 			</div>
 			<!-- #3 - Work -->
@@ -267,6 +268,7 @@
 			<!-- EDUCATION -->
 			<span class="page_anchor" id="education"></span>
 			<div class="single_page_content" data-page-id="4" data-page-name="education">
+				<h1>Education</h1>
 				{{#each education}} {{> item }} {{/each}}
 			</div>
 			<!-- #4 - Education -->
@@ -275,7 +277,9 @@
 			<!-- PROJECTS -->
 			<span class="page_anchor" id="projects"></span>
 			<div class="single_page_content" data-page-id="5" data-page-name="projects">
+				<h1>Notable Projects</h1>
 				{{#each projects}} {{> item}} {{/each}}
+				<h4 class="printonly disclaimer">For a complete list, view the HTML version or open online at <a href="https://cv.andreev.sh">cv.andreev.sh</a></h4>
 			</div>
 			<!-- #5 - Projects -->
 
@@ -381,7 +385,7 @@
 								</g>
 							</svg>
 						</a>
-
+						<!--
 						<div class="top_icons">
 							<a class="circle_icon" href="#print" data-tooltip-toggle="true" data-print="true">
 								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px">
@@ -393,6 +397,7 @@
 								</div>
 							</a>
 						</div>
+						-->
 						<!-- .top_icons -->
 
 						<div class="name_title">
@@ -549,6 +554,7 @@
 								<span class="button_text">Projects</span>
 							</a>
 						</div>
+						<!--
 						<div class="button_holder button_icon_only visible_menu_only">
 							<a class="button" data-print="true">
 								<span class="circle_icon">
@@ -559,6 +565,7 @@
 								</span>
 							</a>
 						</div>
+						-->
 					</div>
 					<!-- .buttons_row -->
 				</div>
@@ -588,6 +595,12 @@
 			window.addEventListener(e, chart.redrawDelayed.bind(chart));
 		});
 
+		/*
+		//TODO: fix printing in firefox is possible...
+		//	https://bugzilla.mozilla.org/show_bug.cgi?id=1414253
+		//  https://bugzilla.mozilla.org/show_bug.cgi?id=939897
+		//  https://bugzilla.mozilla.org/show_bug.cgi?id=1089549
+		//  https://bugzilla.mozilla.org/show_bug.cgi?id=132035
 
 		// Handle print button
 		document.querySelectorAll('a[data-print="true"]').forEach(function (el) {
@@ -595,6 +608,17 @@
 				e.preventDefault();
 				window.print();
 			});
+		});
+		*/
+
+		 window.matchMedia('print').addListener(function(mql) {
+			//TODO: use this for any fixes, for warning about firefox print issues, etc.
+			if (mql.matches) {
+				console.log('before print');
+				window.location.hash = "";
+			} else {
+				console.log('after print');
+			}
 		});
 
 		document.querySelectorAll('a.place_link, a.project_link').forEach(function (el) {
