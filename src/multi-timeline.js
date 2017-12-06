@@ -38,8 +38,8 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 350,
-            minHeight: 200,
-            margin: { top: 35, right: 20, bottom: 25, left: 150, between: 10 },
+            minPlacesHight: 100,
+            margin: { top: 35, right: 20, bottom: 25, left: 150, between: 15 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
@@ -70,8 +70,10 @@ export class MutiTimeline {
             pt.items.forEach((p, i) => {
                 p.type = pt.id;
                 p.typeNum = i;
-                this.places.push(p);
-                this.placesMap.set(p.id, p);
+                if (p.name) {
+                    this.places.push(p);
+                    this.placesMap.set(p.id, p);
+                }
                 p.skills.forEach(s => {
                     this.skills.push(s);
                     var period = timeMonth.count(s.from, s.to) + 1;
@@ -169,7 +171,10 @@ export class MutiTimeline {
             lastAtPos[pos] = p.to;
             p.pos = pos;
         });
-        this.dims.placesHeight = lastAtPos.length * (this.dims.place.height + this.dims.place.gap);
+        this.dims.placesHeight = Math.max(
+            this.dims.minPlacesHight,
+            lastAtPos.length * (this.dims.place.height + this.dims.place.gap)
+        );
 
         var chartPlaces = this.placesHolderSvg.selectAll("g.place").data(visiblePlaces, d => d.id);
         chartPlaces.exit().remove(); //TODO: fade transition
@@ -215,6 +220,7 @@ export class MutiTimeline {
         var customAxis = g => {
             g.call(this.ySkillAxis);
             g.select(".domain").remove();
+            g.selectAll("line").remove();
             g.selectAll(".tick text").on("click", s => {
                 this.skillsToShow = this.skillsToShow.filter(d => d != s);
                 this.skillsToShowSet.delete(s);
@@ -267,10 +273,6 @@ export class MutiTimeline {
             .append("clipPath")
             .attr("id", "clip")
             .append("rect");
-        this.clipPath.attr(
-            "width",
-            this.dims.width - this.dims.margin.left - this.dims.margin.right
-        ); //TODO: move?
 
         this.extraSkillsDiv = d3Select(this.holder)
             .append("div")
@@ -283,26 +285,25 @@ export class MutiTimeline {
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
 
-        //TODO: create a g with margin top and left preset for all elements
-
-        this.chartBackground = this.svg
-            .append("rect")
-            .attr("class", "rect_background")
-            .attr("width", 0)
-            .attr("height", 0)
-            .attr("rx", this.dims.place.radius)
-            .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top));
-
         this.xAxisSvg = this.svg
             .append("g")
             .attr("id", "timeline")
             .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top));
 
-        this.placesHolderSvg = this.svg
+        this.timelineElements = this.svg
             .append("g")
-            .attr("id", "places")
-            .style("clip-path", "url(#clip)")
-            .attr("transform", new svgT(this.dims.margin.left, 40));
+            .attr("class", "timeline_elements")
+            .attr("transform", new svgT(this.dims.margin.left, this.dims.margin.top))
+            .style("clip-path", "url(#clip)");
+
+        this.chartBackground = this.timelineElements
+            .append("rect")
+            .attr("class", "rect_background")
+            .attr("width", 0)
+            .attr("height", 0)
+            .attr("rx", this.dims.place.radius);
+
+        this.placesHolderSvg = this.timelineElements.append("g").attr("id", "places");
 
         this.ySkillScale = d3ScaleBand();
         this.ySkillAxis = d3AxisLeft(this.ySkillScale);
@@ -310,12 +311,7 @@ export class MutiTimeline {
 
         this.skillnameHolder = this.svg.append("g").attr("id", "skillnames");
 
-
-        this.skillsHolderSvg = this.svg
-            .append("g")
-            .attr("id", "skills")
-            .style("clip-path", "url(#clip)");
-
+        this.skillsHolderSvg = this.timelineElements.append("g").attr("id", "skills");
 
         this.chartUpdatePlaces();
         this.chartUpdateSkills();
@@ -331,25 +327,27 @@ export class MutiTimeline {
                 //TODO: do not resize everything when not zooming, just pan
                 this.xResizeDelayed();
             });
-        this.chartBackground.call(this.zoom);
+        this.timelineElements.call(this.zoom);
 
         this.yResize();
         this.xResize();
     }
 
     yResize() {
-        var toSkillsHeight =
-            this.dims.margin.top + this.dims.placesHeight + this.dims.margin.between;
-
-        var totalHeight = toSkillsHeight + this.dims.skillsHeight + this.dims.margin.bottom;
+        var toSkillsHeight = this.dims.placesHeight + this.dims.margin.between;
+        var elementsHeight = toSkillsHeight + this.dims.skillsHeight;
+        var totalHeight = this.dims.margin.top + elementsHeight + this.dims.margin.bottom;
 
         this.svg.attr("height", totalHeight);
-        this.chartBackground.attr("height", totalHeight);
         this.clipPath.attr("height", totalHeight);
+        this.chartBackground.attr("height", elementsHeight);
 
-        this.skillnameHolder.attr("transform", svgT(this.dims.margin.left - 20, toSkillsHeight));
+        this.skillnameHolder.attr(
+            "transform",
+            svgT(this.dims.margin.left - 5, this.dims.margin.top + toSkillsHeight)
+        );
 
-        this.skillsHolderSvg.attr("transform", svgT(this.dims.margin.left, toSkillsHeight));
+        this.skillsHolderSvg.attr("transform", svgT(0, toSkillsHeight));
     }
 
     xResize() {
