@@ -516,6 +516,7 @@ a:hover > .circle_icon.circle_icon_grey {
 .single_page_content.full_width {
 	max-width: 100%;
 	padding: 40px 10px;
+	flex-grow: 1;
 }
 
 .content_box {
@@ -1270,7 +1271,7 @@ h2.title {
 ------------------------------------------------------------
 */
 
-
+/*
 .timeline_holder {
 	display: flex;
 	flex-direction: row;
@@ -1281,8 +1282,6 @@ h2.title {
 	padding: 35px 0 0 170px;
 	margin-top: 100px;
 }
-
-/*** X Axis ***/
 
 .timeline_holder .x_axis {
 	display: block;
@@ -1335,8 +1334,6 @@ h2.title {
 	margin-left: -25px;
 	text-align: center;
 }
-
-/*** Y Axis ***/
 
 .timeline_holder .y_axis {
 	display: block;
@@ -1460,8 +1457,6 @@ h2.title {
 	opacity: 1;
 }
 
-/*** Timeline Items ***/
-
 .timeline_holder .timeline_chart {
 	display: block;
 	width: 100%;
@@ -1558,7 +1553,6 @@ h2.title {
 	border-color: #ffc248;
 }
 
-/*** Checkboxes ***/
 
 .timeline_holder .place_checkboxes {
 	display: block;
@@ -1709,7 +1703,6 @@ h2.title {
 	background: #5991af;
 }
 
-/*** Timeline Skills Buttons ***/
 
 .timeline_holder .timeline_skills {
 	width: calc(100% - 100px);
@@ -1748,13 +1741,12 @@ h2.title {
 	opacity: 1;
 }
 
-/*** Timeline Controls ***/
 
 .timeline_holder .timeline_controls {
 	margin-left: auto;
 	width: 90px;
 }
-
+*/
 
 /*
 ------------------------------------------------------------
@@ -2404,11 +2396,6 @@ h2.title {
 	#svg-holder {
 		page-break-inside: avoid;
 	}
-}
-
-
-.timeline_holder {
-	display: none;
 }
 
 /*
