@@ -93,7 +93,9 @@ export class MutiTimeline {
         if (!this.skillsToShow) {
             this.skillsToShow = this.skillNames.slice(0, this.options.defaultNumberOfSkillLines);
         }
-        this.skillsToShowSet = new Set(this.skillsToShow);
+
+        this.skillsToShowSet = new Set();
+        this.skillsToShow.forEach(s => this.skillsToShowSet.add(s));
     }
 
     chartAddPlaceTypeCheckboxes() {
