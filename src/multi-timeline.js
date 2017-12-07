@@ -198,11 +198,10 @@ export class MutiTimeline {
             .classed("place-label", true)
             .text(d => d.label)
             .attr("x", 0)
-            .attr("font-size", this.dims.place.textMaxSize)
+            .style("font-size", this.dims.place.textMaxSize + "px")
             .attr("y", this.dims.place.height / 2)
             .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
-            .attr("text-anchor", "middle")
-            .attr("visibility", "hidden");
+            .attr("text-anchor", "middle");
 
         chartPlaces
             .merge(chartPlacesEnter)
@@ -263,10 +262,6 @@ export class MutiTimeline {
 
     initChart() {
         this.svg = d3Select(this.holder).append("svg");
-        this.dims.width = Math.max(
-            this.dims.minWidth,
-            this.svg.node().getBoundingClientRect().width
-        );
 
         this.clipPath = this.svg
             .append("defs")
@@ -321,8 +316,8 @@ export class MutiTimeline {
 
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])
-            //TODO: disable mouse wheel zoom? add buttons for reset and zoom?
-            .translateExtent([[-100, 0], [100, 0]])
+            //TODO: fix this; disable mouse wheel zoom? add buttons for reset and zoom?
+            //.translateExtent([[-100, 0], [100, 0]])
             .on("zoom", () => {
                 //console.log(d3CurrentEvent);
                 this.xScale = d3CurrentEvent.transform.rescaleX(this.xScaleAll);
@@ -358,6 +353,7 @@ export class MutiTimeline {
     }
 
     xResize() {
+        //console.log("xResize");
         this.dims.width = Math.max(
             this.dims.minWidth,
             this.svg.node().getBoundingClientRect().width
@@ -369,11 +365,11 @@ export class MutiTimeline {
         this.clipPath.attr("width", Math.max(0, width));
 
         //TODO: fix this - part of chart is hidden after zooming and resizing
-        this.zoom.translateExtent([[-100, 0], [width + 100, 0]]);
+        //this.zoom.translateExtent([[-100, 0]]);
 
         this.xScale.range([0, width]);
         this.xAxis.ticks(
-            width / this.xScale.ticks().length > 70 ? width / 70 : this.xScale.ticks().length
+            width / this.xScale.ticks().length > 80 ? width / 80 : this.xScale.ticks().length
         );
 
         var widthPerTick = width / this.xScale.ticks().length;
@@ -399,8 +395,8 @@ export class MutiTimeline {
         this.placesHolderSvg
             .selectAll("text")
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
-            .attrs((d, e, t) => {
-                let currentFontSize = parseFloat(t[e].getAttribute("font-size"));
+            .styles((d, e, t) => {
+                let currentFontSize = parseFloat(t[e].style["font-size"]);
                 let newFontSize = Math.min(
                     this.dims.place.textMaxSize,
                     currentFontSize *
@@ -418,7 +414,7 @@ export class MutiTimeline {
                 }
                 return {
                     visibility: "visible",
-                    "font-size": newFontSize + "px",
+                    "font-size": newFontSize.toFixed(2) + "px",
                 };
             });
     }

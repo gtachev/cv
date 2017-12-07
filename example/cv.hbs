@@ -591,11 +591,26 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') }
 		];
 		var defaultSkills = ['Go', 'Linux', 'DevOps', 'Security','Management', 'Data Wrangling', 'Docker', 'Rust', 'Bash', 'JavaScript', 'PHP', 'Machine Learning', 'Hiring', 'Teaching'];
+		var chart;
 
-		var chart = new cv.MutiTimeline(holder, places, defaultSkills);
-		['resize', 'hashchange', 'load'].forEach(function (e) {
-			window.addEventListener(e, chart.xResizeDelayed.bind(chart));
+		window.addEventListener("load", function() {
+			chart = new cv.MutiTimeline(holder, places, defaultSkills);
+			['resize', 'hashchange'].forEach(function (e) {
+				window.addEventListener(e, chart.xResizeDelayed.bind(chart));
+			});
+
+			window.matchMedia('print').addListener(function(mql) {
+				//TODO: warn about firefox print issues?
+				if (mql.matches) {
+					// Before print
+					window.location.hash = "";
+					chart.xResize();
+				} else {
+					// After print?
+				}
+			});
 		});
+
 
 		/*
 		//TODO: fix printing in firefox is possible...
@@ -613,16 +628,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 		});
 		*/
 
-		 window.matchMedia('print').addListener(function(mql) {
-			//TODO: warn about firefox print issues?
-			if (mql.matches) {
-				// Before print
-				window.location.hash = "";
-				chart.xResize();
-			} else {
-				// After print?
-			}
-		});
+
 
 		document.querySelectorAll('a.place_link, a.project_link').forEach(function (el) {
 			el.addEventListener('click', function (e) {
