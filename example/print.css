@@ -76,7 +76,11 @@ img {
 
 
 @page {
-
+	/* TODO: quick fixes, fix properly later */
+	margin-left: 1cm;
+	margin-right: 1cm;
+	margin-top: 2cm;
+	margin-bottom: 2cm;
 }
 
 html {
@@ -430,6 +434,10 @@ h2.title {
 }
 */
 
+div.contacts * {
+	/* TODO: quick fixes, fix properly later */
+	font-size: 95%;
+}
 
 /*
 ------------------------------------------------------------
@@ -437,7 +445,104 @@ h2.title {
 ------------------------------------------------------------
 */
 
+/* TODO: quick fixes, fix properly later */
 
 .single_page_content[data-page-name="timeline"] {
+	/*display: none;*/
+}
+
+#svg-holder {
+	position: relative;
+	width: 100%;
+	padding: 5px 0 0 0;
+}
+
+#svg-holder .place_checkboxes {
 	display: none;
+}
+
+#svg-holder .timeline_chart_item[data-type="education"] {
+	background: #75a29c;
+}
+
+#svg-holder .timeline_chart_item[data-type="work"] {
+	background: #69aace;
+}
+
+
+#svg-holder .timeline_skills {
+	padding-left:150px;
+}
+
+#svg-holder .timeline_skills .skill {
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder .timeline_skills .skill:after {
+	content: '+';
+	display: block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	border: 1px solid #ffffff;
+	border-radius: 50%;
+	background: #75a29c;
+	color: #ffffff;
+	line-height: 13px;
+	font-weight: 400;
+	font-size: 15px;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.15s ease-in-out;
+}
+
+#svg-holder svg {
+	width: 100%;
+	min-width: 350px;
+    pointer-events: all;
+}
+
+#svg-holder svg #timeline path {
+	display: none;
+}
+
+#svg-holder svg .rect_background {
+	fill: #ffffff;
+}
+
+#svg-holder svg rect {
+    stroke-width: 0.5;
+    stroke-opacity: 0.5;
+}
+
+#svg-holder svg g.place {
+	transition: all 0.15s ease-in-out;
+	font-weight: 400;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+}
+
+#svg-holder svg g.place text {
+	fill: #ffffff;
+}
+
+#svg-holder svg g.place.education rect {
+    fill: #75a29c;
+}
+
+#svg-holder svg g.place.work rect {
+    fill: #69aace;
+}
+
+#svg-holder svg g.place.projects rect {
+    fill: #b18ea8;
+}
+
+#svg-holder svg #skills rect {
+    fill: rgb(20,20,20);
+	height: 20px;
+	stroke: 1px solid #777777;
 }

@@ -599,10 +599,10 @@ If this is the bundled and minified version of the CV, you can find the full sou
 		});
 
 		window.matchMedia('print').addListener(function(mql) {
-			//TODO: warn about firefox print issues?
 			if (mql.matches) {
 				// Before print
-				window.location.hash = "";
+				//window.location.hash = "";
+				//holder.getElementsByTagName("svg").width = "750";
 				chart.xResize();
 			} else {
 				// After print?
@@ -610,12 +610,6 @@ If this is the bundled and minified version of the CV, you can find the full sou
 		});
 
 		/*
-		//TODO: fix printing in firefox is possible...
-		//	https://bugzilla.mozilla.org/show_bug.cgi?id=1414253
-		//  https://bugzilla.mozilla.org/show_bug.cgi?id=939897
-		//  https://bugzilla.mozilla.org/show_bug.cgi?id=1089549
-		//  https://bugzilla.mozilla.org/show_bug.cgi?id=132035
-
 		// Handle print button
 		document.querySelectorAll('a[data-print="true"]').forEach(function (el) {
 			el.addEventListener('click', function (e) {
@@ -624,8 +618,6 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			});
 		});
 		*/
-
-
 
 		document.querySelectorAll('a.place_link, a.project_link').forEach(function (el) {
 			el.addEventListener('click', function (e) {
