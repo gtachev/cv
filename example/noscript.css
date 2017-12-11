@@ -1,3 +1,11 @@
 .button_holder.button_holder_timeline {
     display: none !important;
 }
+
+.top_icons {
+	display: none;
+}
+
+[data-print="true"] {
+    display: none !important;
+}

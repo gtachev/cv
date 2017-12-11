@@ -34,6 +34,9 @@
                     "name": "Python",
                     "strength": 0.8
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -49,6 +52,9 @@
                 {
                     "name": "Rust"
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -86,6 +92,9 @@
                     "description": "\"Network programming with Java\" course",
                     "strength": 0.4
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         },
         {
@@ -196,6 +205,9 @@
             ],
             "properties": [
                 "list-visible"
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -273,6 +285,9 @@
                     "strength": 0.2,
                     "description": "The normal school computer science education"
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         }
     ],
@@ -306,7 +321,10 @@
             "to": "Feb 2017",
             "label": "Consultant",
             "name": "Consulting and Teaching",
-            "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps and infrastructure security."
+            "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps and infrastructure security.",
+            "options": [
+                "fullsize"
+            ]
         },
         {
             "id": "avus-rnd-lead",
@@ -362,6 +380,9 @@
                     "name": "SQL",
                     "strength": 0.5
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         },
         {
@@ -372,7 +393,10 @@
             "name": "Project Manager",
             "where": "Trading 212",
             "url": "https://www.trading212.com",
-            "description": "I lead a team of 6 people to build and launch <span data-link-to=\"itrend\">iTrend</span> - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new <span data-link-to=\"azimuth-netcredit\">NetCredit</span> team (the two companies had the same owners and shared an office)."
+            "description": "I lead a team of 6 people to build and launch <span data-link-to=\"itrend\">iTrend</span> - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new <span data-link-to=\"azimuth-netcredit\">NetCredit</span> team (the two companies had the same owners and shared an office).",
+            "options": [
+                "fullsize"
+            ]
         },
         {
             "id": "azimuth-netcredit",
@@ -382,7 +406,10 @@
             "name": "Senior Web Developer",
             "where": "NetCredit Ltd.",
             "url": "https://www.netcredit.bg/",
-            "description": "I was the initial and later the lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money."
+            "description": "I was the initial and later the lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money.",
+            "options": [
+                "fullsize"
+            ]
         },
         {
             "id": "freelance-2009-2010",
@@ -451,6 +478,9 @@
                     "name": "Finance",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         },
         {
@@ -509,6 +539,9 @@
                     "name": "Data Wrangling",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         }
     ],
@@ -560,6 +593,9 @@
                     "name": "Data Wrangling",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -585,6 +621,9 @@
                     "name": "DevOps",
                     "strength": 0.2
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -657,6 +696,9 @@
                     "name": "JavaScript",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         },
         {
@@ -680,6 +722,9 @@
                     "name": "Algorithms/DS",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -698,6 +743,9 @@
                 {
                     "name": "Teaching"
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -724,6 +772,9 @@
                     "name": "PHP",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -766,6 +817,9 @@
                     "name": "Linux",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "halfsize"
             ]
         },
         {
@@ -790,6 +844,9 @@
                     "name": "Bash",
                     "strength": 0.3
                 }
+            ],
+            "options": [
+                "fullsize"
             ]
         },
         {

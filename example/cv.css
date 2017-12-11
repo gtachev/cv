@@ -922,6 +922,7 @@ a:hover > .circle_icon.circle_icon_grey {
 	position: absolute;
 	bottom: 5px;
 	left: 5px;
+	width: 190px;
 }
 .avatar svg circle {
 	/*transition: all 0.15s ease-in-out;*/
@@ -2081,6 +2082,10 @@ h2.title {
 		margin-top: -100px;
 	}
 
+	.avatar svg {
+		width: 150px;
+	}
+
 	.single_page_content#header {
 		padding-top: 100px;
 		padding-bottom: 30px;
@@ -2115,6 +2120,10 @@ h2.title {
 		width: 140px;
 		height: 140px;
 		margin: -90px auto 15px auto;
+	}
+
+	.avatar svg {
+		width: 130px;
 	}
 
 	.name_title {
@@ -2506,11 +2515,16 @@ h2.title {
 #svg-holder #sidepane #skillnames {
 	position: absolute;
 	right: 0px;
+	left: 0;
 }
 
 #svg-holder #sidepane .y_axis_skill {
 	position: absolute;
 	right: 0px;
+	left: 0;
+	text-align: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #svg-holder svg {

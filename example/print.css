@@ -54,6 +54,7 @@ table {
 
 * {
     -webkit-print-color-adjust: exact !important;
+	color-adjust: exact;
 }
 
 /* Remove href from prints */
@@ -77,10 +78,11 @@ img {
 
 @page {
 	/* TODO: quick fixes, fix properly later */
-	margin-left: 1cm;
-	margin-right: 1cm;
-	margin-top: 2cm;
-	margin-bottom: 2cm;
+	margin-left: 0.8cm;
+	margin-right: 0.8cm;
+	margin-top: 1.3cm;
+	margin-bottom: 1.3cm;
+	size: A4;
 }
 
 html {
@@ -96,6 +98,7 @@ body {
 	font-weight: 300;
 	line-height: 1.35;
 	color: #333333;
+	overflow: visible !important;
 }
 
 h1, h2, h3, h4, h5, p, ul, table {
@@ -114,25 +117,25 @@ table:last-child {
 }
 
 h1 {
-	font-size: 32px;
-	font-weight: 400;
-	line-height: 1;
-}
-
-h2 {
 	font-size: 26px;
 	font-weight: 400;
 	line-height: 1;
 }
 
+h2 {
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 1;
+}
+
 h3 {
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 400;
 	line-height: 1;
 }
 
 h4 {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 300;
 	line-height: 1;
 }
@@ -191,10 +194,11 @@ strong {
 .name_title {
 	float: left;
 	margin-left: 15px;
+	margin-top: 3px;
 }
 
 h1.name {
-	font-size: 32px;
+	font-size: 30px;
 	margin-bottom: 5px;
 	font-weight: 300;
 }
@@ -216,6 +220,7 @@ h2.title {
 
 .contacts {
 	float: right;
+	margin-top: 5px;
 }
 
 .contacts .contacts_column {
@@ -234,7 +239,7 @@ h2.title {
 .intro_text {
 	clear: both;
 	padding-top: 15px;
-	line-height: 1.2;
+	line-height: 1.1;
 	font-style: italic;
 }
 
@@ -259,8 +264,8 @@ h2.title {
 .single_page_content > h1 {
 	display: inline-block;
 	position: relative;
-	margin: 20px 0;
-	padding: 0 20px 0 0;
+	margin: 15px 0;
+	padding: 0 15px 0 0;
 	clear: both;
 }
 .single_page_content > h1 + .timeline_item {
@@ -288,7 +293,6 @@ h2.title {
 	margin: 0 0 10px 0;
 	padding: 0 0 10px 0;
 	border-bottom: 1px solid #eeeeee;
-	page-break-inside: avoid;
 }
 
 .timeline_item:last-child {
@@ -317,6 +321,7 @@ h2.title {
 	margin: 0;
 	border-radius: 5px;
 	background: #eeeeee;
+	font-size: 12px;
 }
 
 .timeline_item .timeline_title {
@@ -325,19 +330,37 @@ h2.title {
 }
 
 .timeline_item .timeline_title h3 {
+	display: inline-block;
 	margin-bottom: 0px;
+	margin-right: 3px;
 }
 
 .timeline_item .timeline_title h3:last-child {
 	margin-bottom: 0;
+	margin-right: 0;
+}
+
+.timeline_item .timeline_title h4 {
+	margin-bottom: 0px;
+	display: inline-block;
 }
 
 .timeline_item .timeline_description {
 	margin-bottom: 10px;
+	font-size: 12px;
 	line-height: 1;
 }
 
 .timeline_item .timeline_description:last-child {
+	margin-bottom: 0;
+}
+
+.timeline_item .timeline_description p,
+.timeline_item .timeline_description ul {
+	margin-bottom: 8px;
+}
+.timeline_item .timeline_description p:last-child,
+.timeline_item .timeline_description ul:last-child {
 	margin-bottom: 0;
 }
 
@@ -359,7 +382,7 @@ h2.title {
 	vertical-align: middle;
 	font-size: 11px;
 	padding: 3px 8px;
-	margin: 0 0 5px 0;
+	margin: 0;
 	color: #ffffff;
 	background: #000000;
 	border-radius: 5px;
@@ -402,7 +425,7 @@ h2.title {
 	vertical-align: middle;
 	font-size: 11px;
 	padding: 5px 10px;
-	margin: 0 0 5px 0;
+	margin: 0;
 	color: #ffffff;
 	background: #75a29c;
 	border-radius: 5px;
@@ -562,4 +585,98 @@ div.contacts * {
     fill: rgb(20,20,20);
 	height: 20px;
 	stroke: 1px solid #777777;
+}
+
+/*** Test ***/
+
+#content_wrapper {
+	overflow: hidden;
+}
+
+.single_page_content {
+
+}
+
+.single_page_content > h1 {
+	margin: 10px 0;
+}
+
+.page_all_timeline_items {
+	width: auto;
+	margin: 0 -5px 0 -5px;
+	clear: both;
+}
+
+.page_all_timeline_items:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.timeline_item {
+	margin: 0 0 0 0 !important;
+	padding: 5px 5px !important;
+	background: none;
+	border: none;
+	page-break-inside: avoid;
+}
+
+.timeline_item.fullsize + .halfsize {
+	clear: left;
+}
+
+.timeline_item.halfsize {
+	width: 50%;
+	float: left;
+	clear: none;
+}
+.timeline_item.halfsize + .halfsize + .halfsize {
+	clear: left;
+}
+.timeline_item.halfsize + .halfsize + .halfsize + .halfsize {
+	clear: none;
+}
+
+.timeline_item .content_box {
+	height: 100%;
+	padding: 9px;
+	border-radius: 5px;
+	background: #f5f5f5 !important;
+	border: 1px solid #f5f5f5;
+}
+
+.timeline_item .timeline_meta {
+	display: none !important;
+}
+
+.timeline_item .timeline_description {
+	margin: 0;
+}
+
+.timeline_item .timeline_title {
+	padding-right: 0;
+	margin-bottom: 8px;
+}
+
+.timeline_item .timeline_title h3,
+.timeline_item .timeline_title h4 {
+	display: inline;
+}
+
+.timeline_item .timeline_date {
+	background: none;
+	padding: 2px 0 0 5px;
+	font-style: italic;
+}
+
+.disclaimer {
+	margin: 15px auto 0 auto;
+	text-align: center;
+	font-weight: 400;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.single_page_content[data-page-name="timeline"] {
+	page-break-before: always;
 }

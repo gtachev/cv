@@ -13,8 +13,8 @@ If this is the bundled and minified version of the CV, you can find the full sou
 	<meta name="description" content="{{personal.short_bio}}" />
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" >
-	<link rel="stylesheet" href="../example/cv.css" media="screen">
-	<link rel="stylesheet" href="../example/print.css" media="print">
+	<link rel="stylesheet" href="../example/cv.css" media="screen" id="screenstyle">
+	<link rel="stylesheet" href="../example/print.css" media="print" id="printstyle">
 	<script type="text/javascript" src="./bundle.js"></script>
 	<noscript>
 		<link rel="stylesheet" href="../example/noscript.css">
@@ -36,7 +36,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 {{/inline}}
 
 {{#*inline "item"}}
-	<div class="timeline_item {{#each options}}{{this}}{{/each}}" data-type="work" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
+	<div class="timeline_item {{#each options}}{{this}}{{/each}}" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
 		<div class="content_box timeline_content_box">
 			<p class="timeline_date">
 				<span class="fromdate">{{from}}</span>
@@ -100,7 +100,9 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			<span class="page_anchor" id="work"></span>
 			<div class="single_page_content" data-page-id="3" data-page-name="work">
 				<h1>Work</h1>
-				{{#each work}} {{> item }} {{/each}}
+				<div class="page_all_timeline_items">
+					{{#each work}} {{> item }} {{/each}}
+				</div>
 			</div>
 			<!-- #3 - Work -->
 
@@ -109,7 +111,9 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			<span class="page_anchor" id="education"></span>
 			<div class="single_page_content" data-page-id="4" data-page-name="education">
 				<h1>Education</h1>
-				{{#each education}} {{> item }} {{/each}}
+				<div class="page_all_timeline_items">
+					{{#each education}} {{> item }} {{/each}}
+				</div>
 			</div>
 			<!-- #4 - Education -->
 
@@ -118,7 +122,9 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			<span class="page_anchor" id="projects"></span>
 			<div class="single_page_content" data-page-id="5" data-page-name="projects">
 				<h1>Notable Projects</h1>
-				{{#each projects}} {{> item}} {{/each}}
+				<div class="page_all_timeline_items">
+					{{#each projects}} {{> item}} {{/each}}
+				</div>
 				<h4 class="printonly disclaimer">For a complete list, view the HTML version or open online at <a href="https://cv.andreev.sh">cv.andreev.sh</a></h4>
 			</div>
 			<!-- #5 - Projects -->
@@ -583,28 +589,27 @@ If this is the bundled and minified version of the CV, you can find the full sou
 		// Timeline init
 		var holder = document.getElementById('svg-holder');
 		var places = [
-			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"]>div.timeline_item') },
-			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"]>div.timeline_item') },
-			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"]>div.timeline_item') }
+			{ id: 'education', name: 'Education', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="education"] div.timeline_item') },
+			{ id: 'work', name: 'Work', enabled: true, items: cv.data.getItemsData(document, 'div[data-page-name="work"] div.timeline_item') },
+			{ id: 'projects', name: 'Projects', enabled: false, items: cv.data.getItemsData(document, 'div[data-page-name="projects"] div.timeline_item') }
 		];
 		var defaultSkills = ['Go', 'Linux', 'DevOps', 'Security','Management', 'Data Wrangling', 'Docker', 'Rust', 'Bash', 'JavaScript', 'PHP', 'Machine Learning', 'Hiring', 'Teaching'];
-		var chart;
-
-		chart = new cv.MutiTimeline(holder, places, defaultSkills);
+		var chart = new cv.MutiTimeline(holder, places, defaultSkills);
 		['resize', 'hashchange', 'load'].forEach(function (e) {
 			window.addEventListener(e, chart.xResizeDelayed.bind(chart));
 		});
 
-		window.matchMedia('print').addListener(function(mql) {
-			if (mql.matches) {
-				// Before print
-				//window.location.hash = "";
-				//holder.getElementsByTagName("svg").width = "750";
+		window.matchMedia('print').addListener(chart.xResize.bind(chart));
+		window.onbeforeprint = function() {
+			var oldMinWidth = chart.dims.minWidth;
+			// Hacky fix for Firefox...
+			chart.dims.minWidth=620;
+			chart.xResize();
+			window.onafterprint = function() {
+				chart.dims.minWidth=oldMinWidth;
 				chart.xResize();
-			} else {
-				// After print?
 			}
-		});
+		}
 
 		// Handle print button
 		document.querySelectorAll('a[data-print="true"]').forEach(function (el) {
