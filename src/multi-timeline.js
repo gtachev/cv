@@ -2,7 +2,7 @@ import { select as d3Select, event as d3CurrentEvent } from "d3-selection";
 import { timeFormat } from "d3-time-format";
 import { timeYear, timeMonth } from "d3-time";
 import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
-import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
+import { axisTop as d3AxisTop } from "d3-axis";
 import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
 import { transition as d3Transition } from "d3-transition";
@@ -32,14 +32,14 @@ function svgT(left, top, from) {
 
 export class MutiTimeline {
     constructor(holder, places, initialSkills) {
-        this.holder = holder;
+        this.holder = d3Select(holder);
         this.placeTypes = places;
         this.skillsToShow = initialSkills;
 
         this.dims = {
             minWidth: 350,
             minPlacesHight: 55,
-            margin: { top: 40, right: 20, bottom: 15, left: 150, padding: 10 },
+            margin: { top: 40, right: 15, bottom: 10, left: 15, padding: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
@@ -54,7 +54,6 @@ export class MutiTimeline {
 
         this.initPlaceAndSkillData();
 
-        this.chartAddPlaceTypeCheckboxes();
         this.initChart();
     }
 
@@ -108,7 +107,7 @@ export class MutiTimeline {
     }
 
     chartAddPlaceTypeCheckboxes() {
-        this.placeCheckboxes = d3Select(this.holder)
+        this.placeCheckboxes = this.sidepane
             .append("div")
             .attr("class", "place_checkboxes")
             .selectAll(".place_checkbox_holder")
@@ -223,31 +222,42 @@ export class MutiTimeline {
     }
 
     chartUpdateSkills() {
-        var shownSkills = this.skills.filter(s => this.skillsToShowSet.has(s.name));
-
         this.dims.skillsHeight = this.skillsToShow.length * this.dims.skill.rowHeight;
         this.ySkillScale.domain(this.skillsToShow).range([0, this.dims.skillsHeight]);
+        var bandwidth = this.ySkillScale.bandwidth();
 
-        var customAxis = g => {
-            g.call(this.ySkillAxis);
-            g.select(".domain").remove();
-            g.selectAll("line").remove();
-            g.selectAll(".tick text").on("click", s => {
+        // Left axis skill names
+        var chartSkillNames = this.skillnameHolder
+            .selectAll("div.y_axis_skill")
+            .data(this.skillsToShow, d => d);
+        var chartSkillNamesEnter = chartSkillNames
+            .enter()
+            .append("div")
+            .attr("class", "y_axis_skill")
+            .text(d => d)
+            .styles({
+                top: d => this.ySkillScale(d) - bandwidth + "px",
+                "line-height": bandwidth + "px",
+            })
+            .on("click", s => {
                 this.skillsToShow = this.skillsToShow.filter(d => d != s);
                 this.skillsToShowSet.delete(s);
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
                 this.yResize();
             });
-        };
+        chartSkillNames
+            .merge(chartSkillNamesEnter)
+            .transition()
+            .style("top", d => this.ySkillScale(d) + "px");
+        chartSkillNames.exit().remove();
 
-        this.skillnameHolder.call(customAxis);
-
-        var bandwidth = this.ySkillScale.bandwidth();
-
+        // Skill bars
         var chartSkills = this.skillsHolderSvg
             .selectAll("rect")
-            .data(shownSkills, d => [d.used_in.id, d.name, d.from].join("/"));
+            .data(this.skills.filter(s => this.skillsToShowSet.has(s.name)), d =>
+                [d.used_in.id, d.name, d.from].join("/")
+            );
 
         var chartSkillsEnter = chartSkills
             .enter()
@@ -272,7 +282,10 @@ export class MutiTimeline {
     }
 
     initChart() {
-        this.svg = d3Select(this.holder).append("svg");
+        this.sidepane = this.holder.append("div").attr("id", "sidepane");
+        this.svg = this.holder.append("svg");
+
+        this.chartAddPlaceTypeCheckboxes();
 
         this.clipPath = this.svg
             .append("defs")
@@ -280,7 +293,7 @@ export class MutiTimeline {
             .attr("id", "clip")
             .append("rect");
 
-        this.extraSkillsDiv = d3Select(this.holder)
+        this.extraSkillsDiv = this.holder
             .append("div")
             .attr("class", "extra_skills timeline_skills");
 
@@ -318,11 +331,8 @@ export class MutiTimeline {
             .attr("transform", svgT(0, this.dims.margin.padding));
 
         this.ySkillScale = d3ScaleBand();
-        this.ySkillAxis = d3AxisLeft(this.ySkillScale);
-        //.tickFormat(d => d.replace("/", '\n'));
 
-        this.skillnameHolder = this.svg.append("g").attr("id", "skillnames");
-
+        this.skillnameHolder = this.sidepane.append("div").attr("id", "skillnames");
         this.skillsHolderSvg = this.timelineElements.append("g").attr("id", "skills");
 
         this.chartUpdatePlaces();
@@ -361,13 +371,9 @@ export class MutiTimeline {
         this.chartBackground
             .transition(t)
             .attr("height", elementsHeight + this.dims.margin.padding);
-
         this.skillnameHolder
             .transition(t)
-            .attr(
-                "transform",
-                svgT(this.dims.margin.left - 5, this.dims.margin.top + toSkillsHeight)
-            );
+            .style("top", this.dims.margin.top + toSkillsHeight + "px");
 
         this.skillsHolderSvg.transition(t).attr("transform", svgT(0, toSkillsHeight));
     }

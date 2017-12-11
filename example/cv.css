@@ -2296,6 +2296,7 @@ h2.title {
 	position: relative;
 	width: 100%;
 	padding: 5px 0 0 0;
+	display: table;
 }
 
 /*** Checkboxes ***/
@@ -2306,6 +2307,7 @@ h2.title {
 	left: 0;
 	top: 35px;
 	width: 200px;
+	min-width: 20px;
 	padding-right: 20px;
 }
 
@@ -2453,7 +2455,7 @@ h2.title {
 /*** Timeline Skills Buttons ***/
 
 #svg-holder .timeline_skills {
-	padding-left:150px;
+	padding-left: 15px;
 	/*width: calc(100% - 100px);*/
 }
 
@@ -2491,12 +2493,30 @@ h2.title {
 }
 
 
+#svg-holder #sidepane {
+	position: relative;
+	display: table-cell;
+	white-space: nowrap;
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
+#svg-holder #sidepane #skillnames {
+	position: absolute;
+	right: 0px;
+}
+
+#svg-holder #sidepane .y_axis_skill {
+	position: absolute;
+	right: 0px;
+}
 
 #svg-holder svg {
-	width: 100%;
+	display: table-cell;
 	min-width: 350px;
     pointer-events: all;
+	width: 100%;
 }
 
 #svg-holder svg #timeline path {
