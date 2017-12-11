@@ -1873,6 +1873,10 @@ h2.title {
 		display: none !important;
 	}
 
+	.button_holder_print {
+		display: none !important;
+	}
+
 	.contacts {
 		flex-direction: column;
 		justify-content: flex-start;
