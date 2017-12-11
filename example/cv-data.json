@@ -614,7 +614,7 @@
             "from": "Feb 2016",
             "to": "Jun 2016",
             "where": "consulting-2015-2017",
-            "label": "DevOps consultant",
+            "label": "DevOps Consultant",
             "name": "DevOps & Infrastructure Security Consulting",
             "description": "I helped while the company restructured their infrastructure team. My responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production).</li><li>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge and the hiring of new people.</li></ul>I also taught a short Golang crash course due to interested employees.",
             "skills": [

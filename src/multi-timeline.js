@@ -38,7 +38,7 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 350,
-            minPlacesHight: 50,
+            minPlacesHight: 55,
             margin: { top: 40, right: 20, bottom: 15, left: 150, padding: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
@@ -119,7 +119,6 @@ export class MutiTimeline {
                 d.enabled = d3CurrentEvent.target.checked;
                 this.chartUpdatePlaces();
                 this.yResize();
-                this.xResize(); //TODO: remove
             });
         var label = checkboxEnter.append("label").attr("for", d => "place_" + d.id);
         label.append("span").attr("class", "checkbox_icon");
@@ -152,11 +151,9 @@ export class MutiTimeline {
             .on("click", d => {
                 this.skillsToShow.push(d);
                 this.skillsToShowSet.add(d);
-                //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
                 this.yResize();
-                this.xResize(); //TODO: don't use this
             });
         chartExtraSkills.exit().remove();
     }
@@ -190,9 +187,9 @@ export class MutiTimeline {
 
         chartPlacesEnter
             .append("rect")
-            .attr("x", 0)
+            .attr("x", d => this.xScale(d.from))
             .attr("rx", this.dims.place.radius)
-            .attr("width", 0)
+            .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)))
             .attr("height", this.dims.place.height);
 
         chartPlacesEnter.append("title").text(d => d.description);
@@ -201,11 +198,12 @@ export class MutiTimeline {
             .append("text")
             .classed("place-label", true)
             .text(d => d.label)
-            .attr("x", 0)
+            .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
             .style("font-size", this.dims.place.textMaxSize + "px")
             .attr("y", this.dims.place.height / 2)
             .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
-            .attr("text-anchor", "middle");
+            .attr("text-anchor", "middle")
+            .styles(this.placeTextResizer.bind(this));
 
         chartPlaces
             .merge(chartPlacesEnter)
@@ -228,11 +226,9 @@ export class MutiTimeline {
             g.selectAll(".tick text").on("click", s => {
                 this.skillsToShow = this.skillsToShow.filter(d => d != s);
                 this.skillsToShowSet.delete(s);
-                //TODO: animate/fade out
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
                 this.yResize();
-                this.xResize(); //TODO: don't use this
             });
         };
 
@@ -247,11 +243,11 @@ export class MutiTimeline {
         var chartSkillsEnter = chartSkills
             .enter()
             .append("rect")
-            .attr("x", 0)
+            .attr("x", d => this.xScale(d.from))
             .attr("y", d => this.ySkillScale(d.name) - bandwidth)
             .attr("fill-opacity", d => this.options.skillMaxOpacity * d.strength)
             .attr("rx", this.dims.skill.radius)
-            .attr("width", 0)
+            .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)))
             .attr("height", this.dims.skill.rectHeight);
 
         chartSkillsEnter.append("title").text(d => d.description);
@@ -263,7 +259,7 @@ export class MutiTimeline {
                 "y",
                 d => this.ySkillScale(d.name) + (bandwidth - this.dims.skill.rectHeight) / 2
             );
-        chartSkills.exit().remove(); //TODO: fade transition
+        chartSkills.exit().remove();
     }
 
     initChart() {
@@ -364,6 +360,29 @@ export class MutiTimeline {
         this.skillsHolderSvg.transition(t).attr("transform", svgT(0, toSkillsHeight));
     }
 
+    placeTextResizer(d, e, t) {
+        let currentFontSize = parseFloat(t[e].style["font-size"]);
+        let newFontSize = Math.min(
+            this.dims.place.textMaxSize,
+            currentFontSize *
+                (this.xScale(d.to) - this.xScale(d.from) - 5) /
+                t[e].getBoundingClientRect().width
+        );
+
+        if (newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio) {
+            return {
+                visibility: "hidden",
+            };
+        }
+        if (Math.abs(currentFontSize - newFontSize) < 0.2) {
+            return { visibility: "visible" };
+        }
+        return {
+            visibility: "visible",
+            "font-size": newFontSize.toFixed(2) + "px",
+        };
+    }
+
     xResize() {
         //console.log("xResize");
         this.dims.width = Math.max(
@@ -386,15 +405,14 @@ export class MutiTimeline {
 
         var widthPerTick = width / this.xScale.ticks().length;
         // Sigmoidal between 1 (no space) and 0 (a lot of space)
-        var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 30) / 5)), 3);
+        var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 35) / 5)), 3);
 
         this.chartBackground.attr("width", width);
 
         this.xAxisSvg
             .call(this.xAxis)
             .selectAll("text")
-            //.style("text-anchor", "start")
-            .attr("font-size", 0.5 + 0.8 * Math.pow(1 - squashed, 0.3) + "em")
+            .style("font-size", 0.2 + 0.8 * Math.pow(1 - squashed, 0.3) + "em")
             .attr("dx", Math.sin(squashed * Math.PI / 2) * 20 + "px")
             .attr("dy", Math.sin(squashed * Math.PI / 2) * 14 - 4 + "px")
             .attr("transform", "rotate(-" + 90 * squashed + ")");
@@ -407,28 +425,7 @@ export class MutiTimeline {
         this.placesHolderSvg
             .selectAll("text")
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
-            .styles((d, e, t) => {
-                let currentFontSize = parseFloat(t[e].style["font-size"]);
-                let newFontSize = Math.min(
-                    this.dims.place.textMaxSize,
-                    currentFontSize *
-                        (this.xScale(d.to) - this.xScale(d.from) - 5) /
-                        t[e].getBoundingClientRect().width
-                );
-
-                if (newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio) {
-                    return {
-                        visibility: "hidden",
-                    };
-                }
-                if (Math.abs(currentFontSize - newFontSize) < 0.2) {
-                    return { visibility: "visible" };
-                }
-                return {
-                    visibility: "visible",
-                    "font-size": newFontSize.toFixed(2) + "px",
-                };
-            });
+            .styles(this.placeTextResizer.bind(this));
     }
 
     xResizeDelayed() {
