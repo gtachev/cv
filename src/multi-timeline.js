@@ -5,7 +5,7 @@ import { scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from "d3-scale";
 import { axisLeft as d3AxisLeft, axisTop as d3AxisTop } from "d3-axis";
 import { timeout as d3Timeout } from "d3-timer";
 import { zoom as d3Zoom } from "d3-zoom";
-import "d3-transition";
+import { transition as d3Transition } from "d3-transition";
 import "d3-selection-multi";
 
 function multiFormat(date) {
@@ -38,9 +38,9 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 350,
-            minPlacesHight: 100,
-            margin: { top: 35, right: 20, bottom: 15, left: 150, padding: 10 },
-            place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 12, radius: 5 },
+            minPlacesHight: 50,
+            margin: { top: 40, right: 20, bottom: 15, left: 150, padding: 10 },
+            place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
 
@@ -178,8 +178,10 @@ export class MutiTimeline {
             lastAtPos.length * (this.dims.place.height + this.dims.place.gap)
         );
 
+        var t = d3Transition();
+
         var chartPlaces = this.placesHolderSvg.selectAll("g.place").data(visiblePlaces, d => d.id);
-        chartPlaces.exit().remove(); //TODO: fade transition
+        chartPlaces.exit().remove();
 
         var chartPlacesEnter = chartPlaces
             .enter()
@@ -207,6 +209,7 @@ export class MutiTimeline {
 
         chartPlaces
             .merge(chartPlacesEnter)
+            .transition(t)
             .attr("transform", d =>
                 svgT(0, d.pos * (this.dims.place.height + this.dims.place.gap))
             );
@@ -245,7 +248,7 @@ export class MutiTimeline {
             .enter()
             .append("rect")
             .attr("x", 0)
-
+            .attr("y", d => this.ySkillScale(d.name) - bandwidth)
             .attr("fill-opacity", d => this.options.skillMaxOpacity * d.strength)
             .attr("rx", this.dims.skill.radius)
             .attr("width", 0)
@@ -255,6 +258,7 @@ export class MutiTimeline {
 
         chartSkillsEnter
             .merge(chartSkills)
+            .transition()
             .attr(
                 "y",
                 d => this.ySkillScale(d.name) + (bandwidth - this.dims.skill.rectHeight) / 2
@@ -342,16 +346,22 @@ export class MutiTimeline {
             this.dims.margin.bottom +
             this.dims.margin.padding;
 
-        this.svg.attr("height", totalHeight);
-        this.clipPath.attr("height", totalHeight);
-        this.chartBackground.attr("height", elementsHeight + this.dims.margin.padding);
+        var t = d3Transition();
 
-        this.skillnameHolder.attr(
-            "transform",
-            svgT(this.dims.margin.left - 5, this.dims.margin.top + toSkillsHeight)
-        );
+        this.svg.transition(t).attr("height", totalHeight);
+        this.clipPath.transition(t).attr("height", totalHeight);
+        this.chartBackground
+            .transition(t)
+            .attr("height", elementsHeight + this.dims.margin.padding);
 
-        this.skillsHolderSvg.attr("transform", svgT(0, toSkillsHeight));
+        this.skillnameHolder
+            .transition(t)
+            .attr(
+                "transform",
+                svgT(this.dims.margin.left - 5, this.dims.margin.top + toSkillsHeight)
+            );
+
+        this.skillsHolderSvg.transition(t).attr("transform", svgT(0, toSkillsHeight));
     }
 
     xResize() {
@@ -411,7 +421,7 @@ export class MutiTimeline {
                         visibility: "hidden",
                     };
                 }
-                if (Math.abs(currentFontSize - newFontSize) < 0.1) {
+                if (Math.abs(currentFontSize - newFontSize) < 0.2) {
                     return { visibility: "visible" };
                 }
                 return {
