@@ -49,6 +49,7 @@ export class MutiTimeline {
             defaultNumberOfSkillLines: 10,
             yearlySkillSortCoef: 0.5,
             extraSkillEquilibrationExp: 0.12,
+            monthsDisplayMargin: 4,
         };
 
         this.initPlaceAndSkillData();
@@ -63,6 +64,8 @@ export class MutiTimeline {
         this.placeTypesMap = new Map();
         this.skills = [];
         this.skillStrengths = {};
+        this.fromDate = Date.now();
+        this.toDate = Date.now();
         var now = Date.now();
 
         this.placeTypes.forEach(pt => {
@@ -82,6 +85,12 @@ export class MutiTimeline {
                         (this.skillStrengths[s.name] || 0) +
                         period * s.strength * Math.pow(this.options.yearlySkillSortCoef, yearsAgo);
                 });
+                if (p.from && p.from < this.fromDate) {
+                    this.fromDate = p.from;
+                }
+                if (p.to && p.to > this.toDate) {
+                    this.toDate = p.to;
+                }
             });
         });
         this.skillNames = Object.getOwnPropertyNames(this.skillStrengths);
@@ -277,7 +286,10 @@ export class MutiTimeline {
 
         this.chartUpdateExtraSkills();
 
-        this.xScaleAll = d3ScaleTime().domain([new Date(2002, 6, 1), new Date(2018, 2, 1)]); //TODO: make dynamic
+        this.xScaleAll = d3ScaleTime().domain([
+            timeMonth.offset(this.fromDate, -this.options.monthsDisplayMargin),
+            timeMonth.offset(this.toDate, this.options.monthsDisplayMargin),
+        ]);
         this.xScale = this.xScaleAll;
 
         this.xAxis = d3AxisTop(this.xScale).tickFormat(multiFormat);
@@ -319,7 +331,7 @@ export class MutiTimeline {
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])
             //TODO: fix this; disable mouse wheel zoom? add buttons for reset and zoom?
-            //.translateExtent([[-100, 0], [100, 0]])
+            .translateExtent([[0, 0], [Infinity, 0]])
             .on("zoom", () => {
                 //console.log(d3CurrentEvent);
                 this.xScale = d3CurrentEvent.transform.rescaleX(this.xScaleAll);
