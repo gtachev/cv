@@ -2498,6 +2498,7 @@ h2.title {
 	display: table-cell;
 	white-space: nowrap;
 	width: 150px;
+	min-width: 25px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }

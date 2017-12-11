@@ -445,16 +445,11 @@ div.contacts * {
 ------------------------------------------------------------
 */
 
-/* TODO: quick fixes, fix properly later */
-
-.single_page_content[data-page-name="timeline"] {
-	/*display: none;*/
-}
-
 #svg-holder {
 	position: relative;
 	width: 100%;
 	padding: 5px 0 0 0;
+	display: table;
 }
 
 #svg-holder .place_checkboxes {
@@ -471,7 +466,7 @@ div.contacts * {
 
 
 #svg-holder .timeline_skills {
-	padding-left:150px;
+	padding-left: 10px;
 }
 
 #svg-holder .timeline_skills .skill {
@@ -498,7 +493,29 @@ div.contacts * {
 	transition: all 0.15s ease-in-out;
 }
 
+
+#svg-holder #sidepane {
+	position: relative;
+	display: table-cell;
+	white-space: nowrap;
+	width: 105px;
+	min-width: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#svg-holder #sidepane #skillnames {
+	position: absolute;
+	right: 0px;
+}
+
+#svg-holder #sidepane .y_axis_skill {
+	position: absolute;
+	right: 0px;
+}
+
 #svg-holder svg {
+	display: table-cell;
 	width: 100%;
 	min-width: 350px;
     pointer-events: all;
