@@ -44,7 +44,8 @@ export class MutiTimeline {
             minWidth: 300,
             minPlacesHight: 65,
             margin: { top: 40, right: 15, bottom: 10, left: 15, padding: 10 },
-            place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
+            place: { height: 30, gap: 3, radius: 5 },
+            placeText: { sideMargin: 2, maxSize: 18, adjMinSize: 8 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
         };
 
@@ -245,7 +246,7 @@ export class MutiTimeline {
             .classed("place-label", true)
             .text(d => d.label)
             .attr("x", d => (this.xScale(d.from) + this.xScale(d.to)) / 2)
-            .style("font-size", this.dims.place.textMaxSize + "px")
+            .style("font-size", this.dims.placeText.maxSize + "px")
             .attr("y", this.dims.place.height / 2)
             .attr("dy", ".35em") // dominant-baseline is not supported in IE/Edge...
             .attr("text-anchor", "middle")
@@ -457,13 +458,15 @@ export class MutiTimeline {
         // This may be 0 if svg is not displayed
         let currentTextWidth = t[e].getBoundingClientRect().width;
         let newFontSize = Math.min(
-            this.dims.place.textMaxSize,
-            currentFontSize * (this.xScale(d.to) - this.xScale(d.from) - 5) / currentTextWidth
+            this.dims.placeText.maxSize,
+            currentFontSize *
+                (this.xScale(d.to) - this.xScale(d.from) - 2 * this.dims.placeText.sideMargin) /
+                currentTextWidth
         );
 
         if (
             !currentTextWidth ||
-            newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio
+            newFontSize < this.dims.placeText.adjMinSize / window.devicePixelRatio
         ) {
             return {
                 visibility: "hidden",
