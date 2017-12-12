@@ -37,7 +37,7 @@ export class MutiTimeline {
         this.skillsToShow = initialSkills;
 
         this.dims = {
-            minWidth: 350,
+            minWidth: 300,
             minPlacesHight: 55,
             margin: { top: 40, right: 15, bottom: 10, left: 15, padding: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
@@ -234,6 +234,7 @@ export class MutiTimeline {
             .enter()
             .append("div")
             .attr("class", "y_axis_skill")
+            .attr("title", d => d)
             .text(d => d)
             .styles({
                 top: d => this.ySkillScale(d) - bandwidth + "px",
@@ -380,14 +381,17 @@ export class MutiTimeline {
 
     placeTextResizer(d, e, t) {
         let currentFontSize = parseFloat(t[e].style["font-size"]);
+        // This may be 0 if svg is not displayed
+        let currentTextWidth = t[e].getBoundingClientRect().width;
         let newFontSize = Math.min(
             this.dims.place.textMaxSize,
-            currentFontSize *
-                (this.xScale(d.to) - this.xScale(d.from) - 5) /
-                t[e].getBoundingClientRect().width
+            currentFontSize * (this.xScale(d.to) - this.xScale(d.from) - 5) / currentTextWidth
         );
 
-        if (newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio) {
+        if (
+            !currentTextWidth ||
+            newFontSize < this.dims.place.textAdjMinSize / window.devicePixelRatio
+        ) {
             return {
                 visibility: "hidden",
             };
@@ -423,7 +427,7 @@ export class MutiTimeline {
 
         var widthPerTick = width / this.xScale.ticks().length;
         // Sigmoidal between 1 (no space) and 0 (a lot of space)
-        var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 35) / 5)), 3);
+        var squashed = Math.pow(1 / (1 + Math.pow(Math.E, (widthPerTick - 42) / 5)), 3);
 
         this.chartBackground.attr("width", width);
 
@@ -433,7 +437,7 @@ export class MutiTimeline {
             .style("font-size", 0.2 + 0.8 * Math.pow(1 - squashed, 0.3) + "em")
             .attr("dx", Math.sin(squashed * Math.PI / 2) * 20 + "px")
             .attr("dy", Math.sin(squashed * Math.PI / 2) * 14 - 4 + "px")
-            .attr("transform", "rotate(-" + 90 * squashed + ")");
+            .attr("transform", "rotate(-" + (90 * squashed).toFixed(5) + ")");
 
         this.svg
             .selectAll("#places rect, #skills rect")

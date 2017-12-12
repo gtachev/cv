@@ -2525,11 +2525,12 @@ h2.title {
 	text-align: right;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	cursor: pointer;
 }
 
 #svg-holder svg {
 	display: table-cell;
-	min-width: 350px;
+	min-width: 300px;
     pointer-events: all;
 	width: 100%;
 }

@@ -540,7 +540,7 @@ div.contacts * {
 #svg-holder svg {
 	display: table-cell;
 	width: 100%;
-	min-width: 350px;
+	min-width: 300px;
     pointer-events: all;
 }
 
