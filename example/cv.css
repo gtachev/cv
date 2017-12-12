@@ -2609,10 +2609,8 @@ h2.title {
 }
 
 #svg-holder .selected {
-    fill: #ffc248;
-	stroke: 1px solid #ffc248;
-    background-color: #ffc248;
-	border: 1px solid #ffc248;
+    fill: #ffc248 !important;
+    background-color: #ffc248 !important;
 }
 
 

@@ -30,6 +30,10 @@ function svgT(left, top, from) {
     return o;
 }
 
+function cname(s) {
+    return s.toLowerCase().replace(" ", "_");
+}
+
 export class MutiTimeline {
     constructor(holder, places, initialSkills) {
         this.holder = d3Select(holder);
@@ -143,11 +147,22 @@ export class MutiTimeline {
         );
         var extraSkills = this.skillNames.filter(s => !this.skillsToShowSet.has(s));
 
+        var getSkillClasses = (name, prefix) => {
+            var result = [];
+            this.skills.filter(s => name === s.name).forEach(s => {
+                result.push(prefix + s.used_in.id);
+                if (s.used_in.place) {
+                    result.push(prefix + s.used_in.place);
+                }
+            });
+            return result;
+        };
+
         var chartExtraSkills = this.extraSkillsDiv.selectAll("div.skill").data(extraSkills, d => d);
         chartExtraSkills
             .enter()
             .append("div")
-            .attr("class", "skill")
+            .attr("class", d => "skill " + getSkillClasses(d, "tlinp_").join(" "))
             .attr("data-strength", d =>
                 Math.max(
                     0.1,
@@ -162,7 +177,17 @@ export class MutiTimeline {
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
                 this.yResize();
-            });
+            })
+            .on("mouseover", d =>
+                this.holder
+                    .selectAll(getSkillClasses(d, ".tlp_").join(", "))
+                    .classed("selected", true)
+            )
+            .on("mouseout", d =>
+                this.holder
+                    .selectAll(getSkillClasses(d, ".tlp_").join(", "))
+                    .classed("selected", false)
+            );
         chartExtraSkills.exit().remove();
     }
 
@@ -191,19 +216,25 @@ export class MutiTimeline {
         var chartPlacesEnter = chartPlaces
             .enter()
             .append("g")
-            .attr("class", d => "place " + d.type);
+            .attr("class", d => "place " + d.type)
+            .on("mouseover", d =>
+                this.holder
+                    .selectAll(".tlinp_" + d.id + (d.place ? ", .tlp_" + d.place : ""))
+                    .classed("selected", true)
+            )
+            .on("mouseout", d =>
+                this.holder
+                    .selectAll(".tlinp_" + d.id + (d.place ? ", .tlp_" + d.place : ""))
+                    .classed("selected", false)
+            );
 
         chartPlacesEnter
             .append("rect")
-            .attr("class", d => "tlp_" + d.id)
+            .attr("class", d => "tlp_" + d.id + (d.place ? " tlinp_" + d.place : ""))
             .attr("x", d => this.xScale(d.from))
             .attr("rx", this.dims.place.radius)
             .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)))
-            .attr("height", this.dims.place.height)
-            .on("mouseover", d => this.holder.selectAll(".tlinp_" + d.id).classed("selected", true))
-            .on("mouseout", d =>
-                this.holder.selectAll(".tlinp_" + d.id).classed("selected", false)
-            );
+            .attr("height", this.dims.place.height);
 
         chartPlacesEnter
             .append("title")
@@ -240,7 +271,7 @@ export class MutiTimeline {
         var chartSkillNamesEnter = chartSkillNames
             .enter()
             .append("div")
-            .attr("class", "y_axis_skill")
+            .attr("class", d => "y_axis_skill skn_" + cname(d))
             .attr("title", d => d)
             .text(d => d)
             .styles({
@@ -253,7 +284,11 @@ export class MutiTimeline {
                 this.chartUpdateExtraSkills();
                 this.chartUpdateSkills();
                 this.yResize();
-            });
+            })
+            .on("mouseover", d => this.holder.selectAll(".s_" + cname(d)).classed("selected", true))
+            .on("mouseout", d =>
+                this.holder.selectAll(".s_" + cname(d)).classed("selected", false)
+            );
         chartSkillNames
             .merge(chartSkillNamesEnter)
             .transition()
@@ -270,12 +305,43 @@ export class MutiTimeline {
         var chartSkillsEnter = chartSkills
             .enter()
             .append("rect")
+            .attr(
+                "class",
+                d =>
+                    "s_" +
+                    cname(d.name) +
+                    " tlinp_" +
+                    d.used_in.id +
+                    (d.used_in.place ? " tlinp_" + d.used_in.place : "")
+            )
             .attr("x", d => this.xScale(d.from))
             .attr("y", d => this.ySkillScale(d.name) - bandwidth)
             .attr("fill-opacity", d => this.options.skillMaxOpacity * d.strength)
             .attr("rx", this.dims.skill.radius)
             .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)))
-            .attr("height", this.dims.skill.rectHeight);
+            .attr("height", this.dims.skill.rectHeight)
+            .on("mouseover", d =>
+                this.holder
+                    .selectAll(
+                        ".skn_" +
+                            cname(d.name) +
+                            ", .tlp_" +
+                            d.used_in.id +
+                            (d.used_in.place ? ", .tlp_" + d.used_in.place : "")
+                    )
+                    .classed("selected", true)
+            )
+            .on("mouseout", d =>
+                this.holder
+                    .selectAll(
+                        ".skn_" +
+                            cname(d.name) +
+                            ", .tlp_" +
+                            d.used_in.id +
+                            (d.used_in.place ? ", .tlp_" + d.used_in.place : "")
+                    )
+                    .classed("selected", false)
+            );
 
         chartSkillsEnter.append("title").text(d => d.description);
 
@@ -401,6 +467,7 @@ export class MutiTimeline {
         ) {
             return {
                 visibility: "hidden",
+                "font-size": "1px",
             };
         }
         if (Math.abs(currentFontSize - newFontSize) < 0.2) {

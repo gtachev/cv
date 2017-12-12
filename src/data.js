@@ -26,7 +26,7 @@ export function getText(el, selector) {
     return null;
 }
 
-export function getItemsData(rootel, selector, callback) {
+export function getItemsData(rootel, selector) {
     var results = [];
 
     rootel.querySelectorAll(selector).forEach(el => {
@@ -37,6 +37,9 @@ export function getItemsData(rootel, selector, callback) {
             label: el.getAttribute("data-label"),
             name: getText(el, ".place_name, .project_name"),
             where: getText(el, ".where"),
+            place: el.querySelector(".place_link")
+                ? el.querySelector(".place_link").getAttribute("data-item-id")
+                : null,
             description: getText(el, ".timeline_description"),
             skills: [],
             el: el,
@@ -57,9 +60,6 @@ export function getItemsData(rootel, selector, callback) {
                 el: sel,
             });
         });
-        if (callback) {
-            callback(item);
-        }
         results.push(item);
     });
 
