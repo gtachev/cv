@@ -51,7 +51,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 						<h4>
 								when <a class="place_link" href="#{{placeType}}" data-item-id="{{place.id}}">{{place.name}}</a>
 								{{#if place.where}}
-									at <a href="{{place.url}}" target="_blank">{{place.where}}</a>
+									at <a href="{{place.url}}" target="_blank" class="where">{{place.where}}</a>
 								{{/if}}
 							</a>
 						</h4>
@@ -62,7 +62,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 					{{#if where}}
 						<h4>
 							at
-							<a href="{{url}}" target="_blank"> {{where}}</a>
+							<a href="{{url}}" target="_blank" class="where"> {{where}}</a>
 						</h4>
 					{{/if}}
 				{{/if}}

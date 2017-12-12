@@ -38,7 +38,7 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 300,
-            minPlacesHight: 55,
+            minPlacesHight: 65,
             margin: { top: 40, right: 15, bottom: 10, left: 15, padding: 10 },
             place: { height: 30, gap: 3, textMaxSize: 18, textAdjMinSize: 9, radius: 5 },
             skill: { rowHeight: 22, rectHeight: 20, radius: 2 },
@@ -195,12 +195,19 @@ export class MutiTimeline {
 
         chartPlacesEnter
             .append("rect")
+            .attr("class", d => "tlp_" + d.id)
             .attr("x", d => this.xScale(d.from))
             .attr("rx", this.dims.place.radius)
             .attr("width", d => Math.max(0, this.xScale(d.to) - this.xScale(d.from)))
-            .attr("height", this.dims.place.height);
+            .attr("height", this.dims.place.height)
+            .on("mouseover", d => this.holder.selectAll(".tlinp_" + d.id).classed("selected", true))
+            .on("mouseout", d =>
+                this.holder.selectAll(".tlinp_" + d.id).classed("selected", false)
+            );
 
-        chartPlacesEnter.append("title").text(d => d.description);
+        chartPlacesEnter
+            .append("title")
+            .text(d => d.name + (d.where ? " (" + d.where + ")" : "") + "\n\n" + d.description);
 
         chartPlacesEnter
             .append("text")
@@ -286,8 +293,6 @@ export class MutiTimeline {
         this.sidepane = this.holder.append("div").attr("id", "sidepane");
         this.svg = this.holder.append("svg");
 
-        this.chartAddPlaceTypeCheckboxes();
-
         this.clipPath = this.svg
             .append("defs")
             .append("clipPath")
@@ -324,6 +329,7 @@ export class MutiTimeline {
             .attr("class", "rect_background")
             .attr("width", 0)
             .attr("height", 0)
+            .attr("fill", "white")
             .attr("rx", this.dims.place.radius);
 
         this.placesHolderSvg = this.timelineElements
@@ -338,6 +344,7 @@ export class MutiTimeline {
 
         this.chartUpdatePlaces();
         this.chartUpdateSkills();
+        this.chartAddPlaceTypeCheckboxes();
 
         this.zoom = d3Zoom()
             .scaleExtent([0.8, 5])

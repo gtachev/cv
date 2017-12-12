@@ -305,10 +305,6 @@ h2.title {
 	display: none !important;
 }
 
-.timeline_item .content_box {
-
-}
-
 .timeline_item .content_box:after {
 	content: '';
 	display: table;

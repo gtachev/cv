@@ -628,15 +628,6 @@ a:hover > .circle_icon.circle_icon_grey {
 	height: 32px;
 }
 
-.page_anchor:target ~ #header .header_icon svg,
-.page_anchor:target ~ #header .header_icon svg rect,
-.page_anchor:target ~ #header .header_icon svg path {
-	/*transition: fill 0.15s ease-in-out;*/
-}
-.page_anchor:target ~ #header .header_icon svg path {
-	/*transition: stroke 0.15s ease-in-out;*/
-}
-
 .page_anchor:target ~ #header .header_icon:last-child {
 	margin-right: 0;
 }
@@ -902,11 +893,6 @@ a:hover > .circle_icon.circle_icon_grey {
 }
 
 
-.single_page_content#header,
-.single_page_content#header .content_box {
-	/*transition: all 0.15s ease-in-out;*/
-}
-
 .avatar {
 	display: block;
 	position: relative;
@@ -923,9 +909,6 @@ a:hover > .circle_icon.circle_icon_grey {
 	bottom: 5px;
 	left: 5px;
 	width: 190px;
-}
-.avatar svg circle {
-	/*transition: all 0.15s ease-in-out;*/
 }
 
 .avatar:hover {
@@ -2315,9 +2298,8 @@ h2.title {
 	position: absolute;
 	left: 0;
 	top: 35px;
-	width: 200px;
+	width: 140px;
 	min-width: 20px;
-	padding-right: 20px;
 }
 
 #svg-holder .place_checkbox_holder {
@@ -2597,21 +2579,21 @@ h2.title {
 #svg-holder svg g.place.education rect {
     fill: #75a29c;
 }
-#svg-holder svg g.place.education rect:hover {
+#svg-holder svg g.place.education:hover rect {
     fill: #5e827d;
 }
 
 #svg-holder svg g.place.work rect {
     fill: #69aace;
 }
-#svg-holder svg g.place.work rect:hover {
+#svg-holder svg g.place.work:hover rect {
     fill: #5991af;
 }
 
 #svg-holder svg g.place.projects rect {
     fill: #b18ea8;
 }
-#svg-holder svg g.place.projects rect:hover {
+#svg-holder svg g.place.projects:hover rect {
     fill: #97798f;
 }
 
@@ -2626,7 +2608,11 @@ h2.title {
 	stroke: 1px solid #ffc248;
 }
 
-#svg-holder svg text.place-label {
+#svg-holder .selected {
+    fill: #ffc248;
+	stroke: 1px solid #ffc248;
+    background-color: #ffc248;
+	border: 1px solid #ffc248;
 }
 
 

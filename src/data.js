@@ -36,6 +36,7 @@ export function getItemsData(rootel, selector, callback) {
             to: toDate(getText(el, ".todate")),
             label: el.getAttribute("data-label"),
             name: getText(el, ".place_name, .project_name"),
+            where: getText(el, ".where"),
             description: getText(el, ".timeline_description"),
             skills: [],
             el: el,

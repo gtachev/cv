@@ -253,7 +253,7 @@
             "label": "High School",
             "name": "Secondary Education",
             "where": "Sofia High School of Mathematics",
-            "description": "One of the most selective and distinguished secondary schools in the country, especially known for its merit in the areas of mathematics and computer science. Additionally, during the first few years I attended <span data-link-to=\"hs-extracurricular\">extracurricular</span> computer science courses and participated in national programming competitions.",
+            "description": "One of the most selective and distinguished secondary schools in the country, especially known for its merit in the areas of mathematics and computer science. Additionally, during the first few years I attended extracurricular computer science courses and participated in national programming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
@@ -393,7 +393,7 @@
             "name": "Project Manager",
             "where": "Trading 212",
             "url": "https://www.trading212.com",
-            "description": "I lead a team of 6 people to build and launch <span data-link-to=\"itrend\">iTrend</span> - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new <span data-link-to=\"azimuth-netcredit\">NetCredit</span> team (the two companies had the same owners and shared an office).",
+            "description": "I lead a team of 6 people to build and launch iTrend - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new NetCredit team (the two companies had the same owners and shared an office).",
             "options": [
                 "fullsize"
             ]
@@ -406,7 +406,7 @@
             "name": "Senior Web Developer",
             "where": "NetCredit Ltd.",
             "url": "https://www.netcredit.bg/",
-            "description": "I was the initial and later the lead developer of <span data-link-to=\"netcredit\">NetCredit</span> - a website for short-term loans of small sums of money.",
+            "description": "I was the initial and later the lead developer of NetCredit - a website for short-term loans of small sums of money.",
             "options": [
                 "fullsize"
             ]
@@ -519,7 +519,7 @@
             "name": "Web Developer",
             "where": "Headoff G.I.",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
-            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two entirely new projects - automated on-demand <span data-link-to=\"headoff-xen\">Xen virtual servers</span> and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
+            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two entirely new projects - automated on-demand Xen virtual servers and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
             "skills": [
                 {
                     "name": "PHP"
@@ -786,7 +786,7 @@
             "role": "Lead Developer",
             "where": "azimuth-netcredit",
             "url": "https://www.netcredit.bg/",
-            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to <span data-link-to=\"itrend\">iTrend</span>, but remained an advisor and mentor until Sep that year.",
+            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to iTrend, but remained an advisor and mentor until Sep that year.",
             "skills": [
                 {
                     "name": "PHP"
