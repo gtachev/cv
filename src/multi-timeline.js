@@ -173,6 +173,9 @@ export class MutiTimeline {
             )
             .text(d => d)
             .on("click", d => {
+                this.holder
+                    .selectAll(getSkillClasses(d, ".tlp_").join(", "))
+                    .classed("selected", false);
                 this.skillsToShow.push(d);
                 this.skillsToShowSet.add(d);
                 this.chartUpdateExtraSkills();
