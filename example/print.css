@@ -328,6 +328,11 @@ h2.title {
 	clear: none;
 }
 
+.timeline_item.halfsize .timeline_title h4 {
+	display: block;
+	margin-top: 3px;
+}
+
 .timeline_item:last-child {
 	margin-bottom: 0;
 	padding-bottom: 0;
