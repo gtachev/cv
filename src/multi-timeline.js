@@ -31,7 +31,7 @@ function svgT(left, top, from) {
 }
 
 function cname(s) {
-    return s.toLowerCase().replace(" ", "_");
+    return s.toLowerCase().replace(/[^a-z0-9]/g, "_");
 }
 
 export class MutiTimeline {
