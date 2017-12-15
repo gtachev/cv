@@ -255,7 +255,7 @@
             "label": "High School",
             "name": "Secondary Education",
             "where": "Sofia High School of Mathematics",
-            "description": "One of the most selective and distinguished secondary schools in the country, especially known for its merit in the areas of mathematics and computer science. Additionally, during the first few years I attended extracurricular computer science courses and participated in national programming competitions.",
+            "description": "One of the most distinguished and selective secondary schools in the country, especially known for its merit in the areas of mathematics and computer science. Additionally, during the first few years I attended extracurricular computer science courses and participated in national programming competitions.",
             "url": "http://smg.bg/",
             "skills": [
                 {
@@ -330,7 +330,7 @@
             "to": "Feb 2017",
             "label": "Consultant",
             "name": "Consulting and Teaching",
-            "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps and infrastructure security.",
+            "description": "Occasional teaching and consulting/freelance engagements, mostly involving Go, CI/CD/DevOps, and infrastructure security.",
             "options": [
                 "fullsize"
             ]
@@ -664,7 +664,7 @@
             "where": "consulting-2015-2017",
             "label": "DevOps Consultant",
             "name": "DevOps & Infrastructure Security Consulting",
-            "description": "I helped while the company restructured their infrastructure team. Some of my responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC used docker compose for integration tests of complex interconnected applications. Another PoC used Docker Cloud (and later Kubernetes on Google Cloud) as a trial for future management of multiple production services.</li><li class='printhidden'>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge, hiring new people and teaching a short Golang crash course.</li></ul>",
+            "description": "I helped while the company restructured their infrastructure team. Some of my responsibilities were:<ul><li>Improving and securing key internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC used docker compose for integration tests of complex interconnected applications. Another PoC used Docker Cloud (and later Kubernetes on Google Cloud) as a trial for future management of multiple production services.</li><li class='printhidden'>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge, hiring new people and teaching a short Golang crash course.</li></ul>",
             "skills": [
                 {
                     "name": "DevOps"

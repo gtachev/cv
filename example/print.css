@@ -238,6 +238,7 @@ h2.title {
 .intro_text {
 	clear: both;
 	padding-top: 15px;
+	margin-bottom: 5px;
 	line-height: 1.1;
 	font-style: italic;
 }
