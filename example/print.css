@@ -430,7 +430,7 @@ h2.title {
 
 
 .single_page_content[data-page-name="projects"] {
-	page-break-before: always;
+	page-break-inside: avoid;
 }
 
 .single_page_content[data-page-name="timeline"] {
