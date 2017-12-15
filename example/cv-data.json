@@ -306,6 +306,13 @@
                     "description": "I've been a Linux user since 2008 and my main operating system since 2013 has been QubesOS (with an Arch Linux template). I also currently maintain a few pet linux servers for personal use."
                 },
                 {
+                    "name": "Git",
+                    "from": "Jun 2010",
+                    "to": "Dec 2017",
+                    "strength": 0.1,
+                    "description": "I've been using git for various personal and professional projects since at least 2010."
+                },
+                {
                     "name": "Rust",
                     "from": "Feb 2017",
                     "to": "Apr 2017",
@@ -657,7 +664,7 @@
             "where": "consulting-2015-2017",
             "label": "DevOps Consultant",
             "name": "DevOps & Infrastructure Security Consulting",
-            "description": "I helped while the company restructured their infrastructure team. Some of my responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production).</li><li class='printhidden'>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge and the hiring of new people. I also taught a short Golang crash course due to interested employees.</li></ul>",
+            "description": "I helped while the company restructured their infrastructure team. Some of my responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC used docker compose for integration tests of complex interconnected applications. Another PoC used Docker Cloud (and later Kubernetes on Google Cloud) as a trial for future management of multiple production services.</li><li class='printhidden'>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge, hiring new people and teaching a short Golang crash course.</li></ul>",
             "skills": [
                 {
                     "name": "DevOps"

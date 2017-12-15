@@ -43,8 +43,8 @@ export class MutiTimeline {
         this.dims = {
             minWidth: 300,
             minPlacesHight: 60,
-            margin: { top: 38, right: 15, bottom: 8, left: 15, padding: 5 },
-            place: { height: 30, gap: 3, radius: 5 },
+            margin: { top: 30, right: 15, bottom: 8, left: 15, padding: 5 },
+            place: { height: 28, gap: 3, radius: 5 },
             placeText: { sideMargin: 2, maxSize: 18, adjMinSize: 6 },
             skill: { rowHeight: 20, rectHeight: 18, radius: 2 },
         };
