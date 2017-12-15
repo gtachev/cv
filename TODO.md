@@ -7,8 +7,9 @@ To make it a proper FOSS project that is usable by other people:
 
 Miscellaneous fixes and improvements:
 
+* Fix the d3 zoom extent restriction (disallow panning to the right)
 * Add zoom-in/zoom-out/reset buttons and indicators to the timeline.
-* Code cleanup - remove commented-out portions of code, unused HTML attributes and CSS, change misleading variable names, etc. Maybe use something like [uncss](https://github.com/giakki/uncss)?
+* Code cleanup - resolve TODOs, remove commented-out portions of code, unused HTML attributes and CSS, change misleading variable names, etc. Maybe use something like [uncss](https://github.com/giakki/uncss)?
 * Fix the printing of the timeline work/edu/project labels in non-chromium browsers (this would probably be much easier if we don't use SVG).
 * Link timeline places to the other pages?
 * Add the ability to reorder skills in the timeline and to show all extra skill with one click?

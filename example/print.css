@@ -77,7 +77,6 @@ img {
 
 
 @page {
-	/* TODO: quick fixes, fix properly later */
 	margin-left: 0.8cm;
 	margin-right: 0.8cm;
 	margin-top: 1.3cm;
@@ -503,7 +502,6 @@ h2.title {
 /*** Education & Projects ***/
 
 div.contacts * {
-	/* TODO: quick fixes, fix properly later */
 	font-size: 95%;
 }
 

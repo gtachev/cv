@@ -42,7 +42,7 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 300,
-            minPlacesHight: 60,
+            minPlacesHight: 70,
             margin: { top: 30, right: 15, bottom: 8, left: 15, padding: 5 },
             place: { height: 28, gap: 3, radius: 5 },
             placeText: { sideMargin: 2, maxSize: 18, adjMinSize: 6 },

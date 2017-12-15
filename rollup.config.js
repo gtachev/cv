@@ -59,7 +59,7 @@ function parseAndBundleExample() {
 
     // Inline all of the external resources in the built html and save it with another name
     var cvBundledHtml = inlineSync("./build/cv.html", {
-        swallowErrors: true, //TODO: fix fonts, remove jquery
+        swallowErrors: true,
         attribute: false,
         compress: false,
     });
@@ -73,7 +73,7 @@ function parseAndBundleExample() {
             minifyCSS: true,
             collapseWhitespace: true,
             conservativeCollapse: true,
-            removeComments: true
+            removeComments: true,
         })
     );
 }
