@@ -36,7 +36,8 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "halfsize",
+                "printtitleonly"
             ]
         },
         {
@@ -54,7 +55,8 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "halfsize",
+                "printtitleonly"
             ]
         },
         {
@@ -62,7 +64,7 @@
             "from": "Oct 2012",
             "to": "Jan 2014",
             "label": "Master's (unfinished)",
-            "name": "Master's Program in \"Distributed Systems and Mobile Technologies\" (Unfinished)",
+            "name": "Master's Program in \"Distributed Systems and Mobile Technologies\"",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://www.fmi.uni-sofia.bg/en/distributed-systems-and-mobile-technologies",
             "description": "A diversified master's program at the Faculty of Mathematics and Informatics at Sofia University that focuses on designing, building, and interconnecting complex distributed systems. It also has a very wide range of optional courses on networking, security, and system architecture and administration. I have completed all necessary courses, but am yet to defend a thesis.",
@@ -243,7 +245,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -312,7 +314,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -393,7 +395,7 @@
             "name": "Project Manager",
             "where": "Trading 212",
             "url": "https://www.trading212.com",
-            "description": "I lead a team of 6 people to build and launch iTrend - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. Since the first half of 2013 was spent mostly hiring the team and iterating and testing the new product concepts, I still acted as an advisor and mentor to the new NetCredit team (the two companies had the same owners and shared an office).",
+            "description": "I lead a team of 6 people to build and launch iTrend - an innovative alternative to Avus Capital's main service trading212.com that was targeted at novice traders. In the beginning I was also an advisor and mentor to the new NetCredit team (the two companies had the same owners and shared an office).",
             "options": [
                 "fullsize"
             ]
@@ -408,7 +410,7 @@
             "url": "https://www.netcredit.bg/",
             "description": "I was the initial and later the lead developer of NetCredit - a website for short-term loans of small sums of money.",
             "options": [
-                "fullsize"
+                "halfsize"
             ]
         },
         {
@@ -447,7 +449,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -480,7 +482,7 @@
                 }
             ],
             "options": [
-                "fullsize"
+                "halfsize"
             ]
         },
         {
@@ -508,7 +510,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -519,7 +521,7 @@
             "name": "Web Developer",
             "where": "Headoff G.I.",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20070314000029%2Fhttp%3A%2F%2Fwww.headoff.com%2F",
-            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.). I participated in the development of two entirely new projects - automated on-demand Xen virtual servers and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
+            "description": "Maintained and improved different company web projects, including a system for unified user accounts and scoreboards across dozens of different multiplayer game servers<span class=\"printhidden\"> (CS, ScarCraft, WarCraft 2 and 3, Diablo 2, etc.)</span>. I participated in the development of two entirely new projects - automated on-demand Xen virtual servers and headoff.mobi - an unsuccessful attempt to create a common country-wide network of wireless access points.",
             "skills": [
                 {
                     "name": "PHP"
@@ -568,7 +570,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -595,7 +597,7 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "printhidden"
             ]
         },
         {
@@ -623,7 +625,7 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "printhidden"
             ]
         },
         {
@@ -645,7 +647,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         },
         {
@@ -655,7 +657,7 @@
             "where": "consulting-2015-2017",
             "label": "DevOps Consultant",
             "name": "DevOps & Infrastructure Security Consulting",
-            "description": "I helped while the company restructured their infrastructure team. My responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production).</li><li>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge and the hiring of new people.</li></ul>I also taught a short Golang crash course due to interested employees.",
+            "description": "I helped while the company restructured their infrastructure team. Some of my responsibilities were:<ul><li>Improving and securing some internal CI/CD processes.</li><li>Transitioning automation jobs from Jenkins to GitLab CI with Docker containers.</li><li>Preparing proof-of-concept solutions for integrated testing and production environments with different container management software. For instance, one PoC was using docker compose to run integration tests of complex interconnected applications. Another example was using Docker Cloud (and later Kubernetes on Google Cloud) to potentially run and manage multiple services in production).</li><li class='printhidden'>Integrating LetsEncrypt to replace self-signed certificates in a lot of the CI infrastructure.</li><li>Helping with the dissemination of DevOps knowledge and the hiring of new people. I also taught a short Golang crash course due to interested employees.</li></ul>",
             "skills": [
                 {
                     "name": "DevOps"
@@ -709,7 +711,7 @@
             "label": "nedomi",
             "name": "nedomi",
             "role": "Developer",
-            "description": "nedomi is an open-source high performance HTTP reverse proxy that efficiently caches big files. It was written for a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
+            "description": "nedomi is an open-source high performance caching HTTP reverse proxy written in Go. It was used by a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
             "url": "https://github.com/ironsmile/nedomi",
             "skills": [
                 {
@@ -745,7 +747,7 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "printhidden"
             ]
         },
         {
@@ -786,7 +788,7 @@
             "role": "Lead Developer",
             "where": "azimuth-netcredit",
             "url": "https://www.netcredit.bg/",
-            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to iTrend, but remained an advisor and mentor until Sep that year.",
+            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to iTrend, but remained an advisor and mentor until September that year.",
             "skills": [
                 {
                     "name": "PHP"
@@ -819,7 +821,7 @@
                 }
             ],
             "options": [
-                "halfsize"
+                "fullsize"
             ]
         },
         {
@@ -830,7 +832,7 @@
             "name": "Xen On-Demand Virtual Servers",
             "where": "headoff",
             "url": "https://translate.google.com/translate?hl=en&sl=bg&tl=en&u=https%3A%2F%2Fweb.archive.org%2Fweb%2F20080218025030%2Fhttp%3A%2F%2Fwww.headoff.biz%2Findex.php%3Fpage%3Dxenvps&sandbox=1",
-            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. Just from our web interface you could create a new VM with custom resources, automatically install your preferred Linux distribution on it and have it running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface. The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed it in an hour.",
+            "description": "The cloud in 2006... sort of :). We made a system for automated on-demand customizable Xen servers. From our web interface you could create new VMs with custom resources, automatically install your preferred Linux distribution and have them running in a few minutes. After that you could log in via ssh or manage the VM entirely through the web interface.<span class=\"printhidden\"> The billing was on a monthly basis, but that was a business decision - our freely-accessible online demo created a new test server on demand and automatically destroyed it in an hour.</span>",
             "skills": [
                 {
                     "name": "DevOps",
@@ -877,7 +879,7 @@
                 }
             ],
             "options": [
-                "minor"
+                "printhidden"
             ]
         }
     ]

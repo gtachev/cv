@@ -81,7 +81,7 @@ img {
 	margin-left: 0.8cm;
 	margin-right: 0.8cm;
 	margin-top: 1.3cm;
-	margin-bottom: 1.3cm;
+	margin-bottom: 0.8cm;
 	size: A4;
 }
 
@@ -101,7 +101,7 @@ body {
 	overflow: visible !important;
 }
 
-h1, h2, h3, h4, h5, p, ul, table {
+h1, h2, h3, h4, h5, p, table {
 	margin: 0 0 20px 0;
 }
 
@@ -111,7 +111,6 @@ h3:last-child,
 h4:last-child,
 h5:last-child,
 p:last-child,
-ul:last-child,
 table:last-child {
 	margin-bottom: 0;
 }
@@ -267,7 +266,7 @@ h2.title {
 .single_page_content > h1 {
 	display: inline-block;
 	position: relative;
-	margin: 10px 0;
+	margin: 10px 0 0 0;
 	padding: 0 15px 0 0;
 	clear: both;
 }
@@ -306,7 +305,7 @@ h2.title {
 	clear: both;
 	width: 100%;
 	margin: 0 0 0 0 !important;
-	padding: 5px 5px !important;
+	padding: 4px 4px !important;
 	background: none;
 	border: none;
 	page-break-inside: avoid;
@@ -339,7 +338,17 @@ h2.title {
 	border-bottom: 0;
 }
 
-.timeline_item.minor {
+.timeline_item.printtitleonly h4,
+.timeline_item.printtitleonly .timeline_description{
+	display: none !important;
+}
+
+.timeline_item.printtitleonly .timeline_title {
+	margin: 0 !important;
+}
+
+
+.printhidden {
 	display: none !important;
 }
 
@@ -384,6 +393,7 @@ h2.title {
 
 .timeline_item .timeline_title h4 {
 	display: inline;
+	white-space: nowrap;
 }
 
 .timeline_item .timeline_description {
@@ -397,8 +407,7 @@ h2.title {
 	margin-bottom: 0;
 }
 
-.timeline_item .timeline_description p,
-.timeline_item .timeline_description ul {
+.timeline_item .timeline_description p {
 	margin-bottom: 8px;
 }
 .timeline_item .timeline_description p:last-child,
@@ -411,17 +420,21 @@ h2.title {
 }
 
 .disclaimer {
-	margin: 15px auto 0 auto;
+	margin: 0 auto 0 auto;
 	text-align: center;
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 }
 
 
 
-.single_page_content[data-page-name="timeline"] {
+.single_page_content[data-page-name="projects"] {
 	page-break-before: always;
+}
+
+.single_page_content[data-page-name="timeline"] {
+	page-break-inside: avoid;
 }
 
 .skill {
@@ -487,22 +500,6 @@ h2.title {
 }
 
 /*** Education & Projects ***/
-
-/*
-.single_page_content[data-page-name="education"] .timeline_item,
-.single_page_content[data-page-name="projects"] .timeline_item {
-	width: calc(50% - 10px);
-	float: left;
-	clear: none;
-}
-.single_page_content[data-page-name="education"] .timeline_item:nth-child(2n+1),
-.single_page_content[data-page-name="projects"] .timeline_item:nth-child(2n+1) {
-	clear: left;
-	margin-right: 10px;
-	padding-right: 10px;
-	border-radius: 1px solid #eeeeee;
-}
-*/
 
 div.contacts * {
 	/* TODO: quick fixes, fix properly later */
@@ -630,6 +627,5 @@ div.contacts * {
 
 #svg-holder svg #skills rect {
     fill: rgb(20,20,20);
-	height: 20px;
 	stroke: 1px solid #777777;
 }

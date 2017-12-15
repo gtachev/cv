@@ -2508,24 +2508,25 @@ h2.title {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	cursor: pointer;
+	font-size: 16px;
 }
 
 #svg-holder #sidepane .y_axis_skill:after {
 	content: '-';
 	display: inline-block;
 	position: absolute;
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 14px;
 	vertical-align: middle;
-	top: 5px;
+	top: 4px;
 	right: 0px;
 	border: 1px solid red;
 	border-radius: 50%;
 	background: red;
 	color: #ffffff;
-	line-height: 11px;
+	line-height: 10px;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 	opacity: 0;
 	transition: all 0.15s ease-in-out;
@@ -2533,7 +2534,7 @@ h2.title {
 
 #svg-holder #sidepane .y_axis_skill:hover {
 	cursor: pointer;
-	padding-right: 20px;
+	padding-right: 16px;
 }
 
 #svg-holder #sidepane .y_axis_skill:hover:after {
@@ -2599,7 +2600,6 @@ h2.title {
 
 #svg-holder svg #skills rect {
     fill: rgb(20,20,20);
-	height: 20px;
 	stroke: 1px solid #777777;
 }
 

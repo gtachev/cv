@@ -36,7 +36,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 {{/inline}}
 
 {{#*inline "item"}}
-	<div class="timeline_item {{#each options}}{{this}}{{/each}}" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
+	<div class="timeline_item{{#each options}} {{this}}{{/each}}" id="{{id}}" data-label="{{label}}" {{#unless name }} style="display: none;" {{/unless}}>
 		<div class="content_box timeline_content_box">
 			<p class="timeline_date">
 				<span class="fromdate">{{from}}</span>
