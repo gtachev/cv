@@ -20,7 +20,7 @@
             "name": "Machine Learning with Python Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "http://fmi.machine-learning.bg/",
-            "description": "An introductory course in machine learning with Python taught by <a href=\"https://github.com/skanev\" target=\"_blank\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\" target=\"_blank\">Lachezar Bozhkov</a>.",
+            "description": "An introductory course in machine learning with Python taught by <a href=\"https://github.com/skanev\" target=\"_blank\" rel=\"noopener\">Stefan Kanev</a> and <a href=\"https://github.com/lachezarbozhkov\" target=\"_blank\" rel=\"noopener\">Lachezar Bozhkov</a>.",
             "skills": [
                 {
                     "name": "Machine Learning",
@@ -48,7 +48,7 @@
             "name": "Rust Programming Language Course",
             "where": "Sofia University \"St. Kliment Ohridski\", FMI",
             "url": "https://fmi.rust-lang.bg/",
-            "description": "A comprehensive course in the Rust programming language taught by <a href=\"https://github.com/AndrewRadev\" target=\"_blank\">Andrew Radev</a>.",
+            "description": "A comprehensive course in the Rust programming language taught by <a href=\"https://github.com/AndrewRadev\" target=\"_blank\" rel=\"noopener\">Andrew Radev</a>.",
             "skills": [
                 {
                     "name": "Rust"
@@ -126,7 +126,7 @@
                     "from": "Oct 2009",
                     "to": "Jun 2010",
                     "strength": 1,
-                    "description": "General \"Operating systems\" course and \"Linux system administration\" course by <a href=\"https://github.com/hackman\" target=\"_blank\">Marian Marinov</a>"
+                    "description": "General \"Operating systems\" course and \"Linux system administration\" course by <a href=\"https://github.com/hackman\" target=\"_blank\" rel=\"noopener\">Marian Marinov</a>"
                 },
                 {
                     "name": "Security",
@@ -146,7 +146,7 @@
                     "from": "Jan 2010",
                     "to": "Jun 2010",
                     "strength": 0.9,
-                    "description": "Python course by <a href=\"https://github.com/nb\" target=\"_blank\">Nikolay Bachiyski</a> and <a href=\"https://github.com/skanev\" target=\"_blank\">Stefan Kanev</a>"
+                    "description": "Python course by <a href=\"https://github.com/nb\" target=\"_blank\" rel=\"noopener\">Nikolay Bachiyski</a> and <a href=\"https://github.com/skanev\" target=\"_blank\" rel=\"noopener\">Stefan Kanev</a>"
                 },
                 {
                     "name": "Management",
@@ -560,9 +560,10 @@
             "from": "Nov 2017",
             "to": "Dec 2017",
             "where": "_personal",
-            "label": "CV Timeline",
-            "name": "CV Multi-Timeline with D3",
-            "description": "The somewhat fancy and rather over-complicated skill timeline in the CV you are probably looking at right now :)",
+            "label": "CV",
+            "name": "CV with D3.js Multi-Timeline",
+            "description": "The somewhat fancy and rather over-complicated CV you are probably looking at right now :). It started as an attempt to grok the <a href=\"https://d3js.org/\" target=\"_blank\" rel=\"noopener\">D3.js</a> library and grew from there...",
+            "url": "https://github.com/na--/cv/",
             "skills": [
                 {
                     "name": "JavaScript"
@@ -613,7 +614,7 @@
             "to": "Apr 2017",
             "label": "git-annex archive",
             "name": "Multi-{TB,location,cloud} Backup System",
-            "description": "A semi-automated <a href=\"https://git-annex.branchable.com/\" target=\"_blank\">git-annex</a> archive setup for dozens of terabytes of information that spans 3 physical locations and 2.5 clouds.",
+            "description": "A semi-automated <a href=\"https://git-annex.branchable.com/\" target=\"_blank\" rel=\"noopener\">git-annex</a> archive setup for dozens of terabytes of information that spans 3 physical locations and 2.5 clouds.",
             "skills": [
                 {
                     "name": "Git"
@@ -643,7 +644,7 @@
             "label": "Go Course",
             "name": "Golang Crash Course",
             "role": "Teacher",
-            "description": "An intensive Go language course for some of the developers at <a href=\"https://www.chaosgroup.com/\" target=\"_blank\">Chaos Group</a>.",
+            "description": "An intensive Go language course for some of the developers at <a href=\"https://www.chaosgroup.com/\" target=\"_blank\" rel=\"noopener\">Chaos Group</a>.",
             "url": "https://github.com/fmi/go-lectures/tree/chaos",
             "skills": [
                 {
