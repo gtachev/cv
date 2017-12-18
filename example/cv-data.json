@@ -562,8 +562,8 @@
             "where": "_personal",
             "label": "CV",
             "name": "CV with D3.js Multi-Timeline",
-            "description": "The somewhat fancy and rather over-complicated CV you are probably looking at right now :). It started as an attempt to grok the <a href=\"https://d3js.org/\" target=\"_blank\" rel=\"noopener\">D3.js</a> library and grew from there...",
-            "url": "https://github.com/na--/cv/",
+            "description": "The somewhat fancy and rather over-complicated CV you are probably looking at right now :). It started as an attempt to grok the <a href=\"https://d3js.org/\" target=\"_blank\" rel=\"noopener\">D3.js</a> library and ES6 and grew from there...",
+            "url": "https://github.com/na--/cv",
             "skills": [
                 {
                     "name": "JavaScript"

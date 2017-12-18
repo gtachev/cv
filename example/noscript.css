@@ -6,6 +6,7 @@
 	display: none;
 }
 
+.button_holder_print,
 [data-print="true"] {
     display: none !important;
 }
