@@ -44,9 +44,15 @@ If this is the bundled and minified version of the CV, you can find the full sou
 				<span class="todate">{{to}}</span>
 			</p>
 			<div class="timeline_title">
-				{{#if place}}
+				{{#if isProject}}
 					{{!-- This is a project --}}
-					<h3 class="project_name"><a href="{{url}}" target="_blank" rel="noopener">{{name}}</a></h3>
+					<h3 class="project_name">
+						{{#if url}}
+							<a href="{{url}}" target="_blank" rel="noopener">{{name}}</a>
+						{{else}}
+							{{name}}
+						{{/if}}
+					</h3>
 					{{#if place.name}}
 						<h4>
 								when <a class="place_link" href="#{{placeType}}" data-item-id="{{place.id}}">{{place.name}}</a>
@@ -132,7 +138,7 @@ If this is the bundled and minified version of the CV, you can find the full sou
 			<div class="single_page_content" data-page-id="5" data-page-name="projects">
 				<h1>Notable Projects</h1>
 				<div class="page_all_timeline_items">
-					{{#each projects}} {{> item}} {{/each}}
+					{{#each projects}} {{> item isProject=true}} {{/each}}
 				</div>
 				<h4 class="printonly disclaimer">For a complete list, view the HTML version or open online at <a href="https://cv.andreev.sh">cv.andreev.sh</a></h4>
 			</div>

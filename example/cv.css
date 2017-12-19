@@ -524,7 +524,7 @@ a:hover > .circle_icon.circle_icon_grey {
 	position: relative;
 	width: 100%;
 	margin: 0 auto 30px auto;
-	padding: 65px;
+	padding: 65px 75px;
 	background: #ffffff;
 	border-radius: 5px;
 	box-shadow: 0.5px 0.866px 1.34px 0.66px rgba(0, 0, 0, 0.1);

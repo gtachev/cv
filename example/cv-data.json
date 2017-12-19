@@ -9,7 +9,21 @@
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
         "linkedin": null,
-        "short_bio": "A highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, devops, and data wrangling. Currently striving to master Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects."
+        "short_bio": "Highly skilled generalist developer with more than 12 years of diverse work experience. Interested in security, DevOps, and data wrangling. Currently striving to master Rust and machine learning with Python. Seeking professional opportunities, especially to work on intriguing open source projects.",
+        "dev_interests": [
+            "Rust",
+            "NixOS/Guix",
+            "Machine Learning",
+            "TiDB",
+            "CockroachDB",
+            "Kubernetes",
+            "Go",
+            "GraphQL",
+            "Erlang/Elixir",
+            "Unikernels",
+            "Haskell",
+            "Clojure"
+        ]
     },
     "education": [
         {
@@ -719,7 +733,7 @@
             "label": "nedomi",
             "name": "nedomi",
             "role": "Developer",
-            "description": "nedomi is an open-source high performance caching HTTP reverse proxy written in Go. It was used by a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
+            "description": "nedomi is an open-source high performance caching HTTP reverse proxy written in Go. It was developed for a CDN service that specializes in delivering video content and was able to handle 6 Gbps of production traffic on one server.",
             "url": "https://github.com/ironsmile/nedomi",
             "skills": [
                 {
@@ -744,8 +758,8 @@
             "label": "Golang Courses",
             "name": "Golang University Courses",
             "role": "Teacher",
-            "description": "I was one of the teachers in the last three additions of an elective Golang crouse at Sofia University's Faculty of Mathematics and Informatics.",
-            "url": "http://fmi.golang.bg/",
+            "description": "I was one of the teachers in the last three additions of an elective crouse on the Go programming language at Sofia University's Faculty of Mathematics and Informatics.",
+            "url": "https://github.com/fmi/go-lectures",
             "skills": [
                 {
                     "name": "Go"
@@ -755,7 +769,7 @@
                 }
             ],
             "options": [
-                "printhidden"
+                "halfsize"
             ]
         },
         {
@@ -796,7 +810,7 @@
             "role": "Lead Developer",
             "where": "azimuth-netcredit",
             "url": "https://www.netcredit.bg/",
-            "description": "NetCredit is a service for short-term loans of small sums of money. Initially I was the only backend developer, and with one frontend developer and one designer we managed to launch the service from scratch in just 2 months. Later the team grew and I was the lead developer until Jan 2013 when I transitioned to iTrend, but remained an advisor and mentor until September that year.",
+            "description": "NetCredit is a service for short-term loans of small sums of money. I was the only backend developer initially, and<span class=\"printhidden\"> with one frontend developer and one designer</span> we managed to launch the service in only 2 months from scratch. Later the team grew and I was the lead developer until 2013 when I gradually transitioned to iTrend project manager.",
             "skills": [
                 {
                     "name": "PHP"
@@ -829,7 +843,7 @@
                 }
             ],
             "options": [
-                "fullsize"
+                "halfsize"
             ]
         },
         {
