@@ -42,7 +42,7 @@ export class MutiTimeline {
 
         this.dims = {
             minWidth: 300,
-            minPlacesHight: 70,
+            minPlacesHight: 75,
             margin: { top: 30, right: 15, bottom: 8, left: 15, padding: 5 },
             place: { height: 28, gap: 3, radius: 5 },
             placeText: { sideMargin: 2, maxSize: 18, adjMinSize: 6 },
@@ -118,6 +118,19 @@ export class MutiTimeline {
             .selectAll(".place_checkbox_holder")
             .data(this.placeTypes, d => d.id);
 
+        var getPlaceClasses = d => {
+            var result = ["checkbox_label"];
+            if (!d.enabled) {
+                d.items.forEach(item => {
+                    result.push("tlp_" + item.id);
+                    if (item.place) {
+                        result.push("tlinp_" + item.place);
+                    }
+                });
+            }
+            return result.join(" ");
+        };
+
         var checkboxEnter = this.placeCheckboxes
             .enter()
             .append("div")
@@ -128,8 +141,9 @@ export class MutiTimeline {
             .attr("type", "checkbox")
             .attr("id", d => "place_" + d.id)
             .property("checked", d => d.enabled)
-            .on("change", d => {
+            .on("change", (d, e, t) => {
                 d.enabled = d3CurrentEvent.target.checked;
+                t[e].parentNode.querySelector(".checkbox_label").className = getPlaceClasses(d);
                 this.chartUpdatePlaces();
                 this.yResize();
             });
@@ -137,7 +151,7 @@ export class MutiTimeline {
         label.append("span").attr("class", "checkbox_icon");
         label
             .append("span")
-            .attr("class", "checkbox_label")
+            .attr("class", d => getPlaceClasses(d))
             .text(d => d.name);
     }
 
