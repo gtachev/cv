@@ -357,7 +357,7 @@
             "name": "Research and Development Lead",
             "where": "Trading 212",
             "url": "https://www.trading212.com",
-            "description": "Lead several diverse projects, the biggest of which involved converting several dozen active SVN repos to git, introducing GitLab to the company, and securing and overhauling other key development infrastructure components and CI/CD processes.",
+            "description": "Lead several diverse projects, the biggest of which involved completely overhauling and securing key infrastructure components and CI/CD processes. This included almost total SVN to git migration and introduction of GitLab to the company, automated containerized builds and tests, and the secure compartmentalization of different infrastructure systems.",
             "skills": [
                 {
                     "name": "DevOps"
@@ -745,6 +745,10 @@
                 {
                     "name": "Algorithms/DS",
                     "strength": 0.3
+                },
+                {
+                    "name": "C/C++",
+                    "strength": 0.2
                 }
             ],
             "options": [
