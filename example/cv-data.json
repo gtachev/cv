@@ -4,8 +4,7 @@
         "title": "Full-Stack Developer",
         "phone": null,
         "email": "n@andreev.sh",
-        "location": "Sofia, Bulgaria",
-        "timezone": "UTC+2",
+        "location": "Sofia, Bulgaria (EU, UTC+2)",
         "github": "https://github.com/na--",
         "gitlab": "https://gitlab.com/na--",
         "linkedin": null,
@@ -457,6 +456,10 @@
                     "strength": 0.8
                 },
                 {
+                    "name": "Remote Work",
+                    "strength": 0.6
+                },
+                {
                     "name": "Security",
                     "strength": 0.5
                 },
@@ -741,6 +744,10 @@
                 },
                 {
                     "name": "Git"
+                },
+                {
+                    "name": "Remote Work",
+                    "strength": 0.8
                 },
                 {
                     "name": "Algorithms/DS",
